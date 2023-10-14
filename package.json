@@ -1,0 +1,19 @@
+{
+  "name": "@twine-protocol/twine-js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "watch": "lerna run --no-bail --parallel watch",
+    "test": "lerna run --parallel test"
+  },
+  "devDependencies": {
+    "lerna": "^7.3.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {}
+}
