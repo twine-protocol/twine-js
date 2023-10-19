@@ -11,8 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "bun run ./build.js",
-    "watch": "bun run --watch ./build.js"
+    "build": "bun run ./build.js"
   },
   "dependencies": {
     "@multiformats/sha3": "^3.0.1",

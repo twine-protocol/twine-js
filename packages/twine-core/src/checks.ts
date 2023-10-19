@@ -17,6 +17,18 @@ export function isUnsignedInteger(n: any) {
   return isInteger(n) && n >= 0
 }
 
+export function isIterable(obj: any): obj is Iterable<any> {
+  return obj && typeof obj[Symbol.iterator] === 'function'
+}
+
+export function isAsyncIterable(obj: any): obj is AsyncIterable<any> {
+  return obj && typeof obj[Symbol.asyncIterator] === 'function'
+}
+
+export function isAnyIterable(obj: any): obj is Iterable<any> | AsyncIterable<any> {
+  return isIterable(obj) || isAsyncIterable(obj)
+}
+
 export function isCid(cid: any): cid is CID {
   // cid should have a toStringTag of CID
   return cid && cid[Symbol.toStringTag] === 'CID'
@@ -72,7 +84,7 @@ export function isChainValue(value: any): value is ChainValue {
   return true
 }
 
-export function isTwineValue(value: any): value is TwineValue<ChainContent> | TwineValue<PulseContent> {
+export function isTwineValue(value: any): value is TwineValue {
   return isPulseValue(value) || isChainValue(value)
 }
 

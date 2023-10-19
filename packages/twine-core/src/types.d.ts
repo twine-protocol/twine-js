@@ -1,7 +1,9 @@
 import type { JWK } from 'jose'
-export type { JWK } from 'jose'
 import type { CID } from 'multiformats/cid'
-export type { CID } from 'multiformats/cid'
+export { CID, JWK }
+
+export type Awaitable<T> = T | Promise<T>
+export type AnyIterable<T> = Iterable<T> | AsyncIterable<T>
 
 export type Signature = string
 export type Mixin = {
@@ -22,9 +24,11 @@ export type Payload = {
   [key: string]: any,
 }
 
+export type PulseIndex = number
+
 export type PulseContent = {
   chain: CID,
-  index: number,
+  index: PulseIndex,
   links: CID[],
   mixins: Mixin[],
   payload: Payload,
@@ -33,13 +37,23 @@ export type PulseContent = {
 
 export type TwineContent = ChainContent | PulseContent;
 
-export type TwineValue<T extends TwineContent> = {
-  content: T;
+export type ChainValue = {
+  content: ChainContent;
   signature: Signature;
 }
 
-export type ChainValue = TwineValue<ChainContent>
-export type PulseValue = TwineValue<PulseContent>
+export type PulseValue = {
+  content: PulseContent;
+  signature: Signature;
+}
 
-import type { Twine } from './twine'
-export type IntoCid = CID | string | Uint8Array | Twine
+export type TwineValue = ChainValue | PulseValue;
+
+import type { Chain, Pulse, Twine } from './twine'
+export type IntoCid = CID | string | Uint8Array | Twine<TwineValue>
+
+
+export interface Signer {
+  getPublicJWK(): Promise<JWK>
+  sign(bytes: Uint8Array): Promise<Signature>
+}

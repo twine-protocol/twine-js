@@ -1,4 +1,4 @@
-import type { ChainContent, PulseContent, TwineContent, TwineValue } from './types'
+import type { ChainContent, ChainValue, PulseContent, PulseValue, TwineContent, TwineValue } from './types'
 import * as Block from 'multiformats/block'
 import { CID, Version } from 'multiformats/cid'
 import { bytes } from 'multiformats'
@@ -10,8 +10,8 @@ import { InvalidSignature, InvalidTwineData } from './errors'
 import { MultihashDigest } from 'multiformats/hashes/digest'
 import { isChain, isChainValue, isPulse, isPulseValue, isTwine, isTwineValue } from './checks'
 
-export type Chain = Twine<ChainContent>
-export type Pulse = Twine<PulseContent>
+export type Chain = Twine<ChainValue>
+export type Pulse = Twine<PulseValue>
 
 export async function getContentDigest(content: TwineContent): Promise<MultihashDigest> {
   const bytes = codec.encode(content)
@@ -47,7 +47,7 @@ async function verifySignature(chain: Chain, twine: Chain | Pulse) {
   return true
 }
 
-export class Twine<T extends TwineContent> extends Block.Block<TwineValue<T>, number, number, Version> {
+export class Twine<T extends ChainValue | PulseValue> extends Block.Block<T, number, number, Version> {
   isTwineInstance = true
   isChain: boolean
   chainCid: CID
@@ -56,7 +56,7 @@ export class Twine<T extends TwineContent> extends Block.Block<TwineValue<T>, nu
     return isTwine(thing)
   }
 
-  constructor({ cid, bytes, value }: { cid: CID, bytes: Uint8Array, value: TwineValue<T> }) {
+  constructor({ cid, bytes, value }: { cid: CID, bytes: Uint8Array, value: T }) {
     const thisIsChain = isChainValue(value)
     const thisIsPulse = !thisIsChain && isPulseValue(value)
     if (!thisIsChain && !thisIsPulse) {
@@ -105,7 +105,7 @@ export class Twine<T extends TwineContent> extends Block.Block<TwineValue<T>, nu
     return getContentDigest(this.value.content)
   }
 
-  async verifySignature(chain?: Twine<ChainContent>): Promise<boolean> {
+  async verifySignature(chain?: Twine<ChainValue>): Promise<boolean> {
     if (isChain(this)) {
       return verifySignature(this, this)
     } else if (chain && isPulse(this)) {
@@ -115,5 +115,4 @@ export class Twine<T extends TwineContent> extends Block.Block<TwineValue<T>, nu
     }
   }
 }
-
 

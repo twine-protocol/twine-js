@@ -1,5 +1,6 @@
 import { CID, MultihashHasher } from 'multiformats'
-import { isChainValue, isPulse, isPulseValue, isTwine } from './checks'
+import { isChain, isChainValue, isPulse, isPulseValue, isTwine } from './checks'
+import { ResolveQuery, ResolveQueryStrict } from './resolver/types'
 import { ChainValue, IntoCid, Mixin, PulseValue } from './types'
 import { decode as dagJsonDecode } from '@ipld/dag-json'
 import { encode as blockEncode, create as blockCreate } from 'multiformats/block'
@@ -34,17 +35,25 @@ export function asMixin(m: any): Mixin | null {
   }
 }
 
-export const coerceCID = (val: IntoCid) => {
+export const asCid = (val: any): CID | null => {
   if (isTwine(val)) {
     return val.cid
-  }
-  if (val instanceof Uint8Array) {
-    return CID.decode(val)
   }
   if (typeof val === 'string') {
     return CID.parse(val)
   }
+  if (val instanceof Uint8Array) {
+    return CID.decode(val)
+  }
   const cid = CID.asCID(val)
+  if (cid) {
+    return cid
+  }
+  return null
+}
+
+export const coerceCid = (val: IntoCid): CID => {
+  const cid = asCid(val)
   if (cid) {
     return cid
   }
@@ -123,4 +132,41 @@ export const fromBytes = async (
     bytes,
     value: value as typeof thisIsPulse extends true ? PulseValue : ChainValue
   })
+}
+
+export const asQuery = (val: any): ResolveQueryStrict | null => {
+  if (!val) { return null }
+  // if it's a twine, we can just use the cids inside
+  if (isTwine(val)) {
+    if (isChain(val)) {
+      return { chain: val.cid }
+    } else {
+      return { chain: val.value.content.chain, pulse: val.cid }
+    }
+  }
+  let pulse = val.pulse ?? val.value
+  let chain = asCid(val.chain)
+  if (isPulse(pulse)) {
+    // last effort to get the chain
+    chain = chain ?? pulse.value.content.chain
+  }
+  if (!chain) {
+    return null
+  }
+  // if it only has a chain property
+  if (!pulse) {
+    return { chain }
+  }
+  // must be a pulse by cid query
+  pulse = asCid(pulse)
+  if (!pulse) {
+    return null
+  }
+  return { chain, pulse }
+}
+
+export const coerceQuery = (val: any): ResolveQuery => {
+  const query = asQuery(val)
+  if (!query) { throw new Error('Can not coerce value into ResolveQuery') }
+  return query
 }
