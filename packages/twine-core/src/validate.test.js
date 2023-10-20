@@ -22,4 +22,10 @@ describe('pulse validation', () => {
     pulse.value.content.payload = { foo: 'bar' }
     expect(pulse.verifySignature(mockData.chain)).rejects.toBeDefined()
   })
+
+  test('reject signature from different pulse', async () => {
+    const pulse = await fromJSON(mockData.chain2pulse2.toJSON())
+    pulse.value.signature = mockData.chain2pulse3.value.signature
+    expect(pulse.verifySignature(mockData.chain2)).rejects.toBeDefined()
+  })
 })

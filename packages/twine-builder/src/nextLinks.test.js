@@ -2,7 +2,7 @@ import { describe, test, expect } from 'bun:test'
 import { getNextLinks } from './factory'
 
 const mockChain = radix => ({
-  value: { content: { skip_radix: radix } },
+  value: { content: { links_radix: radix } },
 })
 const mockPulse = (index, links) => ({
   value: {
