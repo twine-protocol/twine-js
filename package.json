@@ -7,7 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
-    "test": "lerna run --parallel test"
+    "test": "bun test"
   },
   "devDependencies": {
     "lerna": "^7.3.1"

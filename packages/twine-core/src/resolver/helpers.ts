@@ -1,9 +1,9 @@
 import { Chain, Pulse, TwineCache, coerceCid, isChain, isPulse, isTwine } from '..'
 import type { Awaitable, CID, IntoCid } from '../types'
 import { Twine } from '../twine'
-import type { IntoResolveQuery, Resolution, ResolveChainQuery, ResolveOptions, ResolvePulseQuery, ResolveQuery, UnfulfilledResolution } from './types'
+import type { IntoResolveQuery, Resolution, ResolveOptions, UnfulfilledResolution } from './types'
 
-const memoized = <T>(
+const memoized = (
   cache: Map<string, Promise<Chain | Pulse | null>>,
   key: string,
   fn: (...args: any[]) => Awaitable<Chain | Pulse | null>,
@@ -18,9 +18,18 @@ const memoized = <T>(
   return result
 }
 
+export type FetchChainQuery = {
+  chainCID: CID
+}
+
+export type FetchPulseQuery = {
+  chainCID?: CID,
+  pulseCID: CID
+}
+
 export type ResolveCallers = {
-  fetchChain: (q: ResolveChainQuery<CID>, options: any) => Awaitable<Chain | null>
-  fetchPulse: (q: ResolvePulseQuery<CID>, options: any) => Awaitable<Pulse | null>
+  fetchChain: (q: FetchChainQuery, options: any) => Awaitable<Chain | null>
+  fetchPulse: (q: FetchPulseQuery, options: any) => Awaitable<Pulse | null>
   cache?: TwineCache | false | null
   requestCache?: Map<string, Promise<Chain | Pulse>>
 }
@@ -32,13 +41,13 @@ const memoizeCallers = (callers: ResolveCallers): ResolveCallers => {
   const requestCache = callers.requestCache
   return {
     ...callers,
-    fetchChain: async (q: ResolveChainQuery, options: any) => {
-      const key = q.chain.toString()
+    fetchChain: async (q: FetchChainQuery, options: any) => {
+      const key = q.chainCID.toString()
       const ret = await memoized(requestCache, key, callers.fetchChain, q, options)
       return ret as Chain | null
     },
-    fetchPulse: async (q: ResolvePulseQuery, options: any) => {
-      const key = q.pulse.toString()
+    fetchPulse: async (q: FetchPulseQuery, options: any) => {
+      const key = q.pulseCID.toString()
       const ret = await memoized(requestCache, key, callers.fetchPulse, q, options)
       return ret as Pulse | null
     }
@@ -105,7 +114,7 @@ export const resolveHelper = async (
     } else {
       const chainCID = chain ? coerceCid(chain) : undefined
       const pulseCID = coerceCid(pulse)
-      res.pulse = (await callers.fetchPulse({ pulse: pulseCID, chain: chainCID }, options)) || null
+      res.pulse = (await callers.fetchPulse({ pulseCID, chainCID }, options)) || null
       if (res.pulse && res.pulse.isChain) {
         throw new Error('Expected pulse but resolved chain')
       }
@@ -117,7 +126,7 @@ export const resolveHelper = async (
 
   chain = chain || res.pulse?.value.content.chain
   if (chain) {
-    if (Twine.isTwine(chain)) {
+    if (isTwine(chain)) {
       if (isChain(chain)) {
         res.chain = chain
       } else {
@@ -125,7 +134,7 @@ export const resolveHelper = async (
       }
     } else {
       const chainCID = coerceCid(chain)
-      res.chain = (await callers.fetchChain({ chain: chainCID }, options)) || null
+      res.chain = (await callers.fetchChain({ chainCID }, options)) || null
       if (res.chain && res.chain.isPulse) {
         throw new Error('Expected chain but resolved pulse')
       }

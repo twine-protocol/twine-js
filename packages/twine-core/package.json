@@ -11,7 +11,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "bun run ./build.js"
+    "build": "bun run ./build.js",
+    "test": "bun test"
   },
   "devDependencies": {
     "bun-plugin-dts": "^0.2.1",

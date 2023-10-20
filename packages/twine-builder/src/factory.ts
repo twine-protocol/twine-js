@@ -1,4 +1,4 @@
-import { encode as blockEncode} from 'multiformats/block'
+import { encode as blockEncode } from 'multiformats/block'
 import * as codec from '@ipld/dag-cbor'
 import { sha3512 } from '@multiformats/sha3'
 import type { MultihashHasher } from 'multiformats'

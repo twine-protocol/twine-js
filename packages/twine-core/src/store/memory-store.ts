@@ -149,8 +149,8 @@ export class MemoryStore implements Store {
 
   async resolve(query: ResolveQuery, options?: ResolveOptions) {
     return resolveHelper({
-      fetchChain: ({ chain }) => this.fetch(chain) as Chain | null
-      , fetchPulse: ({ pulse }) => this.fetch(pulse) as Pulse | null
+      fetchChain: ({ chainCID }) => this.fetch(chainCID) as Chain | null
+      , fetchPulse: ({ pulseCID }) => this.fetch(pulseCID) as Pulse | null
     }, query, options)
   }
 

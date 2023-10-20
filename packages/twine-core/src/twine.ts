@@ -32,7 +32,12 @@ async function verifySignature(chain: Chain, twine: Chain | Pulse) {
     throw new Error('Provided pulse value not a member of specified chain')
   }
 
-  const key = await jose.importJWK(chain.value.content.key)
+  let key
+  try {
+    key = await jose.importJWK(chain.value.content.key)
+  } catch (e: any){
+    throw new InvalidTwineData('Invalid chain key', { cause: e })
+  }
   const signature = twine.value.signature.toString()
   try {
     const { payload } = await jose.compactVerify(signature, key)
@@ -40,7 +45,7 @@ async function verifySignature(chain: Chain, twine: Chain | Pulse) {
     if (!bytes.equals(payload, digest.bytes)) {
       throw new InvalidSignature('Payload bytes do not match')
     }
-  } catch (cause) {
+  } catch (cause: any) {
     throw new InvalidSignature('', { cause })
   }
 
@@ -105,7 +110,7 @@ export class Twine<T extends ChainValue | PulseValue> extends Block.Block<T, num
     return getContentDigest(this.value.content)
   }
 
-  async verifySignature(chain?: Twine<ChainValue>): Promise<boolean> {
+  async verifySignature(chain?: Chain): Promise<boolean> {
     if (isChain(this)) {
       return verifySignature(this, this)
     } else if (chain && isPulse(this)) {
