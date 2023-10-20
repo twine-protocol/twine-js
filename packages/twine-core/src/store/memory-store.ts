@@ -6,6 +6,10 @@ import { Resolution, ResolveOptions, ResolveQuery, isAsyncIterable, isChain, isT
 import { CacheMap } from './cache-helpers'
 import { resolveHelper } from '../resolver/helpers'
 
+function warnDeprecated(name: string){
+  console.warn(`${name} is deprecated and will be removed in a future release.`)
+}
+
 export type ChainMeta = {
   chainCid: CID,
   latestIndex: number,
@@ -171,6 +175,24 @@ export class MemoryStore implements Store {
 export class TwineCache extends MemoryStore {
   constructor(maxSize = 10000) {
     super(maxSize)
+  }
+
+  /**
+   * @deprecated
+   */
+  get(cid: IntoCid) {
+    // warn deprecated
+    warnDeprecated('TwineCache.get')
+    return this.fetch(cid)
+  }
+
+  /**
+   * @deprecated
+   */
+  add(twine: Twine<any>) {
+    // warn deprecated
+    warnDeprecated('TwineCache.add')
+    return this.save(twine)
   }
 }
 

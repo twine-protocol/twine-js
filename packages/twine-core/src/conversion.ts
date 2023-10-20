@@ -146,6 +146,9 @@ export const asQuery = (val: any): ResolveQueryStrict | null => {
   }
   let pulse = val.pulse ?? val.value
   let chain = asCid(val.chain)
+  if (isChain(pulse) || isPulse(val.chain)){
+    return null
+  }
   if (isPulse(pulse)) {
     // last effort to get the chain
     chain = chain ?? pulse.value.content.chain

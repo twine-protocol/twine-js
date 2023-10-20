@@ -5,18 +5,25 @@
   "exports": {
     ".": {
       "default": "./dist/index.js",
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "bun": "./src/index.ts"
     }
   },
   "type": "module",
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "scripts": {
-    "build": "bun run ./build.js",
+    "build:lib": "bun build --outdir ./dist ./src/index.ts",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "build": "bun run build:lib && bun run build:types",
     "test": "bun test"
   },
   "devDependencies": {
     "bun-plugin-dts": "^0.2.1",
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "tsc": "^2.0.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

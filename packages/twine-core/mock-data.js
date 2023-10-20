@@ -86,3 +86,138 @@ export const orphanPulseJSON = `
 `
 
 export const orphanPulse = await fromJSON(orphanPulseJSON)
+
+export const chain2JSON = `
+{
+  "cid": {
+    "/": "bafyriqbrgesfmukuylx4vqhykv2yraetmcsavbybcxmral2embohyisif6uojw55uu74kd35ja3ib6wvsxmpegrkqdlrp7u3mq4kstili5lby"
+  },
+  "data": {
+    "content": {
+      "key": {
+        "alg": "ES256",
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "SSD9esrjgC6GsZmPq6rz4NI5ZM4pU3sBbb2EeKDXuxk",
+        "y": "oU9JfBXtkdc5uGEhYiP_OKXKWqCwZtxsgT_M5IJHSF4"
+      },
+      "links_radix": 32,
+      "meta": {
+        "description": "Seam chain providing logical separation between CURBy and other chains"
+      },
+      "mixins": [
+
+      ],
+      "source": "entwine.me",
+      "specification": "twine/1.0.x"
+    },
+    "signature": "eyJhbGciOiJFUzI1NiJ9.FEBgwqhCQhjSZ2A7D8NpHPABQXeBBA3XlqfDwgblr21wjGkOIVv7c8wtGFIiSfSoksu_jCWt1VJ--FU5qOmkuinv.MBQML-xVU0HszUKyRxRANByeFv4-vIAa_zy3VnFJOQP2FmokWhy89DTcfYQ4rBX5fplE5_AoisqHTd4SWCq29g"
+  }
+}
+`
+
+export const chain2 = await fromJSON(chain2JSON)
+
+export const chain2pulse2JSON = `
+{
+  "cid": {
+    "/": "bafyriqayatyppzygxqw5scrpfewivenqskgpntpox54bypra4u2oajowcshopee43ls353sn4bmkowjxx5sohatpbelhzasy2crwvvwgabmtg"
+  },
+  "data": {
+    "content": {
+      "chain": {
+        "/": "bafyriqbrgesfmukuylx4vqhykv2yraetmcsavbybcxmral2embohyisif6uojw55uu74kd35ja3ib6wvsxmpegrkqdlrp7u3mq4kstili5lby"
+      },
+      "index": 9195,
+      "links": [
+        {
+          "/": "bafyriqbuwkor64afzbmzcjtapao2gdzqblxy76i6pqxifkmh37uebwsgqadzmicdj5kj5mhp7cqkkj2eyxgxeitom55qyb4sljuswl65unfrw"
+        },
+        {
+          "/": "bafyriqcuvkzhwkdewrgeiivhtsljtancuvy67c5pjj6dbabrtpx372hqomle3scl657bxtvxeyf7vmqxvg5ksn4p4aapln5o4lqrqvgm6fprw"
+        },
+        {
+          "/": "bafyriqbjc2ul7yqujl4finw35mamxjzhuwf7vrbl7gurfoehllezuph6fgxf3g4zmfhborg7i7bnl2k47qhxl6drujprbnjrjxjpxgysx4yqy"
+        }
+      ],
+      "mixins": [
+        {
+          "chain": {
+            "/": "bafyriqbrbg6tsyywg7m2iwbwt3cdfntnxtqxoepfrj2civftudstdc7yhivro2gi5jumlhlm5dvcem6bmksxg35xthv3es6lr4uadisw522be"
+          },
+          "value": {
+            "/": "bafyriqeeryt56hsjokj3cq2tsd3f4tddrjtpochhfeiunjo7imqii427tqbdepyi6vzvyfhxqeugxrc2gcn3ouejaeh3kk6tsktpxlg7g22w6"
+          }
+        },
+        {
+          "chain": {
+            "/": "bafyriqhtvaktoac4b36m2s5ggjrgwjzarv3rrcxt5n5w2nu2l2teuedvptwoqu2ljlssx4oxcm3nb255eq6o6r7333w5xqejkg7afti2ibhu6"
+          },
+          "value": {
+            "/": "bafyriqgfjfubs34255nfzyumppvgqiw6zh4xoq7elqp53cbb6fwti7h36si3mihi6x5c27ukgt55vpslxuj4cf7ittclt34tcegtczl66qrka"
+          }
+        }
+      ],
+      "payload": {
+        "timestamp": "2023-10-07T05:06:53.446Z"
+      },
+      "source": "entwine.me"
+    },
+    "signature": "eyJhbGciOiJFUzI1NiJ9.FEBFEVe_osIKBWWoCdYufnPFWkulstGdrUCNgWe4EnYFwwL-rGtnt_N04hK432LvmilfeycEWGs_y88szGUDNEf-.SFqzdkzHy0vX8XhN_ny2uLXiH2qdgfP0Rn052dbuim8zQ70aN10IXI55sAUxR5bimmC1qMdTF8VTT2rKzmudUg"
+  }
+}
+`
+
+export const chain2pulse2 = await fromJSON(chain2pulse2JSON)
+
+export const chain2pulse3JSON = `
+{
+  "cid": {
+    "/": "bafyriqhhiyjuq4tohlpug4a3drplrx7lb7ows7fyrqxg2pljretwfef5imf7ggnijkurfxod4vsdur7onromgm4glnpqeiswjtnon2xspuajy"
+  },
+  "data": {
+    "content": {
+      "chain": {
+        "/": "bafyriqbrgesfmukuylx4vqhykv2yraetmcsavbybcxmral2embohyisif6uojw55uu74kd35ja3ib6wvsxmpegrkqdlrp7u3mq4kstili5lby"
+      },
+      "index": 9206,
+      "links": [
+        {
+          "/": "bafyriqehlhy2q5ikzbigxet6wwfmczt7tmnzcjwbqbudoz5thtdzyzim723nhjdsgnkgxbpoanooo6x64p5ezz6htch75wgzndrjj5rfur3to"
+        },
+        {
+          "/": "bafyriqcuvkzhwkdewrgeiivhtsljtancuvy67c5pjj6dbabrtpx372hqomle3scl657bxtvxeyf7vmqxvg5ksn4p4aapln5o4lqrqvgm6fprw"
+        },
+        {
+          "/": "bafyriqbjc2ul7yqujl4finw35mamxjzhuwf7vrbl7gurfoehllezuph6fgxf3g4zmfhborg7i7bnl2k47qhxl6drujprbnjrjxjpxgysx4yqy"
+        }
+      ],
+      "mixins": [
+        {
+          "chain": {
+            "/": "bafyriqbrbg6tsyywg7m2iwbwt3cdfntnxtqxoepfrj2civftudstdc7yhivro2gi5jumlhlm5dvcem6bmksxg35xthv3es6lr4uadisw522be"
+          },
+          "value": {
+            "/": "bafyriqdbpszhmwzqujeymkxmlmf6emjkljmfp5vvdcrg2n47fjc4hpo5txsetjcehr2zvt5ecqxegubs4ncdsyu4dsiw6uqe3zz3bdrc2qcgm"
+          }
+        },
+        {
+          "chain": {
+            "/": "bafyriqhtvaktoac4b36m2s5ggjrgwjzarv3rrcxt5n5w2nu2l2teuedvptwoqu2ljlssx4oxcm3nb255eq6o6r7333w5xqejkg7afti2ibhu6"
+          },
+          "value": {
+            "/": "bafyriqbmms3n2fc3iaszzmam6l2s6pnrlx5qgttn2ke3naf4y735lfocggr23miziuydt47kgftuxpdgglnok2gs66digdst472seu4hbhux4"
+          }
+        }
+      ],
+      "payload": {
+        "timestamp": "2023-10-07T05:17:53.683Z"
+      },
+      "source": "entwine.me"
+    },
+    "signature": "eyJhbGciOiJFUzI1NiJ9.FEA4FsVUNXF8IaxaV-PNN6TF_vbAlZu5pQfHpba8cG79sGw6IhdVC3nb3GkN6IkSwJYknjWv1s8D3AJwgPFvdqk3.4MClFRjMHtQFZFOYt4ihImjemsRqqeKSKD0jovSvlr1zsmOCBSzHiZg6GkOBiTjVK2SZBgB6MGhd3QIwSo-t7g"
+  }
+}
+`
+
+export const chain2pulse3 = await fromJSON(chain2pulse3JSON)

@@ -168,7 +168,9 @@ export const resolveHelper = async (
 
   if (callers.cache && noCache !== true) {
     callers.cache.save(res.chain)
-    callers.cache.save(res.pulse)
+    if (res.pulse){
+      callers.cache.save(res.pulse)
+    }
   }
 
   return res

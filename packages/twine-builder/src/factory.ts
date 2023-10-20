@@ -3,9 +3,9 @@ import * as codec from '@ipld/dag-cbor'
 import { sha3512 } from '@multiformats/sha3'
 import type { MultihashHasher } from 'multiformats'
 import * as jose from 'jose'
-import { UnsanitizedChainContent, sanitizeChainContent, sanitizePulseContent } from './sanitize'
-import type { Chain, ChainContent, ChainValue, Pulse, Signer, TwineContent, IntoCid } from '@twine-protocol/twine-core'
-import { Twine, getContentDigest, getLayerPos } from '@twine-protocol/twine-core'
+import { IntoMixin, UnsanitizedChainContent, sanitizeChainContent, sanitizePulseContent } from './sanitize'
+import type { Chain, Pulse, Signer, TwineContent, IntoCid, TwineValue } from '@twine-protocol/twine-core'
+import { Twine, getContentDigest, getLayerPos, isTwine } from '@twine-protocol/twine-core'
 
 const DEFAULT_SPECIFICATION = 'twine/1.0.x'
 const specificationRegex = /^twine\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x($|(\/[\w-_\d]+\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x)?$)/
@@ -54,7 +54,7 @@ const createTwine = async (content: TwineContent, signer: Signer, hasher: Multih
   const value = {
     content
     , signature
-  }
+  } as TwineValue
   const { cid, bytes } = await blockEncode({
     value
     , hasher
@@ -93,16 +93,16 @@ export const createPulse = async (
   chain: Chain,
   previous: Pulse | false,
   { mixins = [], payload = {} }: {
-    mixins?: { chain: IntoCid, value: IntoCid }[]
+    mixins?: IntoMixin[]
     , payload?: { [key: string]: any }
   },
   signer: Signer,
   hasher: MultihashHasher = sha3512
 ) => {
-  if (!Twine.isTwine(chain)) {
+  if (!isTwine(chain)) {
     throw new Error('Provided chain must be a Twine object instance')
   }
-  if (previous !== false && !Twine.isTwine(previous)) {
+  if (previous !== false && !isTwine(previous)) {
     throw new Error('Provided previous value must be a Twine object instance or false')
   }
   if (previous && !chain.cid.equals(previous.get('/content/chain').value)) {

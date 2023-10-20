@@ -1,14 +1,16 @@
 import type { Mixin, Pulse, IntoCid, Payload, ChainContent, JWK, PulseContent } from '@twine-protocol/twine-core'
 import { CID } from 'multiformats'
-import { asMixin, coerceCID, isTwine } from '@twine-protocol/twine-core'
+import { asMixin, coerceCid, isTwine } from '@twine-protocol/twine-core'
 import { isObjectLike, isPlainObject } from './checks'
+
+export type IntoMixin = { chain: IntoCid, value: IntoCid }
 
 export interface UnsanitizedChainContent {
   source: string
   , specification?: string
   , key?: JWK
   , links_radix?: number
-  , mixins?: { chain: IntoCid, value: IntoCid }[]
+  , mixins?: IntoMixin[]
   , meta?: { [key: string]: any }
 }
 
@@ -17,11 +19,11 @@ export interface UnsanitizedPulseContent {
   , source: string
   , index: number
   , links: IntoCid[]
-  , mixins: IntoCid[]
+  , mixins: IntoMixin[]
   , payload: object
 }
 
-export const sanitizeMixins = (mixins: Mixin[], chainCid?: CID) => {
+export const sanitizeMixins = (mixins: IntoMixin[], chainCid?: CID) => {
   const parsedMixins = mixins.map(asMixin)
   if (!parsedMixins.every(m => m !== null)) {
     throw new Error('Mixins must be valid twine instances or objects with chain/value cids')
@@ -54,7 +56,7 @@ export const correctlyOrderedMixins = (mixins: Mixin[], previous: Pulse | false)
 }
 
 export const sanitizeLinks = (links: IntoCid[]) => {
-  return links.map(l => coerceCID(l))
+  return links.map(l => coerceCid(l))
 }
 
 export const sanitizePayload = (payload: object): Payload => {
@@ -134,7 +136,7 @@ export const sanitizeChainContent = ({
     , specification
     , key
     , links_radix
-    , mixins
+    , mixins: mixins as Mixin[]
     , meta
   }
 }
@@ -147,15 +149,15 @@ export const sanitizePulseContent = ({
   , mixins
   , payload
 }: UnsanitizedPulseContent, previous: Pulse | false): PulseContent => {
-  chain = CID.asCID(chain)
+  const chainCid = CID.asCID(chain)
 
-  if (!chain) {
+  if (!chainCid) {
     throw new Error('Invalid value for property "chain"')
   }
 
-  mixins = sanitizeMixins(mixins, chain)
-  mixins = correctlyOrderedMixins(mixins, previous)
-  links = sanitizeLinks(links)
+  let mixinsSan = sanitizeMixins(mixins, chainCid)
+  mixinsSan = correctlyOrderedMixins(mixinsSan, previous)
+  const linksSan = sanitizeLinks(links)
   payload = sanitizePayload(payload)
 
   if (typeof source !== 'string') {
@@ -167,11 +169,11 @@ export const sanitizePulseContent = ({
   }
 
   return {
-    chain
+    chain: chainCid
     , source
     , index
-    , links
-    , mixins
+    , links: linksSan
+    , mixins: mixinsSan
     , payload
   }
 }
