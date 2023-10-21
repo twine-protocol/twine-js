@@ -2,7 +2,7 @@ import type { AnyIterable, CID, IntoCid, TwineValue } from '../types'
 import type { Chain, Pulse, Twine } from '../twine'
 import type { Store } from './types'
 import { coerceCid } from '../conversion'
-import { Resolution, ResolveOptions, ResolveQuery, isAsyncIterable, isChain, isTwine } from '..'
+import { InvalidTwineData, Resolution, ResolveOptions, ResolveQuery, isAsyncIterable, isChain, isTwine } from '..'
 import { CacheMap } from './cache-helpers'
 import { resolveHelper } from '../resolver/helpers'
 
@@ -169,6 +169,26 @@ export class MemoryStore implements Store {
       return { chain: null, pulse: null }
     }
     return this.resolve({ chain: chainCid, pulse: pulseCid }, options)
+  }
+
+  async resolveIndex(chain: IntoCid, index: number, options?: ResolveOptions | undefined): Promise<Resolution> {
+    const chainKey = coerceCid(chain).toString()
+    const meta = this.chainMeta.get(chainKey)
+    if (!meta) {
+      return { chain: null, pulse: null }
+    }
+    const pulseCid = meta.indexMap.get(index)
+    if (!pulseCid) {
+      return { chain: null, pulse: null }
+    }
+    const res = await this.resolve({ chain, pulse: pulseCid }, options)
+    if (res.pulse){
+      // check index
+      if (res.pulse.value.content.index !== index){
+        throw new InvalidTwineData('Pulse index does not match requested index')
+      }
+    }
+    return res
   }
 }
 

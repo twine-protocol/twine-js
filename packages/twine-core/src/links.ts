@@ -1,4 +1,5 @@
-/** Get the highest layer for which this (pulse) index
+/**
+ * Get the highest layer for which this (pulse) index
  * is an anchor for.
  * For example: in base 10, for the following indicies...
  * ```
@@ -64,7 +65,7 @@ export function* skipList(radix: number, fromIndex: number, toIndex: number, byL
   }
 
   // start at current power, decrement to zero
-  for (let q = startq; q >= 0; q--) {
+  for (let q = Math.abs(startq); q >= 0; q--) {
     if (curr < toIndex) { break }
 
     const pow = Math.pow(radix, q)

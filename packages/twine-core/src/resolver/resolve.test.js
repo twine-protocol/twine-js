@@ -1,6 +1,6 @@
 import { describe, test, expect, mock } from 'bun:test'
-import { resolveHelper } from '.'
-import { TwineCache } from '..'
+import { resolveHelper, combineResolvers } from '.'
+import { MemoryStore, TwineCache } from '..'
 import * as mockData from '../../mock-data.js'
 
 const cache = new TwineCache()
@@ -116,7 +116,7 @@ describe('resolveHelper()', () => {
         , pulse
       })
     ).toEqual({
-      chain: mockData.chain
+      chain: null
       , pulse: null
     })
 
@@ -226,21 +226,45 @@ describe('resolveHelper()', () => {
 })
 
 
-// describe('combineResolvers', () => {
-//   test('should resolve latest pulses', async () => {
-//     const resolvers = combineResolvers([
-//       mockResolver
-//     ])
+describe('combineResolvers()', () => {
+  const store = new MemoryStore()
+  store.save(mockData.chain2)
+  store.save(mockData.chain2pulse2)
+  const resolvers = combineResolvers([
+    mockResolver,
+    store
+  ])
 
-//     const result = await resolvers.resolveLatest(mockData.chain.cid)
-//     if (result.errors.length) {
-//       // eslint-disable-next-line no-console
-//       console.log(result.errors)
-//     }
-//     expect(result).toEqual({
-//       chain: mockData.chain
-//       , pulse: mockData.pulse
-//       , errors: []
-//     })
-//   })
-// })
+  test('should resolve latest pulses', async () => {
+    const result = await resolvers.resolveLatest(mockData.chain.cid)
+    expect(result).toEqual({
+      chain: mockData.chain
+      , pulse: mockData.pulse
+      , errors: undefined
+    })
+  })
+
+  test('should resolve pulses in one of the stores', async () => {
+    const result = await resolvers.resolve({
+      chain: mockData.chain2.cid
+      , pulse: mockData.chain2pulse2.cid
+    })
+    expect(result).toEqual({
+      chain: mockData.chain2
+      , pulse: mockData.chain2pulse2
+      , errors: undefined
+    })
+  })
+
+  test('should resolve to nulls correctly', async () => {
+    const result = await resolvers.resolve({
+      chain: mockData.chain2.cid
+      , pulse: mockData.chain2pulse3.cid
+    })
+    expect(result).toEqual({
+      chain: null
+      , pulse: null
+      , errors: undefined
+    })
+  })
+})

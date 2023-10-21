@@ -91,23 +91,29 @@ export const resolveHelper = async (
 
   let { chain, pulse } = sanitizeQuery(thing)
 
+  const res: any = {}
+
   if (!noCache) {
     if (callers.cache) {
-      const result = await callers.cache.resolve({ chain, pulse })
-      if (result.chain && ((pulse && result.pulse) || !pulse)) {
-        return result
+      res.chain = callers.cache.fetch(chain)
+      if (pulse !== undefined) {
+        res.pulse = callers.cache.fetch(pulse)
+      }
+      if (res.chain && (pulse === undefined || res.pulse)) {
+        return res
       }
     }
 
     callers = memoizeCallers(callers)
   }
 
-  const res: any = {}
-
-  if (pulse) {
+  if (pulse !== undefined && !res.pulse) {
     if (Twine.isTwine(pulse)) {
       if (isPulse(pulse)) {
         res.pulse = pulse
+        if (!chain) {
+          chain = pulse.value.content.chain
+        }
       } else {
         throw new Error('Expected pulse in pulse field but got chain')
       }
@@ -125,7 +131,7 @@ export const resolveHelper = async (
   }
 
   chain = chain || res.pulse?.value.content.chain
-  if (chain) {
+  if (chain !== undefined && !res.chain) {
     if (isTwine(chain)) {
       if (isChain(chain)) {
         res.chain = chain
@@ -141,27 +147,27 @@ export const resolveHelper = async (
       if (res.chain && !res.chain.cid.equals(chainCID)) {
         throw new Error('Chain data does not match requested CID')
       }
-      if (noVerify !== true) {
-        if (!res.chain) {
-          // could not verify
-          const empty: UnfulfilledResolution = { chain: null }
-          if (pulse) {
-            empty.pulse = null
-          }
-          return empty
-        } else if (res.chain) {
-          await res.chain.verifySignature()
-        }
+    }
+  }
+
+  if (pulse !== undefined){
+    if (!res.chain || !res.pulse){
+      return {
+        chain: null,
+        pulse: null
+      }
+    }
+  } else {
+    if (!res.chain){
+      return {
+        chain: null
       }
     }
   }
 
   if (noVerify !== true) {
-    if (!res.chain) {
-      return { chain: null, pulse: null } // could not verify
-    }
-
-    if (res.pulse) {
+    await res.chain.verifySignature()
+    if (pulse !== undefined) {
       await res.pulse.verifySignature(res.chain)
     }
   }

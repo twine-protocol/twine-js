@@ -47,6 +47,7 @@ export type ResolveOptions = {
 
 export interface Resolver {
   resolve(query: ResolveQuery, options?: ResolveOptions): Promise<Resolution>,
-  resolveLatest(chain: Chain, options?: ResolveOptions): Promise<Resolution>,
-  pulses(chain: Chain, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse>,
+  resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<Resolution>,
+  resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<Resolution>,
+  pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse>,
 }
