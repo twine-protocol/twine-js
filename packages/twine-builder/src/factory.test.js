@@ -59,6 +59,31 @@ describe('Chain creation', async () => {
     expect(three.value.content.mixins[3].chain.toString()).toEqual(newChain.cid.toString())
   })
 
+  test('should warn if mixins are missing', async () => {
+    const otherChains = [
+      await createChain({ source: 'test7', links_radix: 3 }, signer)
+      , await createChain({ source: 'test8', links_radix: 3 }, signer)
+      , await createChain({ source: 'test9', links_radix: 3 }, signer)
+    ]
+    const firstPulses = [
+      await createPulse(otherChains[0], false, {}, signer)
+      , await createPulse(otherChains[1], false, {}, signer)
+      , await createPulse(otherChains[2], false, {}, signer)
+    ]
+    const secondPulses = [
+      await createPulse(otherChains[0], firstPulses[0], {}, signer)
+      , await createPulse(otherChains[1], firstPulses[1], {}, signer)
+      , await createPulse(otherChains[2], firstPulses[2], {}, signer)
+    ]
+    const first = await createPulse(chain, false, { mixins: firstPulses }, signer)
+    expect(
+      createPulse(chain, first, { mixins: [
+        secondPulses[1]
+        , secondPulses[0]
+      ] }, signer)
+    ).rejects.toBeDefined()
+  })
+
   test('should encode payloads with CIDs correctly', async () => {
     const payload = { aCid: pulses[0].cid }
     const pulse = await createPulse(chain, pulses[1], { payload }, signer)
