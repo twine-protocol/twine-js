@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@multiformats/sha3": "^3.0.1",
+    "@twine-protocol/twine-core": "workspace:*",
     "multiformats": "^12.1.2"
   },
   "devDependencies": {
@@ -26,7 +27,6 @@
     "tsc": "^2.0.4"
   },
   "peerDependencies": {
-    "@twine-protocol/twine-core": "workspace:*",
     "typescript": "^5.0.0"
   }
 }

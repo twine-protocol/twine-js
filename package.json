@@ -7,7 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
-    "test": "bun test"
+    "test": "bun run build && bun test"
   },
   "devDependencies": {
     "bun-types": "latest",
