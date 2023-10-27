@@ -119,7 +119,7 @@ export const fromBytes = async (
     cid: CID
     hasher?: MultihashHasher
   }
-) => {
+): Promise<Chain | Pulse> => {
   // checks cid
   const { value } = await blockCreate({ bytes, cid, hasher, codec })
   const thisIsPulse = isPulseValue(value)
