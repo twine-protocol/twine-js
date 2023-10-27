@@ -1,34 +1,59 @@
 import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pulse, AnyIterable, PulseIndex, PulseResolution, IntoResolveChainQuery, ChainResolution, IntoResolvePulseQuery } from '@twine-protocol/twine-core'
 import type { FetcherType, FetcherOptions } from 'itty-fetcher'
 import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine } from '@twine-protocol/twine-core'
+import { CID } from 'multiformats'
 import { fetcher } from 'itty-fetcher'
 import { CarReader, CarWriter } from '@ipld/car'
+
+const EmptyCID = CID.parse('bafkqaaa')
 
 function* batchRange(from: number, to: number, batchSize: number) {
   let i = from
   while (i > to) {
     yield [i, Math.max(to, i - batchSize)]
-    i -= batchSize
+    i -= batchSize + 1
   }
 }
 
-function pulsesToCar(pulses: Pulse[]) {
-  const root = pulses.reduce<Pulse | null>((root, pulse) => {
-    if (!root || root.value.content.index > pulse.value.content.index) {
-      return pulse
+async function* buffer<T>(iter: AnyIterable<T>, bufferSize = 100): AsyncIterable<T> {
+  const buffer: T[] = []
+  for await (const v of iter) {
+    buffer.push(v)
+    if (buffer.length >= bufferSize) {
+      yield* buffer.splice(0)
     }
-    return root
-  }, null)
-  if (!root) {
-    throw new Error('No pulses provided')
   }
-  const { writer, out } = CarWriter.create([root.cid])
-  ; (async () => {
-    for (const pulse of pulses) {
-      await writer.put(pulse)
-    }
-    await writer.close()
-  })()
+  if (buffer.length) {
+    yield* buffer
+  }
+}
+
+async function* map<T, V>(iter: AnyIterable<T>, fn: (v: T) => Promise<V>): AsyncIterable<V> {
+  for await (const v of iter) {
+    yield fn(v)
+  }
+}
+
+function pipeline(iter: AnyIterable<any>, ...fns: ((v: AnyIterable<any>) => AsyncIterable<any>)[]): AsyncIterable<any> {
+  return fns.reduce((iter, fn) => fn(iter), iter as AsyncIterable<any>)
+}
+
+async function drain<T>(iter: AnyIterable<T>, next: (v: T) => Promise<void>, done: () => Promise<void>): Promise<void> {
+  for await (const v of iter) {
+    await next(v)
+  }
+  await done()
+}
+
+export function twinesToCar(twines: AnyIterable<Twine<TwineValue>>): AsyncIterable<Uint8Array> {
+  const { writer, out } = CarWriter.create([EmptyCID])
+  // writer.put doesn't resolve until next out bytes are consumed
+  // so this is fine
+  drain(
+    twines,
+    (twine) => writer.put(twine),
+    () => writer.close()
+  )
   return out
 }
 
@@ -89,7 +114,7 @@ async function handleResponse(res: Response): Promise<ApiResponse<Twine<TwineVal
         response: res,
         twines: await parseJsonResponse(res),
       }
-    } else if (contentType?.includes('application/vnd.ipld.car')) {
+    } else if (contentType?.includes('application/vnd.ipld.car') || contentType?.includes('application/octet-stream')) {
       return {
         response: res,
         twines: await parseCarResponse(res),
@@ -161,7 +186,7 @@ export class HttpStore implements Store {
 
   async *pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncIterable<Pulse> {
     const batchSize = 99
-    let res
+    let res: PulseResolution
     if (typeof start === 'number') {
       res = await this.resolveIndex(chain, start, options)
     } else if (start) {
@@ -172,19 +197,49 @@ export class HttpStore implements Store {
     if (!res.pulse || !res.chain) {
       return
     }
+
     const startingPulse = res.pulse
     const startIndex = startingPulse.value.content.index
-    for (const [from, to] of batchRange(startIndex, 0, batchSize)) {
-      const path = `/chains/${coerceCid(chain)}/pulses/${from}-${to}`
-      const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path)
-      for (const pulse of twines) {
-        if (!isPulse(pulse)) {
-          throw new Error('Expected pulse')
+    let previous: Pulse | null = null
+    yield* pipeline(
+      // get pulse "pagination"
+      batchRange(startIndex, 0, batchSize),
+      // fetch from server in pages
+      (iter) => map(iter, async ([from, to]) => {
+        const path = `/chains/${coerceCid(chain)}/pulses/${from}-${to}`
+        const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path, undefined, {
+          headers: {
+            'Accept': 'application/vnd.ipld.car, application/json;q=0.5',
+          }
+        })
+        // ensure we got the right number of pulses
+        if(twines.length !== (from - to + 1)) {
+          throw new Error('Expected number of pulses not returned')
         }
-        await pulse.verifySignature(res.chain!)
-        yield pulse
-      }
-    }
+        return twines
+      }),
+      // buffer next page
+      (iter) => buffer(iter, 1),
+      async function* flatten(iter) {
+        for await (const twines of iter) {
+          yield* twines
+        }
+      },
+      // validate pulses
+      (iter) => map(iter, async pulse => {
+        if (!pulse) {
+          const expected = previous ? previous.value.content.index - 1 : startingPulse.value.content.index
+          throw new Error(`Pulse with index ${expected} not found`)
+        }
+        await pulse.verifySignature(res.chain)
+        // check that it's the next pulse in the chain
+        if (previous && !previous.value.content.links[0].equals(pulse.cid)) {
+          throw new Error('Pulses not in correct order')
+        }
+        previous = pulse
+        return pulse
+      })
+    )
   }
 
   async fetch(cid: IntoCid): Promise<Twine<TwineValue> | null> {
@@ -275,7 +330,7 @@ export class HttpStore implements Store {
     await Promise.all(
       Array.from(pulsesByChain.entries())
         .map(async ([chain, pulses]) => {
-          const car = pulsesToCar(pulses)
+          const car = twinesToCar(pulses)
           const path = `/chains/${chain}/pulses`
           await this.fetcher.post(path, car, {
             headers: {

@@ -33,4 +33,11 @@ describe('HttpStore', () => {
     const pulses = await collect(store.pulses(chains[0]), 10)
     expect(pulses.length).toBe(10)
   })
+
+  test('should resolve 400 pulses', async () => {
+    console.time('resolve 400 chain')
+    const pulses = await collect(store.pulses(chains[0]), 400)
+    console.timeEnd('resolve 400 chain')
+    expect(pulses.length).toBe(400)
+  })
 })
