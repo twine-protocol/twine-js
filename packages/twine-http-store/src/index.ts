@@ -121,11 +121,11 @@ async function handleResponse(res: Response): Promise<ApiResponse<Twine<TwineVal
 }
 
 export class HttpStore implements Store {
-  private fetch: FetcherType
+  private fetcher: FetcherType
   private cache: TwineCache = new TwineCache()
 
   constructor(baseUrl: string, fetcherOptions?: FetcherOptions ) {
-    this.fetch = fetcher({
+    this.fetcher = fetcher({
       ...fetcherOptions,
       base: baseUrl,
       handleResponse,
@@ -134,7 +134,7 @@ export class HttpStore implements Store {
 
   private async fetchRawPulse(chain: IntoCid, subpath: string): Promise<Pulse | null> {
     const path = `/chains/${coerceCid(chain)}/pulses/${subpath}`
-    const { twines } = await this.fetch.get<ApiResponse<Pulse>>(path)
+    const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path)
     if (!twines.length) {
       return null
     }
@@ -144,7 +144,7 @@ export class HttpStore implements Store {
 
   async fetchChain(chainCid: IntoCid): Promise<Chain | null> {
     const path = `/chains/${coerceCid(chainCid)}`
-    const { twines } = await this.fetch.get<ApiResponse<Chain>>(path)
+    const { twines } = await this.fetcher.get<ApiResponse<Chain>>(path)
     if (!twines.length) {
       return null
     }
@@ -152,7 +152,7 @@ export class HttpStore implements Store {
   }
 
   async *chains(): AsyncIterable<Chain> {
-    const { twines } = await this.fetch.get<ApiResponse<Chain>>('/chains')
+    const { twines } = await this.fetcher.get<ApiResponse<Chain>>('/chains')
     for (const chain of twines) {
       await chain.verifySignature()
       yield chain
@@ -176,7 +176,7 @@ export class HttpStore implements Store {
     const startIndex = startingPulse.value.content.index
     for (const [from, to] of batchRange(startIndex, 0, batchSize)) {
       const path = `/chains/${coerceCid(chain)}/pulses/${from}-${to}`
-      const { twines } = await this.fetch.get<ApiResponse<Pulse>>(path)
+      const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path)
       for (const pulse of twines) {
         if (!isPulse(pulse)) {
           throw new Error('Expected pulse')
@@ -187,9 +187,18 @@ export class HttpStore implements Store {
     }
   }
 
+  async fetch(cid: IntoCid): Promise<Twine<TwineValue> | null> {
+    const path = `/cid/${coerceCid(cid)}`
+    const { twines } = await this.fetcher.get<ApiResponse<Twine<TwineValue>>>(path)
+    if (!twines.length) {
+      return null
+    }
+    return twines[0]
+  }
+
   async has(cid: IntoCid): Promise<boolean> {
     const path = `/cid/${coerceCid(cid)}`
-    const { response } = await this.fetch.head<ApiResponse<any>>(path)
+    const { response } = await this.fetcher.head<ApiResponse<any>>(path)
     return response.status === 200
   }
 
@@ -268,7 +277,7 @@ export class HttpStore implements Store {
         .map(async ([chain, pulses]) => {
           const car = pulsesToCar(pulses)
           const path = `/chains/${chain}/pulses`
-          await this.fetch.post(path, car, {
+          await this.fetcher.post(path, car, {
             headers: {
               'Content-Type': 'application/vnd.ipld.car',
             }
@@ -282,7 +291,7 @@ export class HttpStore implements Store {
     const ispulse = isPulse(twine)
     const chainCid = ispulse ? twine.value.content.chain : twine.cid
     const path = ispulse ? `/chains/${chainCid}/pulses` : '/chains'
-    await this.fetch.post(path, twine)
+    await this.fetcher.post(path, twine)
     this.cache?.save(twine)
   }
 }
