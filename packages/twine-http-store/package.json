@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-http-store",
-  "version": "0.2.0-alpha.0",
+  "version": "0.0.1-alpha.0",
   "module": "./dist/index.js",
   "exports": {
     ".": {
@@ -17,8 +17,8 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@twine-protocol/twine-core": "workspace:*",
     "@ipld/car": "5.2.4",
+    "@twine-protocol/twine-core": "workspace:*",
     "itty-fetcher": "^0.9.4",
     "multiformats": "^12.1.2"
   },
