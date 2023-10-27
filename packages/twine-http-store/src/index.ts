@@ -1,6 +1,6 @@
-import type { IntoCid, Twine, Resolution, ResolveOptions, ResolveQuery, TwineValue, Chain, Pulse, AnyIterable, PulseIndex } from '@twine-protocol/twine-core'
+import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pulse, AnyIterable, PulseIndex, PulseResolution, IntoResolveChainQuery, ChainResolution, IntoResolvePulseQuery } from '@twine-protocol/twine-core'
 import type { FetcherType, FetcherOptions } from 'itty-fetcher'
-import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine, isChain } from '@twine-protocol/twine-core'
+import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine } from '@twine-protocol/twine-core'
 import { fetcher } from 'itty-fetcher'
 import { CarReader, CarWriter } from '@ipld/car'
 
@@ -197,7 +197,7 @@ export class HttpStore implements Store {
     throw new Error('Not implemented')
   }
 
-  async resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<Resolution> {
+  async resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<PulseResolution> {
     const pulse = await this.fetchRawPulse(chain, `${index}`)
     if (!pulse) {
       return {
@@ -211,7 +211,9 @@ export class HttpStore implements Store {
     }, options)
   }
 
-  resolve(query: ResolveQuery, options?: ResolveOptions): Promise<Resolution> {
+  resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+  resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
+  resolve(query: any, options?: ResolveOptions): Promise<Resolution> {
     return resolveHelper({
       fetchChain: ({ chainCID }) => this.fetchChain(chainCID),
       fetchPulse: ({ chainCID, pulseCID }) => {
@@ -224,7 +226,7 @@ export class HttpStore implements Store {
     }, query, options)
   }
 
-  async resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<Resolution> {
+  async resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<PulseResolution> {
     const pulse = await this.fetchRawPulse(chain, 'latest')
     if (!pulse) {
       return {

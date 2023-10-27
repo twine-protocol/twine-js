@@ -1,5 +1,5 @@
-import { Resolution, ResolveOptions, ResolveQuery, Resolver, resolveHelper } from '.'
-import { Chain, IntoCid, Pulse, asQuery } from '..'
+import { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseResolution, ResolveOptions, Resolver, resolveHelper } from '.'
+import { Chain, IntoCid, Pulse } from '..'
 import { TwineCache } from '../store'
 
 export type CombineResolversOptions = {
@@ -20,7 +20,11 @@ export interface CombinedResolver extends Resolver {
   setCacheSize: (count: number) => void
 }
 
-export type CombinedResolution = Resolution & {
+export type CombinedPulseResolution = PulseResolution & {
+  errors?: Error[]
+}
+
+export type CombinedChainResolution = ChainResolution & {
   errors?: Error[]
 }
 
@@ -86,7 +90,9 @@ export const combineResolvers = (
     }
   }
 
-  const resolve = async (query: ResolveQuery, options?: ResolveOptionsCombined): Promise<CombinedResolution> => {
+  async function resolve(query: IntoResolveChainQuery, options?: ResolveOptionsCombined): Promise<CombinedChainResolution>
+  async function resolve(query: IntoResolvePulseQuery, options?: ResolveOptionsCombined): Promise<CombinedPulseResolution>
+  async function resolve(query: any, options?: ResolveOptionsCombined): Promise<CombinedPulseResolution | CombinedChainResolution> {
     const opts = {
       ...options,
       noCache: true
@@ -124,7 +130,7 @@ export const combineResolvers = (
     }
   }
 
-  const resolveIndex = async (chainCid: IntoCid, index: number, options?: ResolveOptionsCombined): Promise<CombinedResolution> => {
+  const resolveIndex = async (chainCid: IntoCid, index: number, options?: ResolveOptionsCombined): Promise<CombinedPulseResolution> => {
     const chain = cache.fetch(chainCid) || chainCid
     const opts = {
       ...options,
@@ -163,7 +169,7 @@ export const combineResolvers = (
     }
     const results = await Promise.allSettled(tasks)
     const errors: Error[] = []
-    let latest: Resolution = { chain: null, pulse: null }
+    let latest: PulseResolution = { chain: null, pulse: null }
     let resolver = null
     let latestIndex = -1
     for (const result of results) {
@@ -186,7 +192,7 @@ export const combineResolvers = (
     }
   }
 
-  const resolveLatest = async (chainCid: IntoCid, options?: ResolveLatestOptionsCombined): Promise<CombinedResolution> => {
+  const resolveLatest = async (chainCid: IntoCid, options?: ResolveLatestOptionsCombined): Promise<CombinedPulseResolution> => {
     const chain = cache.fetch(chainCid) || chainCid
     const opts = {
       ...options,

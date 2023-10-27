@@ -2,7 +2,7 @@ import type { AnyIterable, CID, IntoCid, TwineValue } from '../types'
 import type { Chain, Pulse, Twine } from '../twine'
 import type { Store } from './types'
 import { coerceCid } from '../conversion'
-import { InvalidTwineData, Resolution, ResolveOptions, ResolveQuery, isAsyncIterable, isChain, isTwine } from '..'
+import { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, InvalidTwineData, PulseResolution, Resolution, ResolveOptions, isAsyncIterable, isChain, isTwine } from '..'
 import { CacheMap } from './cache-helpers'
 import { resolveHelper } from '../resolver/helpers'
 
@@ -151,14 +151,16 @@ export class MemoryStore implements Store {
     }
   }
 
-  async resolve(query: ResolveQuery, options?: ResolveOptions) {
+  async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+  async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
+  async resolve(query: any, options?: ResolveOptions) {
     return resolveHelper({
       fetchChain: ({ chainCID }) => this.fetch(chainCID) as Chain | null
       , fetchPulse: ({ pulseCID }) => this.fetch(pulseCID) as Pulse | null
     }, query, options)
   }
 
-  async resolveLatest(chainCid: IntoCid, options?: ResolveOptions): Promise<Resolution> {
+  async resolveLatest(chainCid: IntoCid, options?: ResolveOptions): Promise<PulseResolution> {
     const chainKey = coerceCid(chainCid).toString()
     const meta = this.chainMeta.get(chainKey)
     if (!meta) {
@@ -171,7 +173,7 @@ export class MemoryStore implements Store {
     return this.resolve({ chain: chainCid, pulse: pulseCid }, options)
   }
 
-  async resolveIndex(chain: IntoCid, index: number, options?: ResolveOptions | undefined): Promise<Resolution> {
+  async resolveIndex(chain: IntoCid, index: number, options?: ResolveOptions | undefined): Promise<PulseResolution> {
     const chainKey = coerceCid(chain).toString()
     const meta = this.chainMeta.get(chainKey)
     if (!meta) {

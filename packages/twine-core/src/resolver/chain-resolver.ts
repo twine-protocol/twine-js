@@ -22,10 +22,11 @@ export class ChainResolver {
 
   async pulse(ref: IntoCid | number) {
     const chain = this.chain
-    const query = typeof ref === 'number' ?
-      { index: ref, chain } :
-      { pulse: ref, chain }
-    const res = await this.resolver.resolve(query)
+    if (typeof ref === 'number') {
+      const res = await this.resolver.resolveIndex(chain, ref)
+      return res.pulse
+    }
+    const res = await this.resolver.resolve({ pulse: ref, chain })
     return res.pulse
   }
 

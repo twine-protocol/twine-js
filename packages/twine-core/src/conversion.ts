@@ -1,6 +1,6 @@
 import { CID, MultihashHasher } from 'multiformats'
 import { isChain, isChainValue, isPulse, isPulseValue, isTwine } from './checks'
-import { ResolveQuery, ResolveQueryStrict } from './resolver/types'
+import { FulfilledChainResolution, FulfilledPulseResolution, ResolveChainQuery, ResolvePulseQuery, ResolvePulseQueryStrict, ResolveQueryStrict } from './resolver/types'
 import { ChainValue, IntoCid, Mixin, PulseValue } from './types'
 import { decode as dagJsonDecode } from '@ipld/dag-json'
 import { encode as blockEncode, create as blockCreate } from 'multiformats/block'
@@ -57,7 +57,7 @@ export const coerceCid = (val: IntoCid): CID => {
   if (cid) {
     return cid
   }
-  throw new Error('Could not coerce value to CID')
+  throw new Error(`Could not coerce value to CID. Value: ${val}`)
 }
 
 export function bytesToHex(bytes: Uint8Array) {
@@ -92,12 +92,12 @@ export const fromJSON = async (json: string | object): Promise<Chain | Pulse> =>
   const jsonBytes = (new TextEncoder()).encode(JSON.stringify(obj))
   const res = dagJsonDecode(jsonBytes)
   if (!isJsonParseResult(res)) {
-    throw new Error('Invalid twine json')
+    throw new Error('Invalid twine json: \n' + JSON.stringify(res, null, 2))
   }
   const thisIsPulse = isPulseValue(res.data)
   const thisIsChain = !thisIsPulse && isChainValue(res.data)
   if (!thisIsPulse && !thisIsChain) {
-    throw new Error('Invalid twine json')
+    throw new Error('Invalid twine json: \n' + JSON.stringify(res.data, null, 2))
   }
   const reportedCid = res.cid
   // TODO check codecs and use appropriate hasher
@@ -125,7 +125,7 @@ export const fromBytes = async (
   const thisIsPulse = isPulseValue(value)
   const thisIsChain = !thisIsPulse && isChainValue(value)
   if (!thisIsPulse && !thisIsChain) {
-    throw new Error('Invalid decoded twine data')
+    throw new Error('Invalid decoded twine data: \n' + JSON.stringify(value, null, 2))
   }
   return new Twine({
     cid,
@@ -134,7 +134,21 @@ export const fromBytes = async (
   })
 }
 
-export const asQuery = (val: any): ResolveQueryStrict | null => {
+export const linksAsQueries = (pulse: Pulse): ResolvePulseQueryStrict[] => {
+  return pulse.value.content.links.map(link => ({
+    chain: pulse.value.content.chain
+    , pulse: link
+  }))
+}
+
+export function asQuery(val: FulfilledChainResolution): ResolveChainQuery<CID>
+export function asQuery(val: FulfilledPulseResolution): ResolvePulseQueryStrict
+export function asQuery(val: Chain): ResolveChainQuery<CID>
+export function asQuery(val: Pulse): ResolvePulseQueryStrict
+export function asQuery(val: Mixin): ResolvePulseQueryStrict
+export function asQuery(val: ResolveQueryStrict): ResolveQueryStrict
+export function asQuery(val: any): ResolveQueryStrict | null
+export function asQuery(val: any): ResolveQueryStrict | null {
   if (!val) { return null }
   // if it's a twine, we can just use the cids inside
   if (isTwine(val)) {
@@ -168,8 +182,8 @@ export const asQuery = (val: any): ResolveQueryStrict | null => {
   return { chain, pulse }
 }
 
-export const coerceQuery = (val: any): ResolveQuery => {
+export const coerceQuery = (val: any): ResolveQueryStrict => {
   const query = asQuery(val)
-  if (!query) { throw new Error('Can not coerce value into ResolveQuery') }
+  if (!query) { throw new Error(`Can not coerce value into ResolveQuery. Value: ${val}`) }
   return query
 }

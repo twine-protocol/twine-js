@@ -1,7 +1,7 @@
 import { Chain, Pulse, TwineCache, coerceCid, isChain, isPulse, isTwine } from '..'
 import type { Awaitable, CID, IntoCid } from '../types'
 import { Twine } from '../twine'
-import type { IntoResolveQuery, Resolution, ResolveOptions, UnfulfilledResolution } from './types'
+import type { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseResolution, Resolution, ResolveOptions, UnfulfilledResolution } from './types'
 
 const memoized = (
   cache: Map<string, Promise<Chain | Pulse | null>>,
@@ -74,11 +74,9 @@ const sanitizeQuery = (thing: any): { chain: IntoCid, pulse?: IntoCid } => {
   return { chain }
 }
 
-export const resolveHelper = async (
-  callers: ResolveCallers,
-  thing: IntoResolveQuery,
-  options: ResolveOptions = {}
-): Promise<Resolution> => {
+export async function resolveHelper(callers: ResolveCallers, thing: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
+export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery | IntoResolveChainQuery, options: ResolveOptions = {}): Promise<Resolution> {
   const { noVerify = false, noCache = false } = options
 
   if (isTwine(thing)) {

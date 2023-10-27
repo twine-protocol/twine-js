@@ -1,7 +1,6 @@
 import type { PulseIndex, IntoCid, CID, Mixin, AnyIterable } from '../types'
 import type { Chain, Pulse } from '../twine'
 
-
 export type ResolveChainQuery<T = CID | IntoCid> = {
   chain: T
 }
@@ -11,34 +10,43 @@ export type ResolvePulseQuery<T = CID | IntoCid> = {
   pulse: T,
 }
 
-export type ResolveMixinQuery<T = CID | IntoCid> = {
-  chain: T,
-  value: T,
+export type ResolveChainQueryStrict = {
+  chain: CID,
 }
 
-export type ResolveQuery =
-  ResolveChainQuery<IntoCid> |
-  ResolvePulseQuery<IntoCid> |
-  ResolveMixinQuery<IntoCid>
+export type ResolvePulseQueryStrict = {
+  chain: CID,
+  pulse: CID,
+}
 
-export type ResolveQueryStrict =
-  ResolveChainQuery<CID> |
-  ResolvePulseQuery<CID> |
-  ResolveMixinQuery<CID>
+export type ResolveQueryStrict = ResolveChainQueryStrict | ResolvePulseQueryStrict
 
-export type IntoResolveQuery = ResolveQuery | Chain | Pulse | Mixin
+export type FulfilledChainResolution = {
+  chain: Chain
+}
 
-export type FulfilledResolution = {
+export type FulfilledPulseResolution = {
   chain: Chain,
-  pulse?: Pulse,
+  pulse: Pulse,
 }
 
-export type UnfulfilledResolution = {
+export type UnfulfilledChainResolution = {
   chain: null,
-  pulse?: null,
 }
 
+export type UnfulfilledPulseResolution = {
+  chain: null,
+  pulse: null,
+}
+
+export type FulfilledResolution = FulfilledChainResolution | FulfilledPulseResolution
+export type UnfulfilledResolution = UnfulfilledChainResolution | UnfulfilledPulseResolution
+export type ChainResolution = FulfilledChainResolution | UnfulfilledChainResolution
+export type PulseResolution = FulfilledPulseResolution | UnfulfilledPulseResolution
 export type Resolution = FulfilledResolution | UnfulfilledResolution
+
+export type IntoResolveChainQuery = FulfilledChainResolution | ResolveChainQuery | Chain
+export type IntoResolvePulseQuery = FulfilledPulseResolution | ResolvePulseQuery | Pulse | Mixin
 
 export type ResolveOptions = {
   noVerify?: boolean,
@@ -46,8 +54,9 @@ export type ResolveOptions = {
 }
 
 export interface Resolver {
-  resolve(query: ResolveQuery, options?: ResolveOptions): Promise<Resolution>,
-  resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<Resolution>,
-  resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<Resolution>,
+  resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+  resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>,
+  resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<PulseResolution>,
+  resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<PulseResolution>,
   pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse> | Generator<Pulse> | AnyIterable<Pulse>,
 }

@@ -1,6 +1,7 @@
 import { ChainContent, ChainValue, PulseContent, TwineValue, PulseValue, Mixin } from './types'
 import { CID } from 'multiformats/cid'
 import { Chain, Pulse } from './twine'
+import { FulfilledPulseResolution, ResolvePulseQueryStrict } from '.'
 
 // eslint-disable-next-line max-len
 const isoDateRegExp = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/
@@ -98,4 +99,19 @@ export function isChain(twine: any): twine is Chain {
 
 export function isPulse(twine: any): twine is Pulse {
   return isTwine(twine) && twine.isPulse
+}
+
+export function isFulfilledPulseResolution(resolution: any): resolution is FulfilledPulseResolution {
+  return resolution && isPulse(resolution.pulse) && isChain(resolution.chain)
+}
+
+export function isFulfilledChainResolution(resolution: any): resolution is FulfilledPulseResolution {
+  return resolution && resolution.pulse === undefined && isChain(resolution.chain)
+}
+
+export function isPulseQuery(query: any): query is ResolvePulseQueryStrict {
+  if (!query) { return false }
+  if (!isCid(query.chain)) { return false }
+  if (!isCid(query.pulse)) { return false }
+  return true
 }
