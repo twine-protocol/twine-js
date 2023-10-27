@@ -8,6 +8,7 @@
     "build": "lerna run build",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
     "version": "lerna version --no-push --no-private --no-commit-hooks",
+    "publish": "lerna publish from-package --no-push --no-private --no-commit-hooks",
     "test": "bun run build && bun test"
   },
   "devDependencies": {
