@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-core",
-  "version": "0.2.0",
+  "version": "0.2.0-alpha.0",
   "module": "./dist/index.js",
   "exports": {
     ".": {
