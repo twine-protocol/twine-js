@@ -21,6 +21,7 @@
     "test": "bun test"
   },
   "devDependencies": {
+    "@twine-protocol/twine-builder": "workspace:*",
     "bun-plugin-dts": "^0.2.1",
     "bun-types": "latest",
     "tsc": "^2.0.4"

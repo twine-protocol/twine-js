@@ -1,5 +1,5 @@
-import type { Resolver, ResolvePulseQueryStrict, FulfilledPulseResolution, ResolvePulseQuery, IntoResolvePulseQuery, Awaitable, PulseResolution } from '@twine-protocol/twine-core'
-import { skipList, coerceCid, coerceQuery, ResolveOptions, isFulfilledPulseResolution, linksAsQueries, asQuery, isIterable, isPulseQuery } from '@twine-protocol/twine-core'
+import type { Resolver, ResolvePulseQueryStrict, FulfilledPulseResolution, ResolvePulseQuery, IntoResolvePulseQuery, Awaitable, PulseResolution } from '.'
+import { IncompleteResolution, skipList, coerceCid, coerceQuery, ResolveOptions, isFulfilledPulseResolution, linksAsQueries, asQuery, isIterable, isPulseQuery } from '.'
 
 export type MaybeIterable<T> = Iterable<T> | T
 
@@ -22,13 +22,6 @@ export type FulfilledCrawlResult = FulfilledPulseResolution & CrawlPathContainer
 
 export type CrawlGuide = {
   (q: FulfilledCrawlResult): ResolvePulseQueryStrict[]
-}
-
-export class IncompleteResolution extends Error {
-  constructor(message: string) {
-    super(message)
-    this.name = 'IncompleteResolution'
-  }
 }
 
 const assertFulfilledPulseResolution = (v: any): FulfilledPulseResolution => {
@@ -201,7 +194,7 @@ export async function* crawl(inputs: MaybeIterable<Awaitable<IntoResolvePulseQue
   }
 }
 
-export async function findPath(start: IntoResolvePulseQuery, target: IntoResolvePulseQuery, resolver: Resolver): Promise<Path | null>  {
+export async function findPath(start: IntoResolvePulseQuery, target: IntoResolvePulseQuery, resolver: Resolver): Promise<Path | null> {
   const _target = assertFulfilledPulseResolution(await resolver.resolve(target))
   for await (const q of crawl(start, towards(_target))) {
     const { chain, pulse, path } = await q.load(resolver, { throwUnresolvable: true })

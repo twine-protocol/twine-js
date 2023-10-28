@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll } from 'bun:test'
-import { crawl, along, across, findPath, spread } from '.'
+import { crawl, along, across, spread } from './crawl'
 import { createPulse, createChain, JoseSigner } from '@twine-protocol/twine-builder'
-import { MemoryStore } from '@twine-protocol/twine-core'
+import { MemoryStore } from './store'
 
 function* times(n) {
   for (let i = 0; i < n; i++) { yield i }
