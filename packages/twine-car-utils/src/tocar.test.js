@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll } from 'bun:test'
 import { createPulse, createChain, JoseSigner } from '@twine-protocol/twine-builder'
 import { MemoryStore } from '@twine-protocol/twine-core'
-import { storeToCar } from '.'
+import { storeToCar, toMemoryStore } from '.'
 import { CarReader } from '@ipld/car'
 
 async function concatUint8Arrays(iter) {
@@ -12,7 +12,7 @@ async function concatUint8Arrays(iter) {
   return new Uint8Array(chunks.flatMap((chunk) => Array.from(chunk)));
 }
 
-describe('storeToCar()', async () => {
+describe('car-utils', async () => {
   let store
   let cids = []
   beforeAll(async () => {
@@ -37,6 +37,20 @@ describe('storeToCar()', async () => {
       const block = await reader.get(cid)
       const twine = await store.fetch(cid)
       expect(block.bytes).toEqual(twine.bytes)
+    }
+  })
+
+  test('should convert a car into a memory store', async () => {
+    const out = storeToCar(store)
+    const bytes = await concatUint8Arrays(out)
+    expect(bytes).toBeDefined()
+    const reader = await CarReader.fromBytes(bytes)
+    const memstore = await toMemoryStore(reader)
+    // memstore should have all store contents
+    for (const cid of cids){
+      const orig = await store.fetch(cid)
+      const twine = await memstore.fetch(cid)
+      expect(orig.bytes).toEqual(twine.bytes)
     }
   })
 })
