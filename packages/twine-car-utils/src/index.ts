@@ -3,6 +3,7 @@ import { CarWriter } from '@ipld/car'
 import { CID } from 'multiformats'
 
 export * from './car-to-memory-store'
+export * from './resolver'
 
 const EmptyCID = CID.parse('bafkqaaa')
 

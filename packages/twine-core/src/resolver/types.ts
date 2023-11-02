@@ -1,4 +1,4 @@
-import type { PulseIndex, IntoCid, CID, Mixin, AnyIterable } from '../types'
+import type { PulseIndex, IntoCid, CID, Mixin, AnyIterable, Awaitable } from '../types'
 import type { Chain, Pulse } from '../twine'
 
 export type ResolveChainQuery<T = CID | IntoCid> = {
@@ -58,5 +58,7 @@ export interface Resolver {
   resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>,
   resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<PulseResolution>,
   resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<PulseResolution>,
+  has(cid: IntoCid): Awaitable<boolean>,
   pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse> | Generator<Pulse> | AnyIterable<Pulse>,
+  chains(): AsyncGenerator<Chain> | Generator<Chain> | AnyIterable<Chain>,
 }

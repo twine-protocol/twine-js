@@ -44,6 +44,12 @@ const mockResolver = {
   async resolveLatest(chainCID, options) {
     const pulse = fns.fetchLatest(chainCID)
     return this.resolve({ chain: chainCID, pulse }, options)
+  },
+  async *chains() {
+    yield mockData.chain
+  },
+  async has(cid) {
+    return cid.equals(mockData.chain.cid) || cid.equals(mockData.pulse.cid)
   }
 }
 
@@ -266,5 +272,22 @@ describe('combineResolvers()', () => {
       , pulse: null
       , errors: undefined
     })
+  })
+
+  test('should produce all chains', async () => {
+    const chains = []
+    for await (const chain of resolvers.chains()) {
+      chains.push(chain.cid.toString())
+    }
+    expect(chains).toContain(mockData.chain.cid.toString())
+    expect(chains).toContain(mockData.chain2.cid.toString())
+  })
+
+  test('should has() all pulses', async () => {
+    expect(await resolvers.has(mockData.chain.cid)).toBe(true)
+    expect(await resolvers.has(mockData.pulse.cid)).toBe(true)
+    expect(await resolvers.has(mockData.chain2.cid)).toBe(true)
+    expect(await resolvers.has(mockData.chain2pulse2.cid)).toBe(true)
+    expect(await resolvers.has(mockData.chain2pulse3.cid)).toBe(false)
   })
 })

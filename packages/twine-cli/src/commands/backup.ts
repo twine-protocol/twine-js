@@ -1,7 +1,7 @@
 import { storeToCar } from '@twine-protocol/twine-car-utils'
+import { HttpStore } from '@twine-protocol/twine-http-store'
 import { Store } from '@twine-protocol/twine-core'
 import { BuilderCallback } from 'yargs'
-import { HttpStore } from '@twine-protocol/twine-http-store'
 import { output } from '../output'
 
 function getStore(source: string, options?: any): Store {

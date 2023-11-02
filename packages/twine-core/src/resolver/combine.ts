@@ -1,5 +1,5 @@
 import { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseResolution, ResolveOptions, Resolver, resolveHelper } from '.'
-import { Chain, IntoCid, Pulse } from '..'
+import { Awaitable, Chain, IntoCid, Pulse } from '..'
 import { TwineCache } from '../store'
 
 export type CombineResolversOptions = {
@@ -26,6 +26,35 @@ export type CombinedPulseResolution = PulseResolution & {
 
 export type CombinedChainResolution = ChainResolution & {
   errors?: Error[]
+}
+
+function firstTruthy<T>(input: Iterable<Awaitable<T>>): Promise<T | false> {
+  // reads in parallel, returns first truthy value
+  return new Promise((res, rej) => {
+    let done = false
+    let pending = 0
+    for (const item of input) {
+      pending += 1
+      Promise.resolve(item).then((result: any) => {
+        if (done) { return }
+        if (result) {
+          done = true
+          res(result)
+        }
+      }).catch((e: any) => {
+        if (!done) {
+          done = true
+          rej(e)
+        }
+      }).finally(() => {
+        pending -= 1
+        if (pending === 0 && !done) {
+          done = true
+          res(false)
+        }
+      })
+    }
+  })
 }
 
 export const combineResolvers = (
@@ -253,12 +282,36 @@ export const combineResolvers = (
     }
   }
 
+  const has = async (cid: IntoCid): Promise<boolean> => {
+    const cidStr = cid.toString()
+    if (cache.has(cidStr)) { return true }
+    const promises = Array.from(resolvers.values()).map(r => r.has(cid))
+    const first = await firstTruthy(promises)
+    if (first) { return true }
+    return false
+  }
+
+  const chains = async function* () {
+    const seen = new Set<string>()
+    for (const r of resolvers) {
+      for await (const chain of r.chains()) {
+        const cid = chain.cid.toString()
+        if (!seen.has(cid)) {
+          seen.add(cid)
+          yield chain
+        }
+      }
+    }
+  }
+
   return {
     resolve,
     resolveLatest,
     resolveIndex,
     pulses,
+    chains,
     add,
+    has,
     remove,
     setCacheSize
   }

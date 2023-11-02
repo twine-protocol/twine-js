@@ -1,4 +1,4 @@
-import type { Resolver, ResolvePulseQueryStrict, FulfilledPulseResolution, ResolvePulseQuery, IntoResolvePulseQuery, Awaitable, PulseResolution } from '.'
+import type { Resolver, ResolvePulseQueryStrict, FulfilledPulseResolution, ResolvePulseQuery, IntoResolvePulseQuery, Awaitable, PulseResolution, PulseIndex, Pulse, Chain } from '.'
 import { IncompleteResolution, skipList, coerceCid, coerceQuery, ResolveOptions, isFulfilledPulseResolution, linksAsQueries, asQuery, isIterable, isPulseQuery } from '.'
 
 export type MaybeIterable<T> = Iterable<T> | T
@@ -69,14 +69,16 @@ export const within = (): CrawlGuide => ({ pulse }) => linksAsQueries(pulse)
 
 /**
  * Create a guide that moves along chains
- * @param {FulfilledPulseResolution} [resolvedTarget] if supplied, will skip towards this target
+ * @param {{ chain: Chain, pulse: Pulse | PulseIndex }} [resolvedTarget] if supplied, will skip towards this target
  */
-export const along = (resolvedTarget?: FulfilledPulseResolution): CrawlGuide => {
+export const along = (target?: { chain: Chain, pulse: Pulse | PulseIndex }): CrawlGuide => {
   let radix = 0
   let targetIndex = 0
-  if (resolvedTarget) {
-    radix = resolvedTarget.chain.value.content.links_radix || 0
-    targetIndex = resolvedTarget.pulse.value.content.index
+  if (target) {
+    radix = target.chain.value.content.links_radix || 0
+    targetIndex = typeof target.pulse === 'number' ?
+      target.pulse :
+      target.pulse.value.content.index
   }
 
   return ({ pulse, chain }) => {
@@ -151,7 +153,7 @@ export const towards = (target: FulfilledPulseResolution): CrawlGuide => {
   }
 }
 
-export async function* crawl(inputs: MaybeIterable<Awaitable<IntoResolvePulseQuery>>, direct = spread(), visited = new Set()): AsyncIterable<CrawlPending> {
+export async function* crawl(inputs: MaybeIterable<Awaitable<IntoResolvePulseQuery>>, direct = spread(), visited = new Set<string>()): AsyncIterable<CrawlPending> {
   type QueueItem = ResolvePulseQueryStrict & CrawlPathContainer & { index?: number }
 
   const withPath = (path: FulfilledPulseResolution[]) => (query: ResolvePulseQueryStrict) => ({ ...query, path })
