@@ -1,0 +1,30 @@
+{
+  "name": "@twine-protocol/twine-cli",
+  "version": "0.0.1-alpha.0",
+  "module": "./dist/cli.js",
+  "bin": {
+    "twine": "dist/cli.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "bun build --target node --outdir ./dist ./src/cli.ts"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2",
+    "@twine-protocol/twine-core": "workspace:*",
+    "@twine-protocol/twine-builder": "workspace:*",
+    "@twine-protocol/twine-http-store": "workspace:*",
+    "@twine-protocol/twine-car-utils": "workspace:*",
+    "multiformats": "^12.1.2"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.29",
+    "@twine-protocol/twine-builder": "workspace:*",
+    "bun-plugin-dts": "^0.2.1",
+    "bun-types": "latest",
+    "tsc": "^2.0.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
