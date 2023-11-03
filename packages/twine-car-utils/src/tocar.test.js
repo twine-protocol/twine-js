@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll } from 'bun:test'
 import { createPulse, createChain, JoseSigner } from '@twine-protocol/twine-builder'
 import { MemoryStore } from '@twine-protocol/twine-core'
-import { CarResolver, storeToCar, toMemoryStore } from '.'
+import { CarResolver, dumpToCar, toMemoryStore } from '.'
 import { CarReader } from '@ipld/car'
 
 async function concatUint8Arrays(iter) {
@@ -28,7 +28,7 @@ describe('car-utils', async () => {
   })
 
   test('should create a car from a store', async () => {
-    const out = storeToCar(store)
+    const out = dumpToCar(store)
     const bytes = await concatUint8Arrays(out)
     expect(bytes).toBeDefined()
     const reader = await CarReader.fromBytes(bytes)
@@ -41,7 +41,7 @@ describe('car-utils', async () => {
   })
 
   test('car file should have appropriate roots', async () => {
-    const out = storeToCar(store)
+    const out = dumpToCar(store)
     const bytes = await concatUint8Arrays(out)
     expect(bytes).toBeDefined()
     const reader = await CarReader.fromBytes(bytes)
@@ -52,7 +52,7 @@ describe('car-utils', async () => {
   })
 
   test('should convert a car into a memory store', async () => {
-    const out = storeToCar(store)
+    const out = dumpToCar(store)
     const bytes = await concatUint8Arrays(out)
     expect(bytes).toBeDefined()
     const reader = await CarReader.fromBytes(bytes)
@@ -66,7 +66,7 @@ describe('car-utils', async () => {
   })
 
   test('resolver should resolve correctly', async () => {
-    const out = storeToCar(store)
+    const out = dumpToCar(store)
     const bytes = await concatUint8Arrays(out)
     expect(bytes).toBeDefined()
     const reader = await CarReader.fromBytes(bytes)

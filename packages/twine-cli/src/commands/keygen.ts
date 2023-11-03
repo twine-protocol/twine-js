@@ -10,11 +10,14 @@ export const builder: BuilderCallback<string, void> = (yargs) => yargs
     'output': {
       describe: 'Path to output file. If unspecified, the key will be printed to stdout',
       alias: 'o',
+      requiresArg: true,
+      normalize: true,
     },
     'algorithm': {
       describe: 'Algorithm to use for key generation',
       alias: 'a',
       demandOption: true,
+      requiresArg: true,
       // JWA algorithm idendifiers that could be chosen
       choices: ALGORITHMS,
     },

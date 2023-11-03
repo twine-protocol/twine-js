@@ -75,7 +75,7 @@ async function parseCarResponse(res: Response, cache?: TwineCache): Promise<Twin
 }
 
 async function parseJsonResponse(res: Response, cache?: TwineCache): Promise<Twine<TwineValue>[]> {
-  const json = await res.json()
+  const json: any = await res.json()
   if (Array.isArray(json)) {
     return Promise.all(json.map(j => {
       const cid = j.cid['/']
@@ -86,7 +86,7 @@ async function parseJsonResponse(res: Response, cache?: TwineCache): Promise<Twi
       }
     }))
   } else {
-    const cid = json.cid['/']
+    const cid = json?.cid['/']
     if (cache?.has(cid)) {
       return [cache.fetch(cid)!]
     } else {
@@ -131,7 +131,7 @@ async function handleResponse(res: Response): Promise<ApiResponse<Twine<TwineVal
   } else {
     let msg = `HTTP error: ${res.status} ${res.statusText}`
     try {
-      const json = await res.json()
+      const json: any = await res.json()
       if (json?.error?.message) {
         msg = json.error.message
       }

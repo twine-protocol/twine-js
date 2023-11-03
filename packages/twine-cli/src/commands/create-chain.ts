@@ -14,6 +14,7 @@ export const builder: BuilderCallback<string, void> = (yargs) => yargs
       describe: 'Algorithm to use for key generation',
       alias: 'a',
       demandOption: true,
+      requiresArg: true,
       // JWA algorithm idendifiers that could be chosen
       choices: ALGORITHMS,
     },
@@ -21,17 +22,23 @@ export const builder: BuilderCallback<string, void> = (yargs) => yargs
       describe: 'Path to config file',
       alias: 'c',
       type: 'string',
+      requiresArg: true,
+      normalize: true,
       demandOption: true
     },
     'key': {
       describe: 'Path to private key in PKCS#8 format',
       alias: 'k',
       type: 'string',
+      requiresArg: true,
+      normalize: true,
       demandOption: true
     },
     'output': {
       describe: 'Path to output file. If unspecified, the key will be printed to stdout',
       alias: 'o',
+      requiresArg: true,
+      normalize: true,
     }
   })
   .coerce('config', async (arg) => {

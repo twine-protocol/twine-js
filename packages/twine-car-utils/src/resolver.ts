@@ -1,21 +1,25 @@
-import { CarReader } from '@ipld/car'
 import { Chain, ChainResolution, IntoCid, IntoResolveChainQuery, IntoResolvePulseQuery, Pulse, PulseIndex, PulseResolution, ResolveOptions, Resolver, Twine, TwineValue, along, coerceCid, crawl, fromBytes, isChain, isFulfilledPulseResolution, resolveHelper } from '@twine-protocol/twine-core'
+import { CarReader, CarBufferReader, CarIndexedReader } from '@ipld/car'
+
+export type Reader = CarReader | CarBufferReader | CarIndexedReader
 
 export class CarResolver implements Resolver {
-  private _reader: CarReader
+  private _reader: Reader
   private _chains: Map<string, Chain> | null = null
   private _latest: Map<string, Pulse> | null = null
 
-  constructor(reader: CarReader) {
+  constructor(reader: Reader) {
     this._reader = reader
   }
 
   private async _checkRoots() {
     const chains = new Map()
     const latest = new Map()
-    for await (const root of await this._reader.getRoots()) {
-      const twine = await this.fetch(root)
-      if (!twine) { continue }
+    const roots = await this._reader.getRoots()
+    for (const root of roots) {
+      const block = await this._reader.get(root)
+      if (!block) { continue }
+      const twine = await fromBytes(block)
       if (isChain(twine)) {
         chains.set(twine.cid.toString(), twine)
       } else {
@@ -42,7 +46,10 @@ export class CarResolver implements Resolver {
 
   private async fetch(cid: IntoCid): Promise<Chain | Pulse | null> {
     cid = coerceCid(cid)
-    const ch = this._chains?.get(cid.toString())
+    if (!this._chains) {
+      await this._checkRoots()
+    }
+    const ch = this._chains!.get(cid.toString())
     if (ch) { return ch }
     const block = await this._reader.get(cid)
     if (!block) { return null }
@@ -85,7 +92,7 @@ export class CarResolver implements Resolver {
     return { chain: null, pulse: null }
   }
 
-  has(cid: IntoCid): Promise<boolean> {
+  async has(cid: IntoCid): Promise<boolean> {
     return this._reader.has(coerceCid(cid))
   }
 

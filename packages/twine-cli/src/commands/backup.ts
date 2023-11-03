@@ -1,16 +1,10 @@
-import { storeToCar } from '@twine-protocol/twine-car-utils'
-import { HttpStore } from '@twine-protocol/twine-http-store'
-import { Store } from '@twine-protocol/twine-core'
+import { allTwines, roots, twinesToCar } from '@twine-protocol/twine-car-utils'
 import { BuilderCallback } from 'yargs'
 import { output } from '../output'
-
-function getStore(source: string, options?: any): Store {
-  if (source.startsWith('http')) {
-    return new HttpStore(source, options)
-  } else {
-    throw new Error(`Unsupported source: ${source}`)
-  }
-}
+import { getResolverFromSources, totalTwines } from '../resolver'
+import { tap } from 'streaming-iterables'
+import { SingleBar, Presets } from 'cli-progress'
+import { isPulse } from '@twine-protocol/twine-core'
 
 export const command = 'backup'
 export const describe = 'Backup a store to a CARv2 file'
@@ -19,18 +13,30 @@ export const builder: BuilderCallback<string, void> = (yargs) => yargs
     'input': {
       describe: 'Input source store.',
       alias: 'i',
-      required: true,
+      requiresArg: true,
+      demandOption: true,
     },
     'output': {
       describe: 'Path to output file.',
       alias: 'o',
-      required: true,
+      requiresArg: true,
+      normalize: true,
+      demandOption: true,
     },
   })
 
 export const handler = async function generateKey(argv: any) {
-  const source = argv.input
-  const store = getStore(source)
-  const car = storeToCar(store)
+  const progress = new SingleBar({ forceRedraw: true }, Presets.shades_classic)
+  process.addListener('SIGINT', () => {
+    progress.stop()
+  })
+  const resolver = await getResolverFromSources(argv.input)
+  const total = await totalTwines(resolver)
+  let current = 0
+  const twines = tap(twine => {
+    progress.start(total, current++)
+  }, allTwines(resolver))
+  const car = twinesToCar(twines, roots(resolver))
   await output(car, argv.output)
+  progress.stop()
 }

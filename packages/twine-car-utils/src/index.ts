@@ -1,4 +1,4 @@
-import type { Store, Twine, TwineValue, AnyIterable } from '@twine-protocol/twine-core'
+import type { Twine, TwineValue, AnyIterable, Resolver } from '@twine-protocol/twine-core'
 import { CarWriter } from '@ipld/car'
 import { CID } from 'multiformats'
 
@@ -36,19 +36,19 @@ export async function *twinesToCar(twines: AnyIterable<Twine<TwineValue>>, roots
   }
 }
 
-export async function *allTwines(store: Store){
-  for await (const chain of store.chains()) {
+export async function* allTwines(resolver: Resolver){
+  for await (const chain of resolver.chains()) {
     yield chain
-    for await (const pulse of store.pulses(chain)) {
+    for await (const pulse of resolver.pulses(chain)) {
       yield pulse
     }
   }
 }
 
-export async function *roots(store: Store){
-  for await (const chain of store.chains()) {
+export async function* roots(resolver: Resolver){
+  for await (const chain of resolver.chains()) {
     yield chain.cid
-    const latest = await store.resolveLatest(chain.cid)
+    const latest = await resolver.resolveLatest(chain.cid)
     if (!latest?.pulse) {
       throw new Error(`Could not resolve latest pulse for chain ${chain.cid}`)
     }
@@ -57,7 +57,7 @@ export async function *roots(store: Store){
 }
 
 /**
- * Convert a store to a car format.
+ * Dump all resolvable chains to a CARv2 file.
  * You can output the car to a file with:
  * ```js
  * const fs = require('fs')
@@ -65,6 +65,6 @@ export async function *roots(store: Store){
  *  .pipe(fs.createWriteStream('example.car'))
  * ```
  */
-export function storeToCar(store: Store): AsyncIterable<Uint8Array> {
-  return twinesToCar(allTwines(store), roots(store))
+export function dumpToCar(resolver: Resolver): AsyncIterable<Uint8Array> {
+  return twinesToCar(allTwines(resolver), roots(resolver))
 }
