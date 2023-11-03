@@ -1,7 +1,7 @@
 import { writeFile, stat } from 'node:fs/promises'
 import type { ArrayBufferView } from 'bun'
 import { createWriteStream } from 'node:fs'
-import { Readable } from 'node:stream'
+import { pipeline } from 'node:stream/promises'
 
 function isAsyncIterable<T>(x: any): x is AsyncIterable<T> {
   return x && typeof x[Symbol.asyncIterator] === 'function'
@@ -19,9 +19,10 @@ export async function output(content: string | ArrayBufferLike | ArrayBufferView
       }
     }
     if (isAsyncIterable(content)) {
-      // @ts-ignore
-      Readable.from(content)
-        .pipe(createWriteStream(path))
+      await pipeline(
+        content,
+        createWriteStream(path)
+      )
     } else {
       await writeFile(path, content)
     }

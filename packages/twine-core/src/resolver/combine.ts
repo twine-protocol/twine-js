@@ -17,15 +17,18 @@ export interface ResolveLatestOptionsCombined extends ResolveOptions {
 export interface CombinedResolver extends Resolver {
   add: (r: Resolver) => void,
   remove: (r: Resolver) => void,
-  setCacheSize: (count: number) => void
+  setCacheSize: (count: number) => void,
+  close(): Awaitable<void>
 }
 
 export type CombinedPulseResolution = PulseResolution & {
   errors?: Error[]
+  resolver?: Resolver
 }
 
 export type CombinedChainResolution = ChainResolution & {
   errors?: Error[]
+  resolver?: Resolver
 }
 
 function firstTruthy<T>(input: Iterable<Awaitable<T>>): Promise<T | false> {
@@ -71,13 +74,13 @@ export const combineResolvers = (
   const add = (r: Resolver) => { resolvers.add(r) }
   const remove = (r: Resolver) => { resolvers.delete(r) }
 
-  const series = async (task: (r: Resolver) => any): Promise<{ result: any, errors?: Error[] }> => {
+  const series = async (task: (r: Resolver) => any): Promise<{ result: any, errors?: Error[], resolver?: Resolver }> => {
     const errors: Error[] = []
     for (const r of resolvers) {
       try {
         const result = await task(r)
         if (result) {
-          return { result, errors: errors.length ? errors : undefined }
+          return { result, errors: errors.length ? errors : undefined, resolver: r }
         }
       } catch (e: any) {
         errors.push(e)
@@ -86,27 +89,28 @@ export const combineResolvers = (
     return { result: null, errors: errors.length ? errors : undefined }
   }
 
-  const race = (task: (r: Resolver) => any): Promise<{ result: any, errors?: Error[] }> => {
-    let resolve: (a: any) => void
-    const allDone = new Promise<{ result: any, errors?: Error[] }>((res, rej) => {
+  const race = (task: (r: Resolver) => any): Promise<{ result: any, errors?: Error[], resolver?: Resolver }> => {
+    let resolve: (value: { result: any, errors?: Error[], resolver?: Resolver }) => void
+    const allDone = new Promise<{ result: any, errors?: Error[], resolver?: Resolver }>((res, rej) => {
       resolve = res
     })
     const errors: Error[] = []
     const waitingFor = resolvers.size
     let doneTasks = 0
+    const run = (r: Resolver) => task(r).then((result: any) => {
+      if (result) {
+        resolve({ result, errors: errors.length ? errors : undefined, resolver: r })
+      }
+    }).catch((e: Error) => {
+      errors.push(e)
+    }).finally(() => {
+      doneTasks++
+      if (doneTasks >= waitingFor) {
+        resolve({ result: null, errors: errors.length ? errors : undefined })
+      }
+    })
     for (const r of resolvers) {
-      task(r).then((result: any) => {
-        if (result) {
-          resolve({ result, errors: errors.length ? errors : undefined })
-        }
-      }).catch((e: Error) => {
-        errors.push(e)
-      }).finally(() => {
-        doneTasks++
-        if (doneTasks >= waitingFor) {
-          resolve({ result: null, errors: errors.length ? errors : undefined })
-        }
-      })
+      run(r)
     }
     return allDone
   }
@@ -165,9 +169,22 @@ export const combineResolvers = (
       ...options,
       noCache: true
     }
-    const result = await exec(r => r.resolveIndex(chain, index, opts), options?.race)
+    const result = await exec(async r => {
+      const res = await r.resolveIndex(chain, index, opts)
+      if (res.pulse && res.chain){
+        return res
+      }
+      return null
+    }, options?.race)
     const errors = result.errors
     const resolution = result.result
+    if (!resolution?.pulse || !resolution?.chain) {
+      return {
+        chain: null,
+        pulse: null,
+        errors
+      }
+    }
     if (resolution.chain) {
       cache.save(resolution.chain)
     }
@@ -199,7 +216,7 @@ export const combineResolvers = (
     const results = await Promise.allSettled(tasks)
     const errors: Error[] = []
     let latest: PulseResolution = { chain: null, pulse: null }
-    let resolver = null
+    let resolver
     let latestIndex = -1
     for (const result of results) {
       if (result.status === 'fulfilled') {
@@ -230,10 +247,6 @@ export const combineResolvers = (
     if (options?.checkAll){
       return bestLatest(chain, opts)
     } else {
-      const tasks = []
-      for (const r of resolvers) {
-        tasks.push(r.resolveLatest(chain, opts))
-      }
       const result = await race(async r => {
         const res = await r.resolveLatest(chain, opts)
         if (res.pulse){
@@ -243,43 +256,34 @@ export const combineResolvers = (
       })
       return {
         errors: result.errors,
-        ...result.result
+        ...result.result,
+        resolver: result.resolver
       }
     }
   }
 
   const pulses = async function* (chainCid: IntoCid, start?: number | IntoCid, options? : ResolveOptionsCombined & ResolveLatestOptionsCombined) {
-    let chain
-    let startPulse
+    let res
     if (start === undefined) {
-      const latest = await bestLatest(chainCid, options)
-      if (!latest.pulse) { return }
-      chain = latest.chain
-      if (!chain) { return }
-      startPulse = latest.pulse
+      res = await bestLatest(chainCid, options)
     } else if (typeof start === 'number') {
-      const res = await resolveIndex(chainCid, start, options)
-      if (!res.pulse) { return }
-      chain = res.chain
-      if (!chain) { return }
-      startPulse = res.pulse
+      res = await resolveIndex(chainCid, start, options)
     } else {
-      const res = await resolve({
-        chain,
+      res = await resolve({
+        chain: chainCid,
         pulse: start
       }, options)
-      if (!res.pulse) { return }
-      chain = res.chain
-      if (!chain) { return }
-      startPulse = res.pulse
     }
-    let index = startPulse.value.content.index
-    yield startPulse
-    for (; index >= 0; index--) {
-      const res = await resolveIndex(chain, index, options)
-      if (!res.pulse) { return }
-      yield res.pulse
+    let chain = res.chain
+    let startPulse = res.pulse
+    let resolver = res.resolver
+    if (!chain || !startPulse || !resolver) {
+      if (res.errors?.length) {
+        throw res.errors[0]
+      }
+      return
     }
+    yield* resolver.pulses(chain, startPulse, options)
   }
 
   const has = async (cid: IntoCid): Promise<boolean> => {
@@ -313,7 +317,16 @@ export const combineResolvers = (
     add,
     has,
     remove,
-    setCacheSize
+    setCacheSize,
+    async close(){
+      for (const r of resolvers) {
+        // @ts-ignore
+        if (r.close) {
+          // @ts-ignore
+          await r.close()
+        }
+      }
+    }
   }
 }
 

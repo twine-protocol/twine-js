@@ -113,4 +113,12 @@ export class CarResolver implements Resolver {
     }
   }
 
+  close(){
+    // @ts-ignore
+    if (this._reader?.close){
+      // @ts-ignore
+      this._reader?.close()
+    }
+  }
+
 }

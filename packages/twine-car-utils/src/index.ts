@@ -1,4 +1,4 @@
-import type { Twine, TwineValue, AnyIterable, Resolver } from '@twine-protocol/twine-core'
+import type { Twine, TwineValue, AnyIterable, Resolver, Awaitable } from '@twine-protocol/twine-core'
 import { CarWriter } from '@ipld/car'
 import { CID } from 'multiformats'
 
@@ -15,9 +15,14 @@ async function collect<T>(iter: AnyIterable<T>): Promise<T[]> {
   return out
 }
 
-async function drain<T>(iter: AnyIterable<T>, next: (v: T) => Promise<void>, done: () => Promise<void>): Promise<void> {
-  for await (const v of iter) {
-    await next(v)
+async function drain<T>(iter: AnyIterable<T>, next: (v: T) => Awaitable<void>, done: (e?: Error) => Awaitable<void>): Promise<void> {
+  try {
+    for await (const v of iter) {
+      await next(v)
+    }
+  } catch (e: any) {
+    await done(e)
+    throw e
   }
   await done()
 }
@@ -26,13 +31,22 @@ export async function *twinesToCar(twines: AnyIterable<Twine<TwineValue>>, roots
   const { writer, out } = CarWriter.create(await collect(roots))
   // writer.put doesn't resolve until next out bytes are consumed
   // so this is fine
+  let err: Error | null = null
   drain(
     twines,
     (twine) => writer.put(twine),
-    () => writer.close()
+    (e) => {
+      if (e) {
+        err = e
+      }
+      writer.close()
+    }
   )
   for await (const chunk of out) {
     yield chunk
+  }
+  if (err) {
+    throw err
   }
 }
 
@@ -60,9 +74,12 @@ export async function* roots(resolver: Resolver){
  * Dump all resolvable chains to a CARv2 file.
  * You can output the car to a file with:
  * ```js
- * const fs = require('fs')
- * Readable.from(out)
- *  .pipe(fs.createWriteStream('example.car'))
+ * import { pipeline } from 'node:stream/promises'
+ * import { createWriteStream } from 'node:fs'
+ * await pipeline(
+ *   dumpToCar(resolver),
+ *   createWriteStream(path)
+ * )
  * ```
  */
 export function dumpToCar(resolver: Resolver): AsyncIterable<Uint8Array> {

@@ -1,4 +1,4 @@
-import { CarResolver } from '@twine-protocol/twine-car-utils'
+import { CarResolver, roots } from '@twine-protocol/twine-car-utils'
 import { FsBlockstore } from 'blockstore-fs'
 import { FsDatastore } from 'datastore-fs'
 import { LevelBlockstore } from 'blockstore-level'
@@ -6,7 +6,7 @@ import { LevelDatastore } from 'datastore-level'
 import { CarIndexedReader } from '@ipld/car'
 import { HttpStore } from '@twine-protocol/twine-http-store'
 import { BlockstoreStore } from '@twine-protocol/twine-blockstore-store'
-import { Resolver, combineResolvers } from '@twine-protocol/twine-core'
+import { CombinedResolver, Resolver, combineResolvers, isPulse } from '@twine-protocol/twine-core'
 import { stat } from 'fs/promises'
 import path from 'path'
 
@@ -54,7 +54,7 @@ async function getResolver(source: string, options?: any): Promise<Resolver> {
   throw new Error(`Unsupported source: ${source}`)
 }
 
-export async function getResolverFromSources(source: string[] | string): Promise<Resolver> {
+export async function getResolverFromSources(source: string[] | string): Promise<CombinedResolver> {
   const sources = Array.isArray(source) ? source : [source]
   const resolvers = await Promise.all(sources.map(source => getResolver(source)))
   const resolver = combineResolvers(resolvers)
