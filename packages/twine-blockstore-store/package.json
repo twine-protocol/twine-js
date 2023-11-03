@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "build:lib": "bun build --outdir ./dist ./src/index.ts",
+    "build:lib": "esbuild ./src/index.ts --bundle --format=esm --packages=external --outfile=./dist/index.js",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "build": "bun run build:lib && bun run build:types",
     "test": "bun test"
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
+    "esbuild": "^0.19.5",
     "datastore-core": "^9.2.3",
     "blockstore-core": "^4.3.4",
     "bun-plugin-dts": "^0.2.1",

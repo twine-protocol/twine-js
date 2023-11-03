@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "build:lib": "bun build --outdir ./dist ./src/index.ts",
+    "build:lib": "esbuild ./src/index.ts --bundle --format=esm --packages=external --outfile=./dist/index.js",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "build": "bun run build:lib && bun run build:types",
     "test": "bun test"
@@ -23,7 +23,7 @@
     "multiformats": "^12.1.2"
   },
   "devDependencies": {
-    "bun-plugin-dts": "^0.2.1",
+    "esbuild": "^0.19.5",
     "bun-types": "latest",
     "tsc": "^2.0.4"
   },
