@@ -4,7 +4,6 @@ import { output } from '../output'
 import { getResolverFromSources, totalTwines } from '../resolver'
 import { tap } from 'streaming-iterables'
 import { SingleBar, Presets } from 'cli-progress'
-import { isPulse } from '@twine-protocol/twine-core'
 
 export const command = 'backup'
 export const describe = 'Backup a store to a CARv2 file'
