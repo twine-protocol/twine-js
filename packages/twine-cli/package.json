@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-cli",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "bin": {
     "twine": "./dist/cli.js"
   },
@@ -9,26 +9,26 @@
     "build": "esbuild ./src/cli.ts --bundle --format=esm --platform=node --packages=external --outfile=./dist/cli.js"
   },
   "dependencies": {
-    "yargs": "^17.7.2",
-    "cli-progress": "^3.12.0",
     "@ipld/car": "^5.2.4",
-    "@twine-protocol/twine-core": "workspace:*",
-    "@twine-protocol/twine-builder": "workspace:*",
-    "@twine-protocol/twine-http-store": "workspace:*",
     "@twine-protocol/twine-blockstore-store": "workspace:*",
+    "@twine-protocol/twine-builder": "workspace:*",
     "@twine-protocol/twine-car-utils": "workspace:*",
-    "streaming-iterables": "^8.0.1",
-    "blockstore-level": "^1.1.4",
-    "datastore-level": "^10.1.4",
+    "@twine-protocol/twine-core": "workspace:*",
+    "@twine-protocol/twine-http-store": "workspace:*",
     "blockstore-fs": "^1.1.6",
+    "blockstore-level": "^1.1.4",
+    "cli-progress": "^3.12.0",
     "datastore-fs": "^9.1.5",
-    "multiformats": "^12.1.2"
+    "datastore-level": "^10.1.4",
+    "multiformats": "^12.1.2",
+    "streaming-iterables": "^8.0.1",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "esbuild": "^0.19.5",
-    "@types/yargs": "^17.0.29",
     "@types/cli-progress": "^3.11.4",
-    "bun-types": "latest"
+    "@types/yargs": "^17.0.29",
+    "bun-types": "latest",
+    "esbuild": "^0.19.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

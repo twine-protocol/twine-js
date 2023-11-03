@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-blockstore-store",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "module": "./dist/index.js",
   "exports": {
     ".": {
@@ -18,17 +18,17 @@
   },
   "dependencies": {
     "@twine-protocol/twine-core": "workspace:*",
-    "interface-datastore": "^8.2.5",
     "interface-blockstore": "^5.2.6",
+    "interface-datastore": "^8.2.5",
     "multiformats": "^12.1.2"
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
-    "esbuild": "^0.19.5",
-    "datastore-core": "^9.2.3",
     "blockstore-core": "^4.3.4",
     "bun-plugin-dts": "^0.2.1",
     "bun-types": "latest",
+    "datastore-core": "^9.2.3",
+    "esbuild": "^0.19.5",
     "tsc": "^2.0.4"
   },
   "peerDependencies": {

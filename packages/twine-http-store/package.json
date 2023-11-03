@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-http-store",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "module": "./dist/index.js",
   "exports": {
     ".": {
@@ -23,8 +23,8 @@
     "multiformats": "^12.1.2"
   },
   "devDependencies": {
-    "esbuild": "^0.19.5",
     "bun-types": "latest",
+    "esbuild": "^0.19.5",
     "tsc": "^2.0.4"
   },
   "peerDependencies": {
