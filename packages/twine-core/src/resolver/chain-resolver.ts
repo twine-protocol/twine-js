@@ -1,10 +1,9 @@
 import type { Resolver } from './types'
-import type { IntoCid } from '../types'
-import type { Chain } from '../twine'
+import type { IntoCid, ChainValue } from '../types'
+import { Twine, type Chain } from '../twine'
 
-export class ChainResolver {
+export class ChainResolver extends Twine<ChainValue> {
   private resolver: Resolver
-  private chain: Chain
 
   static async create(resolver: Resolver, chainCid: IntoCid) {
     const { chain } = await resolver.resolve({ chain: chainCid })
@@ -16,12 +15,12 @@ export class ChainResolver {
   }
 
   constructor(resolver: Resolver, chain: Chain) {
+    super(chain)
     this.resolver = resolver
-    this.chain = chain
   }
 
   async pulse(ref: IntoCid | number) {
-    const chain = this.chain
+    const chain = this
     if (typeof ref === 'number') {
       const res = await this.resolver.resolveIndex(chain, ref)
       return res.pulse
@@ -31,11 +30,11 @@ export class ChainResolver {
   }
 
   pulses(start?: IntoCid | number) {
-    return this.resolver.pulses(this.chain, start)
+    return this.resolver.pulses(this, start)
   }
 
   async latest() {
-    const chain = this.chain
+    const chain = this
     const res = await this.resolver.resolveLatest(chain)
     return res.pulse
   }
