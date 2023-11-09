@@ -1,6 +1,6 @@
 import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pulse, AnyIterable, PulseIndex, PulseResolution, IntoResolveChainQuery, ChainResolution, IntoResolvePulseQuery } from '@twine-protocol/twine-core'
 import type { FetcherType, FetcherOptions } from 'itty-fetcher'
-import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine } from '@twine-protocol/twine-core'
+import { memoized, TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine } from '@twine-protocol/twine-core'
 import { CID } from 'multiformats'
 import { fetcher } from 'itty-fetcher'
 import { CarReader, CarWriter } from '@ipld/car'
@@ -145,26 +145,43 @@ async function handleResponse(res: Response): Promise<ApiResponse<Twine<TwineVal
   }
 }
 
+const REQUEST_CACHE = new Map<string, Promise<any>>()
+
+type HttpStoreOptions = {
+  allowDuplicateRequests?: boolean
+}
+
 export class HttpStore implements Store {
   private fetcher: FetcherType
   private cache: TwineCache = new TwineCache()
+  private requestCache?: Map<string, Promise<Pulse>>
 
-  constructor(baseUrl: string, fetcherOptions?: FetcherOptions ) {
+  constructor(baseUrl: string, fetcherOptions?: FetcherOptions & HttpStoreOptions) {
     this.fetcher = fetcher({
       ...fetcherOptions,
       base: baseUrl,
       handleResponse,
     })
+    if (fetcherOptions?.allowDuplicateRequests !== true) {
+      this.requestCache = REQUEST_CACHE
+    }
   }
 
   private async fetchRawPulse(chain: IntoCid, subpath: string): Promise<Pulse | null> {
     const path = `/chains/${coerceCid(chain)}/pulses/${subpath}`
-    const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path)
-    if (!twines.length) {
-      return null
+    const fn = async () => {
+      const { twines } = await this.fetcher.get<ApiResponse<Pulse>>(path)
+      if (!twines.length) {
+        return null
+      }
+      const pulse = twines[0]
+      return pulse
     }
-    const pulse = twines[0]
-    return pulse
+    if (!this.requestCache) {
+      return fn()
+    } else {
+      return memoized(this.requestCache, path, fn)
+    }
   }
 
   async fetchChain(chainCid: IntoCid): Promise<Chain | null> {

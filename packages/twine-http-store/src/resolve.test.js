@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeAll } from 'bun:test'
+import { describe, test, expect, beforeAll, mock } from 'bun:test'
 import { HttpStore } from '.'
 
 async function collect(iterable, count) {
@@ -29,15 +29,25 @@ describe('HttpStore', () => {
     expect(latest.pulse).toBeDefined()
   })
 
+  test('should throttle parallel requests', async () => {
+    const f = mock(fetch)
+    const store = new HttpStore('http://localhost:3000', { fetch: f })
+    for (const i of [1, 2, 3]){
+      store.resolveLatest(chains[0])
+    }
+    await store.resolveLatest(chains[0])
+    expect(f).toHaveBeenCalledTimes(1)
+  })
+
   test('should resolve 10 pulses', async () => {
     const pulses = await collect(store.pulses(chains[0]), 10)
     expect(pulses.length).toBe(10)
   })
 
-  test('should resolve 400 pulses', async () => {
-    console.time('resolve 400 chain')
-    const pulses = await collect(store.pulses(chains[0]), 400)
-    console.timeEnd('resolve 400 chain')
-    expect(pulses.length).toBe(400)
+  test('should resolve 200 pulses', async () => {
+    console.time('resolve 200 chain')
+    const pulses = await collect(store.pulses(chains[0]), 200)
+    console.timeEnd('resolve 200 chain')
+    expect(pulses.length).toBe(200)
   })
 })

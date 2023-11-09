@@ -3,14 +3,33 @@ import type { Awaitable, CID, IntoCid } from '../types'
 import { Twine } from '../twine'
 import type { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseResolution, Resolution, ResolveOptions, UnfulfilledResolution } from './types'
 
-const memoized = (
-  cache: Map<string, Promise<Chain | Pulse | null>>,
+export const asyncThrottle = <T>(fn: (...x: any[]) => Promise<T>, delay?: number) => {
+  let pending: Promise<T> | null = null
+  return (...args: any[]) => {
+    if (!pending) {
+      pending = fn(...args)
+      if (!delay){
+        pending.finally(() => {
+          pending = null
+        })
+      } else {
+        setTimeout(() => {
+          pending = null
+        }, delay)
+      }
+    }
+    return pending
+  }
+}
+
+export const memoized = <T>(
+  cache: Map<string, Promise<T>>,
   key: string,
-  fn: (...args: any[]) => Awaitable<Chain | Pulse | null>,
+  fn: (...args: any[]) => Awaitable<T>,
   ...args: any[]
 ) => {
   if (cache.has(key)) {
-    return cache.get(key)
+    return cache.get(key)!
   }
   const result = Promise.resolve(fn(...args))
     .finally(() => cache.delete(key))

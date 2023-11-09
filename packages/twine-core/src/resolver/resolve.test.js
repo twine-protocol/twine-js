@@ -247,6 +247,7 @@ describe('combineResolvers()', () => {
       chain: mockData.chain
       , pulse: mockData.pulse
       , errors: undefined
+      , resolver: mockResolver
     })
   })
 
