@@ -12,10 +12,14 @@ export type Mixin = {
   value: CID,
 }
 
+export type Meta = {
+  [key: string]: any,
+}
+
 export type ChainContent = {
   key: JWK,
   links_radix: number,
-  meta: {},
+  meta: Meta,
   mixins: Mixin[],
   source: string,
   specification: string,
