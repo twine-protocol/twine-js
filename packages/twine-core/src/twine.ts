@@ -1,4 +1,4 @@
-import type { ChainValue, PulseValue } from './types'
+import type { AnyMap, ChainValue, PulseValue } from './types'
 import * as Block from 'multiformats/block'
 import { CID, Version } from 'multiformats/cid'
 import * as dagJson from '@ipld/dag-json'
@@ -6,8 +6,8 @@ import { InvalidTwineData } from './errors'
 import { isChain, isChainValue, isPulse, isPulseValue, isTwine } from './checks'
 import { getContentDigest, verifySignature } from './verify'
 
-export type Chain = Twine<ChainValue>
-export type Pulse = Twine<PulseValue>
+export type Chain<M extends AnyMap = AnyMap> = Twine<ChainValue<M>>
+export type Pulse<P extends AnyMap = AnyMap> = Twine<PulseValue<P>>
 
 export class Twine<T extends ChainValue | PulseValue> extends Block.Block<T, number, number, Version> {
   isTwineInstance = true

@@ -1,17 +1,17 @@
-import type { Mixin, Pulse, IntoCid, Payload, ChainContent, JWK, PulseContent } from '@twine-protocol/twine-core'
+import type { Mixin, Pulse, IntoCid, ChainContent, JWK, PulseContent, AnyMap } from '@twine-protocol/twine-core'
 import { CID } from 'multiformats'
 import { asMixin, coerceCid, isTwine } from '@twine-protocol/twine-core'
 import { isObjectLike, isPlainObject } from './checks'
 
 export type IntoMixin = { chain: IntoCid, value: IntoCid }
 
-export interface UnsanitizedChainContent {
+export interface UnsanitizedChainContent<M extends AnyMap> {
   source: string
   , specification?: string
   , key?: JWK
   , links_radix?: number
   , mixins?: IntoMixin[]
-  , meta?: { [key: string]: any }
+  , meta?: M
 }
 
 export interface UnsanitizedPulseContent {
@@ -59,7 +59,7 @@ export const sanitizeLinks = (links: IntoCid[]) => {
   return links.map(l => coerceCid(l))
 }
 
-export const sanitizePayload = (payload: object): Payload => {
+export const sanitizePayload = (payload: object): AnyMap => {
 
   function recurse(value: any): any {
     if (isTwine(value)) {
@@ -110,7 +110,7 @@ export const sanitizeChainContent = ({
   links_radix = 32,
   mixins = [],
   meta = {}
-}: UnsanitizedChainContent): ChainContent => {
+}: UnsanitizedChainContent<any>): ChainContent => {
 
   mixins = sanitizeMixins(mixins)
   meta = sanitizePayload(meta)

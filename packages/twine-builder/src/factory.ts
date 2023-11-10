@@ -4,8 +4,9 @@ import { sha3512 } from '@multiformats/sha3'
 import type { MultihashHasher } from 'multiformats'
 import * as jose from 'jose'
 import { IntoMixin, UnsanitizedChainContent, sanitizeChainContent, sanitizePulseContent } from './sanitize'
-import type { Chain, Pulse, Signer, TwineContent, IntoCid, TwineValue } from '@twine-protocol/twine-core'
+import type { Chain, Pulse, Signer, TwineContent, IntoCid, TwineValue, AnyMap } from '@twine-protocol/twine-core'
 import { Twine, getContentDigest, getLayerPos, isTwine } from '@twine-protocol/twine-core'
+import { JoseSigner } from '.'
 
 const DEFAULT_SPECIFICATION = 'twine/1.0.x'
 const specificationRegex = /^twine\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x($|(\/[\w-_\d]+\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x)?$)/
@@ -63,17 +64,17 @@ const createTwine = async (content: TwineContent, signer: Signer, hasher: Multih
   return new Twine({ cid, bytes, value })
 }
 
-export const createChain = async (
+export const createChain = async <M extends AnyMap>(
   {
     source
     , specification = DEFAULT_SPECIFICATION
     , links_radix = 32
     , mixins = []
     , meta = {}
-  } : UnsanitizedChainContent,
+  } : UnsanitizedChainContent<M | {}>,
   signer: Signer,
   hasher: MultihashHasher = sha3512
-) => {
+): Promise<Chain<M>> => {
   if (!specificationRegex.test(specification)) {
     throw new Error('Invalid specification string')
   }
@@ -86,19 +87,19 @@ export const createChain = async (
     , meta
   })
   const twine = await createTwine(content, signer, hasher)
-  return twine
+  return twine as Chain<M>
 }
 
-export const createPulse = async (
+export const createPulse = async <P extends AnyMap>(
   chain: Chain,
   previous: Pulse | false,
   { mixins = [], payload = {} }: {
     mixins?: IntoMixin[]
-    , payload?: { [key: string]: any }
+    , payload?: P | {}
   },
   signer: Signer,
   hasher: MultihashHasher = sha3512
-) => {
+): Promise<Pulse<P>> => {
   if (!isTwine(chain)) {
     throw new Error('Provided chain must be a Twine object instance')
   }
@@ -137,5 +138,5 @@ export const createPulse = async (
   }, previous)
 
   const twine = await createTwine(content, signer, hasher)
-  return twine
+  return twine as Pulse<P>
 }
