@@ -38,10 +38,6 @@ export class Twine<T extends ChainValue | PulseValue> extends Block.Block<T, num
    * functions to decode a twine instance. Or use the
    * {@link https://github.com/twine-protocol/twine-js/tree/master/packages/twine-builder | twine-builder}
    * package to create a twine instance.
-   *
-   * @param cid - CID of the twine
-   * @param bytes - raw bytes of the twine
-   * @param value - twine data as a javascript object
    */
   constructor({ cid, bytes, value }: { cid: CID, bytes: Uint8Array, value: T }) {
     const thisIsChain = isChainValue(value)

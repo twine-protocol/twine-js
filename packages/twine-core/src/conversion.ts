@@ -246,13 +246,6 @@ export const linksAsQueries = (pulse: Pulse): ResolvePulseQueryStrict[] => {
   }))
 }
 
-/**
- * Convert something query-like into a query
- *
- * This is used internally to enable the flexibility of the resolver api.
- *
- * @group Conversion
- */
 export function asQuery(val: FulfilledChainResolution): ResolveChainQuery<CID>
 export function asQuery(val: FulfilledPulseResolution): ResolvePulseQueryStrict
 export function asQuery(val: Chain): ResolveChainQuery<CID>
@@ -260,6 +253,13 @@ export function asQuery(val: Pulse): ResolvePulseQueryStrict
 export function asQuery(val: Mixin): ResolvePulseQueryStrict
 export function asQuery(val: ResolveQueryStrict): ResolveQueryStrict
 export function asQuery(val: any): ResolveQueryStrict | null
+/**
+ * Convert something query-like into a query
+ *
+ * This is used internally to enable the flexibility of the resolver api.
+ *
+ * @group Conversion
+ */
 export function asQuery(val: any): ResolveQueryStrict | null {
   if (!val) { return null }
   // if it's a twine, we can just use the cids inside

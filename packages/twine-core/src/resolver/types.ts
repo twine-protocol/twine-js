@@ -191,7 +191,7 @@ export type ResolveOptions = {
  */
 export interface Resolver {
   /**
-   * Resolve a chain or pulse (with its chain) from a query
+   * Resolve a chain from a query
    *
    * This is the main way to get a pulse or chain from somewhere
    * and have it automatically verified.
@@ -231,7 +231,10 @@ export interface Resolver {
    * ```
    */
   resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
-  resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>,
+  /**
+   * Resolve a pulse (with its chain) from a query
+   */
+  resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>;
 
   /**
    * Resolve the latest pulse of a chain
@@ -254,7 +257,7 @@ export interface Resolver {
    * const resolution = await resolver.resolveLatest(chain)
    * ```
    */
-  resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<PulseResolution>,
+  resolveLatest(chain: IntoCid, options?: ResolveOptions): Promise<PulseResolution>;
 
   /**
    * Resolve a pulse by index
@@ -272,7 +275,7 @@ export interface Resolver {
    * }
    * ```
    */
-  resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<PulseResolution>,
+  resolveIndex(chain: IntoCid, index: PulseIndex, options?: ResolveOptions): Promise<PulseResolution>;
   /**
    * Check if a cid can be resolved
    *
@@ -289,7 +292,7 @@ export interface Resolver {
    * }
    * ```
    */
-  has(cid: IntoCid): Awaitable<boolean>,
+  has(cid: IntoCid): Awaitable<boolean>;
 
   /**
    * Get the pulses of a chain
@@ -307,7 +310,7 @@ export interface Resolver {
    * }
    * ```
    */
-  pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse> | Generator<Pulse> | AnyIterable<Pulse>,
+  pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse> | Generator<Pulse> | AnyIterable<Pulse>;
   /**
    * Get the chains that are known to the resolver
    *
@@ -318,5 +321,5 @@ export interface Resolver {
    * const chains = await collect(resolver.chains())
    * ```
    */
-  chains(): AsyncGenerator<Chain> | Generator<Chain> | AnyIterable<Chain>,
+  chains(): AsyncGenerator<Chain> | Generator<Chain> | AnyIterable<Chain>;
 }

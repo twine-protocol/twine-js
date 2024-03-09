@@ -5,6 +5,7 @@
  *
  * @group Skiplist
  *
+ * @example
  * ```js
  * getLayerPos(10, 1560) == 1 // (multiple of 10)
  * getLayerPos(10, 1264) == 0 // (NOT a multiple of 10)

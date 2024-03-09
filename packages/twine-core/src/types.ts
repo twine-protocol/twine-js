@@ -75,13 +75,17 @@ export type TwineContent = ChainContent | PulseContent;
 
 /** Value field for chains */
 export type ChainValue<M extends AnyMap = AnyMap> = {
+  /** Chain content */
   content: ChainContent<M>;
+  /** Chain signature */
   signature: Signature;
 }
 
 /** Value field for pulses */
 export type PulseValue<P extends AnyMap = AnyMap> = {
+  /** Pulse content */
   content: PulseContent<P>;
+  /** Pulse signature */
   signature: Signature;
 }
 
@@ -96,6 +100,13 @@ export type IntoCid = CID | string | Uint8Array | Twine<TwineValue>
  * Any class implementing this interface can be used as a signer for Twine
  */
 export interface Signer {
+  /**
+   * Get the public key in JWK format
+   */
   getPublicJWK(): Promise<JWK>
+  /**
+   * Sign the given bytes
+   * @param bytes - Bytes to sign
+   */
   sign(bytes: Uint8Array): Promise<Signature>
 }

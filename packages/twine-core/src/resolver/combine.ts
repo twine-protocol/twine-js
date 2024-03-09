@@ -42,7 +42,6 @@ export interface ResolveLatestOptionsCombined extends ResolveOptions {
  * A resolver that combines multiple resolvers
  *
  * @category Resolving
- * {@inheritdoc Resolver}
  */
 export interface CombinedResolver extends Resolver {
   /**
@@ -73,7 +72,6 @@ export interface CombinedResolver extends Resolver {
  * A combined pulse resolution
  *
  * @category Resolving
- * {@inheritdoc PulseResolution}
  */
 export type CombinedPulseResolution = PulseResolution & {
   /**
@@ -90,7 +88,6 @@ export type CombinedPulseResolution = PulseResolution & {
  * A combined chain resolution
  *
  * @category Resolving
- * {@inheritdoc ChainResolution}
  */
 export type CombinedChainResolution = ChainResolution & {
   /**

@@ -14,8 +14,11 @@ function warnDeprecated(name: string){
  * Metadata used by the memory store to keep track of chains and pulses
  */
 export type ChainStorageMeta = {
+  /** The CID of the chain */
   chainCid: CID,
+  /** The latest index of the chain */
   latestIndex: number,
+  /** A map of pulse index to pulse CID */
   indexMap: CacheMap<number, Pulse>
 }
 
@@ -27,10 +30,26 @@ export type ChainStorageMeta = {
  * @group Storage
  */
 export class MemoryStore implements Store {
-  chainStore: Map<string, Chain> = new Map()
-  chainStorageMeta: Map<string, ChainStorageMeta> = new Map()
-  pulseStore: CacheMap<string, Pulse> = new CacheMap()
-  maxSize: number
+  /**
+   * Chains are stored in a map with the CID as the key
+   */
+  protected chainStore: Map<string, Chain> = new Map()
+  /**
+   * Chain storage metadata
+   */
+  protected chainStorageMeta: Map<string, ChainStorageMeta> = new Map()
+  /**
+   * Pulses are stored in a map with the CID as the key
+   */
+  protected pulseStore: CacheMap<string, Pulse> = new CacheMap()
+  /**
+   * The maximum number of twines to keep in memory
+   */
+  protected maxSize: number
+
+  /**
+   * {@inheritDoc Store}
+   */
 
   /**
    * Create a new memory store
@@ -136,11 +155,11 @@ export class MemoryStore implements Store {
     }
   }
 
+  saveMany(twines: AsyncIterable<Twine<TwineValue>>): Promise<void>
+  saveMany(twines: Iterable<Twine<TwineValue>>): void
   /**
    * {@inheritDoc Store.saveMany}
    */
-  saveMany(twines: AsyncIterable<Twine<TwineValue>>): Promise<void>
-  saveMany(twines: Iterable<Twine<TwineValue>>): void
   saveMany(twines: AnyIterable<Twine<TwineValue>>) {
     if (isAsyncIterable(twines)) {
       return (async () => {
@@ -192,11 +211,11 @@ export class MemoryStore implements Store {
     }
   }
 
+  async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+  async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
   /**
    * {@inheritDoc Resolver.resolve}
    */
-  async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
-  async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
   async resolve(query: any, options?: ResolveOptions) {
     return resolveHelper({
       fetchChain: ({ chainCID }) => this.fetch(chainCID) as Chain | null
@@ -251,6 +270,20 @@ export class MemoryStore implements Store {
  * @group Storage
  */
 export class TwineCache extends MemoryStore {
+
+  /**
+   * {@inheritDoc Store}
+   */
+
+  /**
+   * {@inheritDoc MemoryStore}
+   */
+
+  /**
+   * Create a new twine cache
+   *
+   * @param maxSize - The maximum number of twines to keep in memory (default 10000)
+   */
   constructor(maxSize = 10000) {
     super(maxSize)
   }

@@ -63,6 +63,7 @@ export const memoized = <T>(
  * @category Resolving
  */
 export type FetchChainQuery = {
+  /** Chain CID */
   chainCID: CID
 }
 
@@ -72,7 +73,9 @@ export type FetchChainQuery = {
  * @category Resolving
  */
 export type FetchPulseQuery = {
+  /** Chain CID (maybe) */
   chainCID?: CID,
+  /** Pulse CID */
   pulseCID: CID
 }
 
@@ -177,6 +180,8 @@ const sanitizeQuery = (thing: any): { chain: IntoCid, pulse?: IntoCid } => {
   return { chain }
 }
 
+export async function resolveHelper(callers: ResolveCallers, thing: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
 /**
  * A helper function for implementing the {@link Resolver.resolve} method
  *
@@ -184,11 +189,11 @@ const sanitizeQuery = (thing: any): { chain: IntoCid, pulse?: IntoCid } => {
  * @param callers - The fetchers to use
  * @param thing - The query to resolve
  * @param options - Options for the resolution
- * @see {@link MemoryResolver.resolve} for an example of how to use this
+ * @see {@link MemoryStore.resolve} for an example of how to use this
  * @see {@link ResolveCallers}
  * @example
  * ```js
- * class MemoryResolver {
+ * class MemoryStore {
  *   async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
  *   async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
  *   async resolve(query: any, options?: ResolveOptions) {
@@ -201,8 +206,6 @@ const sanitizeQuery = (thing: any): { chain: IntoCid, pulse?: IntoCid } => {
  * }
  * ```
  */
-export async function resolveHelper(callers: ResolveCallers, thing: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
-export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
 export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery | IntoResolveChainQuery, options: ResolveOptions = {}): Promise<Resolution> {
   const { noVerify = false, noCache = false } = options
 

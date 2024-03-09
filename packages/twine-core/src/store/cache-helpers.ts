@@ -1,3 +1,6 @@
+/**
+ * Cache options
+ */
 export type CacheOptions = {
   /**
    * The maximum number of items to keep in the cache
@@ -48,7 +51,7 @@ export class CacheMap<K, V> extends Map<K, V> {
   }
 
   /**
-   * {@inheritDoc Map.set}
+   * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set | Map.set}
    */
   set(key: K, value: V) {
     super.set(key, value)
@@ -57,7 +60,7 @@ export class CacheMap<K, V> extends Map<K, V> {
   }
 
   /**
-   * {@inheritDoc Map.get}
+   * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get | Map.get}
    */
   get(key: K) {
     const value = super.get(key)

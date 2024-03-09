@@ -9,6 +9,9 @@ import type { Resolver } from '../resolver/types'
  */
 export interface Store extends Resolver {
   /**
+   * {@inheritDoc Resolver}
+   */
+  /**
    * Fetch a twine from storage, returning null if it is not found
    *
    * it is NOT expected that the twine signature is checked,
