@@ -1,16 +1,38 @@
 export type CacheOptions = {
-  // default 10000, 0 for unlimited
+  /**
+   * The maximum number of items to keep in the cache
+   *
+   * Defaults to 10000, set to 0 for no limit
+   *
+   * @default 10000
+   */
   maxSize?: number
 }
 
+/**
+ * A map that caches the most recently accessed items
+ *
+ * @category Store
+ */
 export class CacheMap<K, V> extends Map<K, V> {
   private maxSize: number
 
+  /**
+   * Create a new cache map
+   *
+   * @param iterable - An iterable of key-value pairs
+   * @param options - Options for the cache
+   */
   constructor(iterable?: Iterable<[K, V]>, options?: CacheOptions) {
     super(iterable)
     this.maxSize = options?.maxSize ?? 10000
   }
 
+  /**
+   * Set the maximum number of items to keep in the cache
+   *
+   * If the cache is already larger than the new max size, the oldest items will be removed.
+   */
   setMaxSize(maxSize: number) {
     this.maxSize = maxSize
     if (this.maxSize <= 0) { return }
@@ -25,12 +47,18 @@ export class CacheMap<K, V> extends Map<K, V> {
     }
   }
 
+  /**
+   * {@inheritDoc Map.set}
+   */
   set(key: K, value: V) {
     super.set(key, value)
     this.setMaxSize(this.maxSize)
     return this
   }
 
+  /**
+   * {@inheritDoc Map.get}
+   */
   get(key: K) {
     const value = super.get(key)
     if (value !== undefined) {

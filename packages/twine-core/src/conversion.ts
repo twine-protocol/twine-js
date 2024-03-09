@@ -8,6 +8,48 @@ import { sha3512 } from '@multiformats/sha3'
 import { Chain, Pulse, Twine } from './twine'
 import * as codec from '@ipld/dag-cbor'
 
+/**
+ * @groupDescription Conversion
+ *
+ * Conversion utilities for twine.
+ *
+ * Generally the `as` functions return null if the conversion fails.
+ * And the `coerce` functions throw an error if the conversion fails.
+ */
+
+/**
+ * Collect an async iterable into an array
+ *
+ * @group Conversion
+ * @param iterable - The async iterable to collect
+ *
+ * @example
+ * ```js
+ * import { collect } from '@twine-protocol/twine-core'
+ * const chains = await collect(resolver.chains())
+ * ```
+ */
+export async function collect<T>(iterable: AsyncIterable<T>): Promise<T[]> {
+  const res: T[] = []
+  for await (const item of iterable) {
+    res.push(item)
+  }
+  return res
+}
+
+/**
+ * Convert something mixin-like into a mixin
+ *
+ * @group Conversion
+ * @param m - The mixin-like object
+ * @returns The mixin or null if it could not be converted
+ *
+ * @example
+ * ```js
+ * const mixin = asMixin({ chain: 'bafybeib3...', value: 'bafybeib3...' })
+ * const anotherMixin = asMixin(somePulse)
+ * ```
+ */
 export function asMixin(m: any): Mixin | null {
   if (isPulse(m)) {
     return {
@@ -35,6 +77,19 @@ export function asMixin(m: any): Mixin | null {
   }
 }
 
+/**
+ * Convert something into a CID
+ *
+ * @group Conversion
+ * @param val - The value to convert
+ * @returns The CID or null if it could not be converted
+ *
+ * @example
+ * ```js
+ * const cid = asCid('bafybeib3...')
+ * const anotherCid = asCid(somePulse)
+ * ```
+ */
 export const asCid = (val: any): CID | null => {
   if (isTwine(val)) {
     return val.cid
@@ -52,6 +107,14 @@ export const asCid = (val: any): CID | null => {
   return null
 }
 
+/**
+ * Coerce something into a CID
+ *
+ * Throws an error if the value can not be coerced into a CID
+ *
+ * @group Conversion
+ * @see {@link asCid}
+ */
 export const coerceCid = (val: IntoCid): CID => {
   const cid = asCid(val)
   if (cid) {
@@ -60,6 +123,11 @@ export const coerceCid = (val: IntoCid): CID => {
   throw new Error(`Could not coerce value to CID. Value: ${val}`)
 }
 
+/**
+ * Convert bytes into a hex string
+ *
+ * @group Conversion
+ */
 export function bytesToHex(bytes: Uint8Array) {
   return Array.prototype.map.call(
     bytes,
@@ -67,6 +135,11 @@ export function bytesToHex(bytes: Uint8Array) {
   ).join('')
 }
 
+/**
+ * Convert a hex string into bytes
+ *
+ * @group Conversion
+ */
 export function hex2bytes(input: string) {
   if (typeof input !== 'string') {
     throw new TypeError('Input must be a string')
@@ -87,6 +160,15 @@ const isJsonParseResult = (obj: any): obj is { cid: CID, data: any } => {
   return obj && obj.cid && obj.data
 }
 
+/**
+ * Convert a DAG-JSON encoded twine into a twine instance
+ *
+ * This is one of the primary ways to read twine data.
+ *
+ * Throws an error if the data is invalid.
+ *
+ * @group Conversion
+ */
 export const fromJSON = async (json: string | object): Promise<Chain | Pulse> => {
   const obj = typeof json === 'string' ? JSON.parse(json) : json
   const jsonBytes = (new TextEncoder()).encode(JSON.stringify(obj))
@@ -113,6 +195,16 @@ export const fromJSON = async (json: string | object): Promise<Chain | Pulse> =>
   return new Twine({ cid, bytes, value })
 }
 
+/**
+ * Converts a bytes array (ipld block) into a twine instance
+ *
+ * The CID must be provided, as it is not encoded in the bytes.
+ * It will be used to verify the bytes.
+ *
+ * Throws an error if the data is invalid.
+ *
+ * @group Conversion
+ */
 export const fromBytes = async (
   { bytes, cid, hasher = sha3512 }: {
     bytes: Uint8Array
@@ -134,6 +226,19 @@ export const fromBytes = async (
   })
 }
 
+/**
+ * Converts a pulse's links array into a list of queries.
+ *
+ * This is useful for resolving a pulse's links.
+ *
+ * @group Conversion
+ * @example
+ * ```js
+ * const pulse = await resolve(pulseQuery)
+ * const links = linksAsQueries(pulse)
+ * const resolvedLinks = await Promise.all(links.map(q => resolve(q)))
+ * ```
+ */
 export const linksAsQueries = (pulse: Pulse): ResolvePulseQueryStrict[] => {
   return pulse.value.content.links.map(link => ({
     chain: pulse.value.content.chain
@@ -141,6 +246,13 @@ export const linksAsQueries = (pulse: Pulse): ResolvePulseQueryStrict[] => {
   }))
 }
 
+/**
+ * Convert something query-like into a query
+ *
+ * This is used internally to enable the flexibility of the resolver api.
+ *
+ * @group Conversion
+ */
 export function asQuery(val: FulfilledChainResolution): ResolveChainQuery<CID>
 export function asQuery(val: FulfilledPulseResolution): ResolvePulseQueryStrict
 export function asQuery(val: Chain): ResolveChainQuery<CID>
@@ -182,6 +294,14 @@ export function asQuery(val: any): ResolveQueryStrict | null {
   return { chain, pulse }
 }
 
+/**
+ * Coerce something into a query
+ *
+ * Throws an error if the value can not be coerced into a query
+ *
+ * @group Conversion
+ * @see {@link asQuery}
+ */
 export const coerceQuery = (val: any): ResolveQueryStrict => {
   const query = asQuery(val)
   if (!query) { throw new Error(`Can not coerce value into ResolveQuery. Value: ${val}`) }

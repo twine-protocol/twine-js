@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "build": "lerna run build",
+    "docs": "lerna run docs",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
     "version": "lerna version --no-push --no-private --no-commit-hooks",
     "publish": "lerna publish from-package --no-push --no-private --no-commit-hooks",
@@ -13,7 +14,9 @@
   },
   "devDependencies": {
     "bun-types": "latest",
-    "lerna": "^7.3.1"
+    "lerna": "^7.3.1",
+    "typedoc": "^0.25.11",
+    "typedoc-plugin-markdown": "^3.17.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

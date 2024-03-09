@@ -3,6 +3,13 @@ import type { Awaitable, CID, IntoCid } from '../types'
 import { Twine } from '../twine'
 import type { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseResolution, Resolution, ResolveOptions, UnfulfilledResolution } from './types'
 
+/**
+ * Throttle an async function call
+ *
+ * Within the delay interval, the same promise is returned
+ *
+ * @category Internal
+ */
 export const asyncThrottle = <T>(fn: (...x: any[]) => Promise<T>, delay?: number) => {
   let pending: Promise<T> | null = null
   return (...args: any[]) => {
@@ -22,6 +29,19 @@ export const asyncThrottle = <T>(fn: (...x: any[]) => Promise<T>, delay?: number
   }
 }
 
+/**
+ * memoize an async function call so that while it is pending, the same call is not made again
+ *
+ * This is used by the {@link ResolveCallers.requestCache} to avoid making
+ * multiple requests for the same twine.
+ *
+ * @category Internal
+ * @category Resolving
+ * @param cache - The cache to use
+ * @param key - The key to use
+ * @param fn - The function to call
+ * @param args - The arguments to pass to the function
+ */
 export const memoized = <T>(
   cache: Map<string, Promise<T>>,
   key: string,
@@ -37,19 +57,83 @@ export const memoized = <T>(
   return result
 }
 
+/**
+ * CID for a chain lookup
+ *
+ * @category Resolving
+ */
 export type FetchChainQuery = {
   chainCID: CID
 }
 
+/**
+ * CIDs for a pulse lookup
+ *
+ * @category Resolving
+ */
 export type FetchPulseQuery = {
   chainCID?: CID,
   pulseCID: CID
 }
 
+/**
+ * An object containing methods to fetch twines
+ *
+ * Used by the {@link resolveHelper} function
+ *
+ * These methods may return null or throw an error if the twine is not found
+ * and the {@link resolveHelper} function will handle that.
+ *
+ * These methods do not need to check the signature of the twine or anything,
+ * that is all handled by the {@link resolveHelper} function.
+ *
+ * @category Resolving
+ */
 export type ResolveCallers = {
+  /**
+   * Fetch a chain
+   */
   fetchChain: (q: FetchChainQuery, options: any) => Awaitable<Chain | null>
+  /**
+   * Fetch a pulse
+   */
   fetchPulse: (q: FetchPulseQuery, options: any) => Awaitable<Pulse | null>
+  /**
+   * A cache to use
+   *
+   * If set to `false` or `null`, no caching will be done
+   *
+   * Normally a resolver will keep a reference to its cache and simply pass it through
+   * in here.
+   *
+   * @example
+   * ```js
+   * resolveHelper({
+   *   //...
+   *   cache: this.cache
+   * })
+   * ```
+   */
   cache?: TwineCache | false | null
+  /**
+   * A cache to use for requests
+   *
+   * If set to `false` or `null`, no caching will be done
+   *
+   * This is a cache of pending requests, so that a lookup
+   * for the same twine is not made multiple times.
+   *
+   * It is sufficient to use a simple Map for this.
+   *
+   * @example
+   * ```js
+   * //...
+   * resolveHelper({
+   *   //...
+   *   requestCache: this.requestCache // a Map()
+   * })
+   * ```
+   */
   requestCache?: Map<string, Promise<Chain | Pulse>>
 }
 
@@ -93,6 +177,30 @@ const sanitizeQuery = (thing: any): { chain: IntoCid, pulse?: IntoCid } => {
   return { chain }
 }
 
+/**
+ * A helper function for implementing the {@link Resolver.resolve} method
+ *
+ * @category Resolving
+ * @param callers - The fetchers to use
+ * @param thing - The query to resolve
+ * @param options - Options for the resolution
+ * @see {@link MemoryResolver.resolve} for an example of how to use this
+ * @see {@link ResolveCallers}
+ * @example
+ * ```js
+ * class MemoryResolver {
+ *   async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
+ *   async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
+ *   async resolve(query: any, options?: ResolveOptions) {
+ *     return resolveHelper({
+ *       fetchChain: ({ chainCID }) => this.fetch(chainCID) as Chain | null,
+ *       fetchPulse: ({ pulseCID }) => this.fetch(pulseCID) as Pulse | null
+ *     }, query, options)
+ *   }
+ *   //...
+ * }
+ * ```
+ */
 export async function resolveHelper(callers: ResolveCallers, thing: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
 export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
 export async function resolveHelper(callers: ResolveCallers, thing: IntoResolvePulseQuery | IntoResolveChainQuery, options: ResolveOptions = {}): Promise<Resolution> {

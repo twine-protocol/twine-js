@@ -8,11 +8,26 @@ import { InvalidSignature, InvalidTwineData } from './errors'
 import { MultihashDigest } from 'multiformats/hashes/digest'
 import { isChain, isTwine } from './checks'
 
+/**
+ * Get the hash digest of twine content
+ *
+ * Used when verifying signatures
+ *
+ * @group Internal
+ */
 export async function getContentDigest(content: TwineContent): Promise<MultihashDigest> {
   const bytes = codec.encode(content)
   return sha3512.digest(bytes)
 }
 
+/**
+ * Verify the signature of a chain or pulse
+ *
+ * @group Internal
+ * @throws {InvalidTwineData} If the chain or pulse is invalid
+ * @throws {InvalidSignature} If the signature is invalid
+ * @throws {Error} If inputs don't make sense (likely programmer error)
+ */
 export async function verifySignature(chain: Chain, twine: Chain | Pulse) {
   if (!isChain(chain)) {
     throw new InvalidTwineData('Invalid chain instance specified')

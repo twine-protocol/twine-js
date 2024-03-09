@@ -7,6 +7,16 @@ describe('skipList()', () => {
     expect(actual).toStrictEqual([9, 8, 7, 6, 5, 4, 3, 2])
   })
 
+  test('should return list of indices for radix 10', () => {
+    const actual = Array.from(skipList(10, 23, 5))
+    expect(actual).toStrictEqual([ 20, 10, 9, 8, 7, 6 ])
+  })
+
+  test('should return list of array indices for radix 10', () => {
+    const actual = Array.from(skipList(10, 23, 5, true))
+    expect(actual).toStrictEqual([1, 1, 0, 0, 0, 0])
+  })
+
   test('should return list of 0s for radix 0', () => {
     const actual = Array.from(skipList(0, 10, 1, true))
     expect(actual).toStrictEqual([0, 0, 0, 0, 0, 0, 0, 0])

@@ -18,6 +18,7 @@
     "build:lib": "esbuild ./src/index.ts --bundle --format=esm --packages=external --outfile=./dist/index.js",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "build": "bun run build:lib && bun run build:types",
+    "docs": "typedoc --out docs --exclude *.test.ts --plugin typedoc-plugin-markdown src",
     "test": "bun test"
   },
   "devDependencies": {

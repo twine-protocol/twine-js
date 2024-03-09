@@ -2,32 +2,104 @@ import { ChainResolution, IntoResolveChainQuery, IntoResolvePulseQuery, PulseRes
 import { Awaitable, Chain, IntoCid, Pulse } from '..'
 import { TwineCache } from '../store'
 
+/**
+ * Options for combining resolvers
+ *
+ * @category Resolving
+ *
+ */
 export type CombineResolversOptions = {
+  /** The maximum number of items to cache */
   cacheSize?: number
 }
 
+/**
+ * Options for combined resolution calls
+ *
+ * @category Resolving
+ */
 export interface ResolveOptionsCombined extends ResolveOptions {
+  /**
+   * If true all resolvers will be sent the request and the first to
+   * respond will be used. If false, the resolvers will be queried in series.
+   */
   race?: boolean
 }
 
+/**
+ * Options for combined resolution of latest pulse calls
+ *
+ * @category Resolving
+ */
 export interface ResolveLatestOptionsCombined extends ResolveOptions {
+  /**
+   * If true, all resolvers will be queried and the best/latest result will be returned
+   */
   checkAll?: boolean,
 }
 
+/**
+ * A resolver that combines multiple resolvers
+ *
+ * @category Resolving
+ * {@inheritdoc Resolver}
+ */
 export interface CombinedResolver extends Resolver {
+  /**
+   * Add a resolver to the combined resolver
+   *
+   * @param r - The resolver to add
+   */
   add: (r: Resolver) => void,
+  /**
+   * Remove a resolver from the combined resolver
+   *
+   * @param r - The resolver to remove
+   */
   remove: (r: Resolver) => void,
+  /**
+   * Set the maximum number of items to cache
+   *
+   * @param count - The maximum number of items to cache
+   */
   setCacheSize: (count: number) => void,
+  /**
+   * Close the resolver (if cleanup is needed in sub-resolvers)
+   */
   close(): Awaitable<void>
 }
 
+/**
+ * A combined pulse resolution
+ *
+ * @category Resolving
+ * {@inheritdoc PulseResolution}
+ */
 export type CombinedPulseResolution = PulseResolution & {
+  /**
+   * Any errors that occurred during resolution
+   */
   errors?: Error[]
+  /**
+   * The resolver that provided the result
+   */
   resolver?: Resolver
 }
 
+/**
+ * A combined chain resolution
+ *
+ * @category Resolving
+ * {@inheritdoc ChainResolution}
+ */
 export type CombinedChainResolution = ChainResolution & {
+  /**
+   * Any errors that occurred during resolution
+   */
   errors?: Error[]
+  /**
+   * The resolver that provided the result
+   */
   resolver?: Resolver
 }
 
@@ -60,6 +132,28 @@ function firstTruthy<T>(input: Iterable<Awaitable<T>>): Promise<T | false> {
   })
 }
 
+/**
+ * Combine multiple resolvers into a single resolver
+ *
+ * @param resolverList - The resolvers to combine
+ * @param options - Options for the combined resolver
+ * @returns The combined resolver
+ *
+ * @category Resolving
+ *
+ * @example
+ * ```js
+ * import { MemoryStore } from '@twine-protocol/twine-core'
+ * const store1 = new MemoryStore()
+ * const store2 = new MemoryStore()
+ *
+ * store2.save(someChain) // exists in store2 but not store1
+ *
+ * const combined = combineResolvers([store1, store2])
+ * const { chain } = await combined.resolve({ chain: someChain.cid })
+ * console.log(chain) // someChain
+ * ```
+ */
 export const combineResolvers = (
   resolverList: Resolver[] = [],
   { cacheSize = 100 }: CombineResolversOptions = {}

@@ -10,31 +10,54 @@ function warnDeprecated(name: string){
   console.warn(`${name} is deprecated and will be removed in a future release.`)
 }
 
-export type ChainMeta = {
+/**
+ * Metadata used by the memory store to keep track of chains and pulses
+ */
+export type ChainStorageMeta = {
   chainCid: CID,
   latestIndex: number,
   indexMap: CacheMap<number, Pulse>
 }
 
+/**
+ * A store that keeps twines in memory
+ *
+ * This store is the base for the {@link TwineCache}.
+ *
+ * @group Storage
+ */
 export class MemoryStore implements Store {
   chainStore: Map<string, Chain> = new Map()
-  chainMeta: Map<string, ChainMeta> = new Map()
+  chainStorageMeta: Map<string, ChainStorageMeta> = new Map()
   pulseStore: CacheMap<string, Pulse> = new CacheMap()
   maxSize: number
 
+  /**
+   * Create a new memory store
+   *
+   * @param maxSize - The maximum number of twines to keep in memory (default infinite)
+   */
   constructor(maxSize = 0) {
     this.pulseStore.setMaxSize(maxSize)
     this.maxSize = maxSize
   }
 
+  /**
+   * Set the maximum number of twines to keep in memory
+   *
+   * If the store is already larger than the new max size, the oldest twines will be removed.
+   */
   setMaxSize(maxSize: number) {
     this.pulseStore.setMaxSize(maxSize)
-    for (const meta of this.chainMeta.values()) {
+    for (const meta of this.chainStorageMeta.values()) {
       meta.indexMap.setMaxSize(maxSize)
     }
     this.maxSize = maxSize
   }
 
+  /**
+   * {@inheritDoc Store.fetch}
+   */
   fetch(cid: IntoCid) {
     const key = coerceCid(cid).toString()
     const chain = this.chainStore.get(key)
@@ -48,27 +71,33 @@ export class MemoryStore implements Store {
     return null
   }
 
+  /**
+   * {@inheritDoc Resolver.has}
+   */
   has(cid: IntoCid){
     const key = coerceCid(cid).toString()
     return this.chainStore.has(key) || this.pulseStore.has(key)
   }
 
+  /**
+   * {@inheritDoc Store.delete}
+   */
   delete(cid: IntoCid) {
     const key = coerceCid(cid).toString()
     if (this.chainStore.has(key)) {
       this.chainStore.delete(key)
-      const meta = this.chainMeta.get(key)
+      const meta = this.chainStorageMeta.get(key)
       if (!meta) { return }
       for (const [index, pulse] of meta.indexMap.entries()) {
         this.pulseStore.delete(pulse.cid.toString())
       }
-      this.chainMeta.delete(key)
+      this.chainStorageMeta.delete(key)
     } else {
       const pulse = this.pulseStore.get(key)
       if (!pulse) { return }
       const chain = pulse.value.content.chain
       const chainKey = chain.toString()
-      const meta = this.chainMeta.get(chainKey)
+      const meta = this.chainStorageMeta.get(chainKey)
       this.pulseStore.delete(key)
       if (!meta) { return }
       const index = pulse.value.content.index
@@ -82,16 +111,19 @@ export class MemoryStore implements Store {
     const chainCid = pulse.value.content.chain
     const index = pulse.value.content.index
     const chainKey = chainCid.toString()
-    const meta = this.chainMeta.get(chainKey) || {
+    const meta = this.chainStorageMeta.get(chainKey) || {
       chainCid,
       latestIndex: -1,
       indexMap: new CacheMap([], { maxSize: this.maxSize })
     }
     meta.latestIndex = Math.max(meta.latestIndex, index)
     meta.indexMap.set(index, pulse)
-    this.chainMeta.set(chainKey, meta)
+    this.chainStorageMeta.set(chainKey, meta)
   }
 
+  /**
+   * {@inheritDoc Store.save}
+   */
   save(twine: Twine<any>) {
     if (!isTwine(twine)) { throw new Error('Can only store twine instances in cache') }
     const key = twine.cid.toString()
@@ -104,6 +136,9 @@ export class MemoryStore implements Store {
     }
   }
 
+  /**
+   * {@inheritDoc Store.saveMany}
+   */
   saveMany(twines: AsyncIterable<Twine<TwineValue>>): Promise<void>
   saveMany(twines: Iterable<Twine<TwineValue>>): void
   saveMany(twines: AnyIterable<Twine<TwineValue>>) {
@@ -120,14 +155,20 @@ export class MemoryStore implements Store {
     }
   }
 
+  /**
+   * Get an iterator of all the chains in the store
+   */
   chains() {
     return this.chainStore.values()
   }
 
+  /**
+   * Get an async iterator of all the pulses in a chain
+   */
   async *pulses(chainCid: IntoCid, start?: number | IntoCid, options?: ResolveOptions): AsyncGenerator<Pulse> {
     const chainKey = coerceCid(chainCid).toString()
     const chain = this.chainStore.get(chainKey)
-    const meta = this.chainMeta.get(chainKey)
+    const meta = this.chainStorageMeta.get(chainKey)
     if (!meta || (!chain && options?.noVerify !== true)) {
       return
     }
@@ -151,6 +192,9 @@ export class MemoryStore implements Store {
     }
   }
 
+  /**
+   * {@inheritDoc Resolver.resolve}
+   */
   async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
   async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
   async resolve(query: any, options?: ResolveOptions) {
@@ -160,9 +204,12 @@ export class MemoryStore implements Store {
     }, query, options)
   }
 
+  /**
+   * {@inheritDoc Resolver.resolveLatest}
+   */
   async resolveLatest(chainCid: IntoCid, options?: ResolveOptions): Promise<PulseResolution> {
     const chainKey = coerceCid(chainCid).toString()
-    const meta = this.chainMeta.get(chainKey)
+    const meta = this.chainStorageMeta.get(chainKey)
     if (!meta) {
       return { chain: null, pulse: null }
     }
@@ -173,9 +220,12 @@ export class MemoryStore implements Store {
     return this.resolve({ chain: chainCid, pulse: pulseCid }, options)
   }
 
+  /**
+   * {@inheritDoc Resolver.resolveIndex}
+   */
   async resolveIndex(chain: IntoCid, index: number, options?: ResolveOptions | undefined): Promise<PulseResolution> {
     const chainKey = coerceCid(chain).toString()
-    const meta = this.chainMeta.get(chainKey)
+    const meta = this.chainStorageMeta.get(chainKey)
     if (!meta) {
       return { chain: null, pulse: null }
     }
@@ -194,6 +244,12 @@ export class MemoryStore implements Store {
   }
 }
 
+/**
+ * A store that caches twines in memory
+ *
+ * @group Cache
+ * @group Storage
+ */
 export class TwineCache extends MemoryStore {
   constructor(maxSize = 10000) {
     super(maxSize)
@@ -218,4 +274,10 @@ export class TwineCache extends MemoryStore {
   }
 }
 
+/**
+ * A singleton cache store
+ *
+ * @group Cache
+ * @group Storage
+ */
 export const CACHE_SINGLETON = new TwineCache()

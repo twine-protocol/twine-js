@@ -2,7 +2,10 @@
  * Get the highest layer for which this (pulse) index
  * is an anchor for.
  * For example: in base 10, for the following indicies...
- * ```
+ *
+ * @group Skiplist
+ *
+ * ```js
  * getLayerPos(10, 1560) == 1 // (multiple of 10)
  * getLayerPos(10, 1264) == 0 // (NOT a multiple of 10)
  * getLayerPos(10, 3000) == 3 // (multiple of 1000)
@@ -35,6 +38,45 @@ export const getLayerPos = (radix: number, index: number) => {
   return (result - 1)
 }
 
+/**
+ * Get an iterator of indices that can be used to skip through the chain.
+ *
+ * This can either provide the pulse indices themselves or a list of
+ * array indices of the links list for each pulse along the path.
+ *
+ * This will not include the from/to indices themselves.
+ *
+ * A radix of 1 doesn't make sense since `1^r` is always `1`.
+ *
+ * A radix of 0 is interpreted as no radix skipping, so the list
+ * just has the previous pulse cid, therefore a radix 0 skiplist
+ * is just a decreasing list of pulse indices.
+ *
+ * @group Skiplist
+ *
+ * @param radix - The radix used for the chain
+ * @param fromIndex - The higher index
+ * @param toIndex - The lower index
+ * @param byLink - If true, will return the list of array indices for the links list
+ *
+ * @example
+ * ```js
+ * const radix = 10
+ * const fromIndex = 23
+ * const toIndex = 5
+ * const actual = Array.from(skipList(radix, fromIndex, toIndex))
+ * // actual == [ 20, 10, 9, 8, 7, 6 ]
+ * // because... 23 is in the `n * 10^1` range so it's links list should have `[22, 20]`
+ * // same deal for 20 which has links `[19, 10]` so we can skip to 10
+ * // then we get to the `n * 10^0` range and we can skip to 9, 8, 7, 6
+ *
+ * // The array indices for this correspond to jumps of
+ * // `10^1`, `10^1`, `10^0`, `10^0`, `10^0`, `10^0`
+ * // so the array indices would be `[1, 1, 0, 0, 0, 0]`
+ *
+ * Array.from(skipList(10, 23, 5, true)) // == [ 1, 1, 0, 0, 0, 0 ]
+ * ```
+ */
 export function* skipList(radix: number, fromIndex: number, toIndex: number, byLink = false) {
   if (radix === undefined || fromIndex === undefined || toIndex === undefined) {
     throw new Error('Must specify "fromIndex", "toIndex", and "radix"')

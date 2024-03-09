@@ -9,3 +9,9 @@ export * from './resolver'
 export * from './store'
 export * from './verify'
 export * from './crawl'
+
+/**
+ * @groupDescription Internal
+ *
+ * Internal utilities for twine. They are available for use, but not recommended.
+ */
