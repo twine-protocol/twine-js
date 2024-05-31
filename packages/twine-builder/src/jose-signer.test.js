@@ -25,7 +25,6 @@ describe('Signing',  async () => {
         { mixins: [], payload: { value: 'bar' } },
         signer
       )
-      expect(chain.value.content.key.alg).not.toBeDefined()
       expect(chain).toHaveProperty('isChain', true)
       expect(pulse).toHaveProperty('isChain', false)
       expect(await chain.verifySignature()).toBeTrue()

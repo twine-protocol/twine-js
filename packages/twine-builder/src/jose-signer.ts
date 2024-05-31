@@ -61,7 +61,7 @@ export class JoseSigner implements Signer {
    */
   async getPublicJWK() {
     const jwk = await exportJWK(this.publicKey)
-    // jwk.alg = this.algorithm
+    jwk.alg = this.algorithm
     return jwk
   }
 

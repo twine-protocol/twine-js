@@ -43,14 +43,12 @@ export async function verifySignature(chain: Chain, twine: Chain | Pulse) {
   }
 
   let key
-  const signature = twine.value.signature.toString()
   try {
-    let header = jose.decodeProtectedHeader(signature)
-    let alg = header.alg
-    key = await jose.importJWK(chain.value.content.key, alg)
+    key = await jose.importJWK(chain.value.content.key)
   } catch (e: any) {
     throw new InvalidTwineData('Invalid chain key', { cause: e })
   }
+  const signature = twine.value.signature.toString()
   try {
     const { payload } = await jose.compactVerify(signature, key)
     const digest = await twine.getContentDigest()
