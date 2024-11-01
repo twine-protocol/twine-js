@@ -1,0 +1,33 @@
+{
+  "include-component-in-tag": true,
+  "include-v-in-tag": true,
+  "tag-separator": "@",
+  "separate-pull-requests": true,
+  "packages": {
+    "twine-core": {
+      "path": "packages/twine-core",
+      "release-type": "node"
+    },
+    "twine-builder": {
+      "path": "packages/twine-builder",
+      "release-type": "node"
+    },
+    "twine-cli": {
+      "path": "packages/twine-cli",
+      "release-type": "node"
+    },
+    "twine-http-store": {
+      "path": "packages/twine-http-store",
+      "release-type": "node"
+    },
+    "twine-blockstore-store": {
+      "path": "packages/twine-blockstore-store",
+      "release-type": "node"
+    },
+    "twine-car-utils": {
+      "path": "packages/twine-car-utils",
+      "release-type": "node"
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
