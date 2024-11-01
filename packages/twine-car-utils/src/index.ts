@@ -27,6 +27,12 @@ async function drain<T>(iter: AnyIterable<T>, next: (v: T) => Awaitable<void>, d
   await done()
 }
 
+/**
+ * Convert an iterable of twines to a CARv2 formatted async iterable of byte arrays.
+ * @param twines An iterable of twines
+ * @param roots An iterable of CIDs to use as roots (typically the latest pulse of each chain, and the chain itself)
+ * @returns An async iterable of byte arrays
+ */
 export async function *twinesToCar(twines: AnyIterable<Twine<TwineValue>>, roots: AnyIterable<CID> = [EmptyCID]): AsyncIterable<Uint8Array> {
   const { writer, out } = CarWriter.create(await collect(roots))
   // writer.put doesn't resolve until next out bytes are consumed
@@ -50,6 +56,9 @@ export async function *twinesToCar(twines: AnyIterable<Twine<TwineValue>>, roots
   }
 }
 
+/**
+ * Get all twines in a resolver
+ */
 export async function* allTwines(resolver: Resolver){
   for await (const chain of resolver.chains()) {
     yield chain
@@ -59,6 +68,9 @@ export async function* allTwines(resolver: Resolver){
   }
 }
 
+/**
+ * Get CIDs of chains and their latest pulses
+ */
 export async function* roots(resolver: Resolver){
   for await (const chain of resolver.chains()) {
     yield chain.cid
@@ -72,8 +84,10 @@ export async function* roots(resolver: Resolver){
 
 /**
  * Dump all resolvable chains to a CARv2 file.
- * You can output the car to a file with:
+ *
+ * @example
  * ```js
+ * // You can output the car to a file with:
  * import { pipeline } from 'node:stream/promises'
  * import { createWriteStream } from 'node:fs'
  * await pipeline(

@@ -93,8 +93,12 @@ export type PulseValue<P extends AnyMap = AnyMap> = {
 export type TwineValue<M extends AnyMap = AnyMap, P extends AnyMap = AnyMap> = ChainValue<M> | PulseValue<P>;
 
 import type { Twine } from './twine'
+import { IntoResolvePulseQuery } from '.'
 /** Any type that can be coerced into a CID */
 export type IntoCid = CID | string | Uint8Array | Twine<TwineValue>
+
+/** Any type that can be coerced into a mixin */
+export type IntoMixin = IntoResolvePulseQuery
 
 /**
  * Any class implementing this interface can be used as a signer for Twine

@@ -1,13 +1,34 @@
 import { Chain, ChainResolution, IntoCid, IntoResolveChainQuery, IntoResolvePulseQuery, Pulse, PulseIndex, PulseResolution, ResolveOptions, Resolver, Twine, TwineValue, along, coerceCid, crawl, fromBytes, isChain, isFulfilledPulseResolution, resolveHelper } from '@twine-protocol/twine-core'
 import { CarReader, CarBufferReader, CarIndexedReader } from '@ipld/car'
 
+/**
+ * A Car Reader
+ */
 export type Reader = CarReader | CarBufferReader | CarIndexedReader
 
+/**
+ * A Twine Resolver that reads from a CARv2 Reader
+ *
+ * @group Resolver
+ * @example
+ * ```js
+ * import { CarReader } from '@ipld/car'
+ * const reader = await CarReader.fromBytes(bytes)
+ * const resolver = new CarResolver(reader)
+ * ```
+ */
 export class CarResolver implements Resolver {
   private _reader: Reader
   private _chains: Map<string, Chain> | null = null
   private _latest: Map<string, Pulse> | null = null
 
+  /**
+   * {@inheritDoc Resolver}
+   */
+
+  /**
+   * Create a new CarResolver
+   */
   constructor(reader: Reader) {
     this._reader = reader
   }
@@ -30,6 +51,9 @@ export class CarResolver implements Resolver {
     this._latest = latest
   }
 
+  /**
+   * @see {@link https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#chains | Resolver.chains}
+   */
   async *chains() {
     if (!this._chains) {
       await this._checkRoots()
@@ -58,6 +82,9 @@ export class CarResolver implements Resolver {
 
   async resolve(query: IntoResolveChainQuery, options?: ResolveOptions): Promise<ChainResolution>
   async resolve(query: IntoResolvePulseQuery, options?: ResolveOptions): Promise<PulseResolution>
+  /**
+   * @see {@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#resolve | Resolver.resolve}
+   */
   async resolve(query: any, options?: ResolveOptions) {
     return resolveHelper({
       fetchChain: ({ chainCID }) => this.fetch(chainCID) as Promise<Chain | null>
@@ -65,6 +92,9 @@ export class CarResolver implements Resolver {
     }, query, options)
   }
 
+  /**
+   * @see {@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#resolveLatest | Resolver.resolveLatest}
+   */
   async resolveLatest(chainCid: IntoCid, options?: ResolveOptions): Promise<PulseResolution> {
     const latest = await this.latestOf(chainCid)
     if (!latest) {
@@ -73,6 +103,9 @@ export class CarResolver implements Resolver {
     return this.resolve({ chain: chainCid, pulse: latest }, options)
   }
 
+  /**
+   * @see {@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#resolveIndex | Resolver.resolveIndex}
+   */
   async resolveIndex(chainCid: IntoCid, index: number, options?: ResolveOptions | undefined): Promise<PulseResolution> {
     const chain = await this.fetch(chainCid) as Chain | null
     if (!chain) {
@@ -92,10 +125,16 @@ export class CarResolver implements Resolver {
     return { chain: null, pulse: null }
   }
 
+  /**
+   * @see {@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#has | Resolver.has}
+   */
   async has(cid: IntoCid): Promise<boolean> {
     return this._reader.has(coerceCid(cid))
   }
 
+  /**
+   * @see {@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#pulses | Resolver.pulses}
+   */
   async *pulses(chain: IntoCid, start?: PulseIndex | IntoCid, options?: ResolveOptions) {
     let res
     if (typeof start === 'number'){
@@ -113,6 +152,9 @@ export class CarResolver implements Resolver {
     }
   }
 
+  /**
+   * Close the reader
+   */
   close(){
     // @ts-ignore
     if (this._reader?.close){

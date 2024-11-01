@@ -1,25 +1,71 @@
 import type { Mixin, Pulse, IntoCid, ChainContent, JWK, PulseContent, AnyMap } from '@twine-protocol/twine-core'
 import { CID } from 'multiformats'
-import { asMixin, coerceCid, isTwine } from '@twine-protocol/twine-core'
+import { asMixin, coerceCid, isTwine, IntoMixin } from '@twine-protocol/twine-core'
 import { isObjectLike, isPlainObject } from './checks'
 
-export type IntoMixin = { chain: IntoCid, value: IntoCid }
-
+/**
+ * Chain content accepted by the builder
+ */
 export interface UnsanitizedChainContent<M extends AnyMap> {
+  /**
+   * Short identifier to denote the source producing this chain
+   */
   source: string
+  /**
+   * Twine specification (eg: "twine/1.0.x/my-spec/1.0.0")
+   */
   , specification?: string
+  /**
+   * JWK to sign the chain
+   */
   , key?: JWK
+  /**
+   * Radix for links
+   *
+   * A value of 1 is not allowed
+   *
+   * A value of 0 is interpreted as a no-radix list. Pulses will just be linked to their previous pulse.
+   *
+   * @default 32
+   */
   , links_radix?: number
+  /**
+   * List of mixins
+   */
   , mixins?: IntoMixin[]
+  /**
+   * General Metadata
+   */
   , meta?: M
 }
 
+/**
+ * Pulse content accepted by the builder
+ */
 export interface UnsanitizedPulseContent {
+  /**
+   * Chain CID this pulse belongs to
+   */
   chain: IntoCid
+  /**
+   * Short identifier to denote the source producing this pulse
+   */
   , source: string
+  /**
+   * Index of this pulse
+   */
   , index: number
+  /**
+   * List of links on the same chain
+   */
   , links: IntoCid[]
+  /**
+   * List of mixins to other chains
+   */
   , mixins: IntoMixin[]
+  /**
+   * User specified payload
+   */
   , payload: object
 }
 

@@ -3,16 +3,23 @@ import * as codec from '@ipld/dag-cbor'
 import { sha3512 } from '@multiformats/sha3'
 import type { MultihashHasher } from 'multiformats'
 import * as jose from 'jose'
-import { IntoMixin, UnsanitizedChainContent, sanitizeChainContent, sanitizePulseContent } from './sanitize'
-import type { Chain, Pulse, Signer, TwineContent, IntoCid, TwineValue, AnyMap } from '@twine-protocol/twine-core'
-import { Twine, getContentDigest, getLayerPos, isTwine } from '@twine-protocol/twine-core'
+import { UnsanitizedChainContent, sanitizeChainContent, sanitizePulseContent } from './sanitize'
+import type { Chain, Pulse, Signer, TwineContent, TwineValue, AnyMap } from '@twine-protocol/twine-core'
+import { Twine, getContentDigest, getLayerPos, isTwine, IntoMixin } from '@twine-protocol/twine-core'
 import { JoseSigner } from '.'
+
+export type { UnsanitizedChainContent}
 
 const DEFAULT_SPECIFICATION = 'twine/1.0.x'
 const specificationRegex = /^twine\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x($|(\/[\w-_\d]+\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x)?$)/
 
 /**
  * Next pulses skip links
+ *
+ * If the chain has a links radix of 0, the next pulse will have a single link to the previous pulse.
+ *
+ * @param chain The chain
+ * @param previous The previous pulse, or false for first pulse
  */
 export const getNextLinks = (chain: Chain, previous: Pulse | false) => {
   if (previous === false) {
@@ -64,6 +71,16 @@ const createTwine = async (content: TwineContent, signer: Signer, hasher: Multih
   return new Twine({ cid, bytes, value })
 }
 
+/**
+ * Create a new chain
+ *
+ * Note: The only supported hash function is SHA3-512 at the moment
+ *
+ * @param arg0 The chain content
+ * @param signer The signer
+ * @param hasher The hasher
+ * @returns The chain as a Twine object
+ */
 export const createChain = async <M extends AnyMap>(
   {
     source
@@ -90,6 +107,20 @@ export const createChain = async <M extends AnyMap>(
   return twine as Chain<M>
 }
 
+/**
+ * Create a new pulse
+ *
+ * Note: The only supported hash function is SHA3-512 at the moment
+ *
+ * @param chain The chain
+ * @param previous The previous pulse, or false for first pulse
+ * @param arg2 The mixins and payload
+ * @param arg2.mixins The mixins
+ * @param arg2.payload The payload
+ * @param signer The signer
+ * @param hasher The hasher
+ * @returns The pulse as a Twine object
+ */
 export const createPulse = async <P extends AnyMap>(
   chain: Chain,
   previous: Pulse | false,

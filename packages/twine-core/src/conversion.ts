@@ -1,7 +1,7 @@
 import { CID, MultihashHasher } from 'multiformats'
 import { isChain, isChainValue, isPulse, isPulseValue, isTwine } from './checks'
 import { FulfilledChainResolution, FulfilledPulseResolution, ResolveChainQuery, ResolvePulseQuery, ResolvePulseQueryStrict, ResolveQueryStrict } from './resolver/types'
-import { ChainValue, IntoCid, Mixin, PulseValue } from './types'
+import { ChainValue, IntoCid, IntoMixin, Mixin, PulseValue } from './types'
 import { decode as dagJsonDecode } from '@ipld/dag-json'
 import { encode as blockEncode, create as blockCreate } from 'multiformats/block'
 import { sha3512 } from '@multiformats/sha3'
@@ -50,7 +50,7 @@ export async function collect<T>(iterable: AsyncIterable<T>): Promise<T[]> {
  * const anotherMixin = asMixin(somePulse)
  * ```
  */
-export function asMixin(m: any): Mixin | null {
+export function asMixin(m: IntoMixin): Mixin | null {
   if (isPulse(m)) {
     return {
       chain: m.value.content.chain
@@ -58,10 +58,13 @@ export function asMixin(m: any): Mixin | null {
     }
   } else {
     try {
+      // @ts-ignore
       if (!m.chain || !(m.value || m.pulse)) { return null }
       const chain = isTwine(m.chain) ?
         m.chain.cid :
+        // @ts-ignore
         CID.asCID(m.chain) || CID.parse(m.chain)
+      // @ts-ignore
       const pulse = m.value ?? m.pulse
       const value = isTwine(pulse) ?
         pulse.cid :
