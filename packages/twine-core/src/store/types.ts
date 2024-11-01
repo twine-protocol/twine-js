@@ -16,18 +16,26 @@ export interface Store extends Resolver {
    *
    * it is NOT expected that the twine signature is checked,
    * that is for the {@link Resolver} to do.
+   *
+   * @param cid The CID of the twine to fetch
    */
   fetch(cid: IntoCid): Awaitable<Twine<TwineValue> | null>,
   /**
    * Save a twine to storage
+   *
+   * @param twine The twine to save
    */
   save(twine: Twine<TwineValue>): Awaitable<void>,
   /**
    * Save many twines to storage
+   *
+   * @param twines The twines to save
    */
   saveMany(twines: AnyIterable<Twine<TwineValue>>): Awaitable<void>,
   /**
    * Delete a twine from storage
+   *
+   * @param cid The CID of the twine to delete
    */
   delete(cid: IntoCid): Awaitable<void>,
 }

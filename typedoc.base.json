@@ -25,5 +25,18 @@
   "plugin": [
     "typedoc-plugin-markdown"
   ],
+  "requiredToBeDocumented": [
+    "Enum",
+    "EnumMember",
+    "Variable",
+    "Function",
+    "Class",
+    "Interface",
+    "Constructor",
+    "Property",
+    "Method",
+    "Accessor",
+    "TypeAlias"
+  ],
   "indexFormat": "table"
 }

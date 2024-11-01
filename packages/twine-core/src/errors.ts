@@ -18,6 +18,10 @@ export class InvalidTwineData extends TwineError { }
  * @group Errors
  */
 export class InvalidSignature extends TwineError {
+  /**
+   * Create a new InvalidSignature error
+   * @param msg The error message
+   */
   constructor(msg: string, ...params: any[]) {
     msg = msg ? `Invalid Signature: ${msg}` : 'Invalid Signature'
     super(...[msg, ...params])

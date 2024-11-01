@@ -16,6 +16,8 @@ const isoDateRegExp = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0
  * Is this string a valid ISO Date
  *
  * @group Checks
+ *
+ * @param str The string to check
  */
 export function isISODate(str: string) {
   return isoDateRegExp.test(str);

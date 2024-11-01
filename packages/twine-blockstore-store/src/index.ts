@@ -11,6 +11,11 @@ export class BlockstoreStore implements Store {
   private datastore: Datastore
   private blockstore: Blockstore
 
+  /**
+   * Create a new BlockstoreStore
+   * @param datastore The datastore to use
+   * @param blockstore The blockstore to use
+   */
   constructor(datastore: Datastore, blockstore: Blockstore) {
     this.datastore = datastore
     this.blockstore = blockstore
@@ -56,7 +61,9 @@ export class BlockstoreStore implements Store {
   }
 
   /**
-   * Add an index of the pulse
+   * Add an index record for a pulse
+   *
+   * @param pulse The pulse
    */
   private async _addIndex(pulse: Pulse) {
     const chainCid = pulse.value.content.chain.toString()
@@ -66,7 +73,11 @@ export class BlockstoreStore implements Store {
   }
 
   /**
-   * Get cid of pulse at index
+   * Get cid of pulse with specified index
+   *
+   * @param chain The chain CID
+   * @param index The index
+   * @returns The CID of the pulse, or null if not found
    */
   async _cidOf(chain: IntoCid, index: PulseIndex): Promise<CID | null> {
     const chainCid = coerceCid(chain)
@@ -84,6 +95,8 @@ export class BlockstoreStore implements Store {
 
   /**
    * Reindex a chain
+   *
+   * @param latestCid The CID of the latest pulse
    */
   async reIndex(latestCid: IntoCid) {
     const cid = coerceCid(latestCid)
@@ -111,6 +124,9 @@ export class BlockstoreStore implements Store {
 
   /**
    * fetch by index
+   *
+   * @param chain The chain CID
+   * @param index The index
    */
   async fetchIndex(chain: IntoCid, index: PulseIndex) {
     const cid = await this._cidOf(chain, index)
@@ -120,9 +136,6 @@ export class BlockstoreStore implements Store {
     return this.fetch(cid)
   }
 
-  /**
-   * Save a twine
-   */
   async save(twine: Twine<TwineValue>) {
     if (!isTwine(twine)) {
       throw new Error('not a twine instance')
