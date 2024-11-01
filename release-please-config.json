@@ -4,28 +4,22 @@
   "tag-separator": "@",
   "separate-pull-requests": true,
   "packages": {
-    "twine-core": {
-      "path": "packages/twine-core",
+    "packages/twine-core": {
       "release-type": "node"
     },
-    "twine-builder": {
-      "path": "packages/twine-builder",
+    "packages/twine-builder": {
       "release-type": "node"
     },
-    "twine-cli": {
-      "path": "packages/twine-cli",
+    "packages/twine-cli": {
       "release-type": "node"
     },
-    "twine-http-store": {
-      "path": "packages/twine-http-store",
+    "packages/twine-http-store": {
       "release-type": "node"
     },
-    "twine-blockstore-store": {
-      "path": "packages/twine-blockstore-store",
+    "packages/twine-blockstore-store": {
       "release-type": "node"
     },
-    "twine-car-utils": {
-      "path": "packages/twine-car-utils",
+    "packages/twine-car-utils": {
       "release-type": "node"
     }
   },
