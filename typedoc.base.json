@@ -1,0 +1,29 @@
+{
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": false,
+    "@alpha": false,
+    "@beta": true
+  },
+  "excludePrivate": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "includeVersion": true,
+  "readme": "none",
+  "exclude": [
+    "*.test.ts",
+    "*.test.js",
+    "*.spec.ts",
+    "*.spec.js",
+    "*.d.ts"
+  ],
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "indexFormat": "table"
+}

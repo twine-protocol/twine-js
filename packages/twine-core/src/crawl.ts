@@ -140,7 +140,7 @@ export const within = (): CrawlGuide => ({ pulse }) => linksAsQueries(pulse)
  *
  * @group Crawling
  * @group CrawlGuide
- * @param {{ chain: Chain, pulse: Pulse | PulseIndex }} [resolvedTarget] if supplied, will skip towards this target
+ * @param {{ chain: Chain, pulse: Pulse | PulseIndex }} [target] if supplied, will skip towards this target
  */
 export const along = (target?: { chain: Chain, pulse: Pulse | PulseIndex }): CrawlGuide => {
   let radix = 0

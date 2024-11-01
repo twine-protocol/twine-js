@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "./typedoc.base.json"
+  ],
+  "entryPoints": [
+    "packages/*"
+  ],
+  "exclude": ["packages/twine-cli"],
+  "name": "twine-js",
+  "entryPointStrategy": "packages",
+  "includeVersion": false,
+}

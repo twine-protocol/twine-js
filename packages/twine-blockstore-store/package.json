@@ -14,6 +14,7 @@
     "build:lib": "esbuild ./src/index.ts --bundle --format=esm --packages=external --outfile=./dist/index.js",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "build": "bun run build:lib && bun run build:types",
+    "docs": "typedoc --out docs --exclude *.test.ts --plugin typedoc-plugin-markdown src",
     "test": "bun test"
   },
   "dependencies": {
@@ -28,7 +29,7 @@
     "bun-plugin-dts": "^0.2.1",
     "bun-types": "latest",
     "datastore-core": "^9.2.3",
-    "esbuild": "^0.19.5",
+    "esbuild": "^0.24.0",
     "tsc": "^2.0.4"
   },
   "peerDependencies": {

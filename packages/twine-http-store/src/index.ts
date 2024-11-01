@@ -45,7 +45,7 @@ async function drain<T>(iter: AnyIterable<T>, next: (v: T) => Promise<void>, don
   await done()
 }
 
-export function twinesToCar(twines: AnyIterable<Twine<TwineValue>>): AsyncIterable<Uint8Array> {
+function twinesToCar(twines: AnyIterable<Twine<TwineValue>>): AsyncIterable<Uint8Array> {
   const { writer, out } = CarWriter.create([EmptyCID])
   // writer.put doesn't resolve until next out bytes are consumed
   // so this is fine
@@ -147,15 +147,37 @@ async function handleResponse(res: Response): Promise<ApiResponse<Twine<TwineVal
 
 const REQUEST_CACHE = new Map<string, Promise<any>>()
 
-type HttpStoreOptions = {
+/**
+ * Options for the HTTP store
+ */
+export type HttpStoreOptions = {
+  /**
+   * Allow duplicate requests to be made
+   */
   allowDuplicateRequests?: boolean
 }
 
+/**
+ * An HTTP client that implements Store
+ *
+ * @example
+ * ```typescript
+ * const store = new HttpStore('https://example.com')
+ * const { chain, pulse } = await store.resolveLatest("bafyreilskdjflksjdflksj...")
+ * console.log(chain, pulse)
+ * ```
+ */
 export class HttpStore implements Store {
   private fetcher: FetcherType
   private cache: TwineCache = new TwineCache()
   private requestCache?: Map<string, Promise<Pulse>>
 
+  /**
+   * Create a new HTTP store
+   *
+   * @param baseUrl The base URL of the store
+   * @param fetcherOptions Options for the fetcher
+   */
   constructor(baseUrl: string, fetcherOptions?: FetcherOptions & HttpStoreOptions) {
     this.fetcher = fetcher({
       ...fetcherOptions,
@@ -184,6 +206,9 @@ export class HttpStore implements Store {
     }
   }
 
+  /**
+   * Fetch a chain by CID without validation
+   */
   async fetchChain(chainCid: IntoCid): Promise<Chain | null> {
     const path = `/chains/${coerceCid(chainCid)}`
     const { twines } = await this.fetcher.get<ApiResponse<Chain>>(path)

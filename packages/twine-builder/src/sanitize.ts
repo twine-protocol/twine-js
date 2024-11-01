@@ -10,15 +10,15 @@ export interface UnsanitizedChainContent<M extends AnyMap> {
   /**
    * Short identifier to denote the source producing this chain
    */
-  source: string
+  source: string,
   /**
    * Twine specification (eg: "twine/1.0.x/my-spec/1.0.0")
    */
-  , specification?: string
+  specification?: string,
   /**
    * JWK to sign the chain
    */
-  , key?: JWK
+  key?: JWK,
   /**
    * Radix for links
    *
@@ -28,15 +28,15 @@ export interface UnsanitizedChainContent<M extends AnyMap> {
    *
    * @default 32
    */
-  , links_radix?: number
+  links_radix?: number,
   /**
    * List of mixins
    */
-  , mixins?: IntoMixin[]
+  mixins?: IntoMixin[],
   /**
    * General Metadata
    */
-  , meta?: M
+  meta?: M,
 }
 
 /**
