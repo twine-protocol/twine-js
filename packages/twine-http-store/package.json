@@ -23,6 +23,8 @@
     "multiformats": "^12.1.2"
   },
   "devDependencies": {
+    "@aryzing/bun-mock-fetch": "^0.2.2",
+    "@twine-protocol/twine-builder": "workspace:*",
     "bun-types": "latest",
     "esbuild": "^0.19.5",
     "tsc": "^2.0.4"
