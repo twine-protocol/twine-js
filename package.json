@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "build": "lerna run build || lerna run build",
-    "docs": "typedoc --options typedoc.json",
+    "docs": "bun run build && typedoc --options typedoc.json",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
     "publish": "lerna publish from-package --no-push --no-private --yes",
     "test": "bun test"
