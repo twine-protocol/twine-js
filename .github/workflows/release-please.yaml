@@ -17,10 +17,7 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      twine-core--tag_name: ${{ steps.release.outputs.twine-core--tag_name }}
-      twine-core--release_created: ${{ steps.release.outputs.twine-core--release_created }}
-      twine-builder--tag_name: ${{ steps.release.outputs.twine-builder--tag_name }}
-      twine-builder--release_created: ${{ steps.release.outputs.twine-builder--release_created }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -34,8 +31,8 @@ jobs:
           echo "Release outputs:"
           echo "${{ toJson(steps.release.outputs) }}"
 
-  release-twine-core:
-    if: ${{ needs.release-please.outputs.twine-core--release_created }}
+  release:
+    if: ${{ needs.release-please.outputs.releases_created }}
     name: Publish twine-core to npmjs
 
     runs-on: ubuntu-latest
@@ -52,6 +49,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - uses: oven-sh/setup-bun@v2
       - run: bun install
-      - run: npm publish --provenance --access public --dry-run
+      - run: bun run build
+      - run: bun run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

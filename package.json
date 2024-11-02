@@ -8,11 +8,14 @@
     "build": "lerna run build",
     "docs": "typedoc --options typedoc.json",
     "watch": "lerna watch -- lerna run build --scope=\\$LERNA_PACKAGE_NAME",
+    "publish": "lerna publish from-package --no-push --no-private --yes",
     "test": "bun test"
   },
   "devDependencies": {
+    "@lerna-lite/cli": "^3.10.0",
+    "@lerna-lite/publish": "^3.10.0",
+    "@lerna-lite/run": "^3.10.0",
     "bun-types": "latest",
-    "lerna": "^8.1.9",
     "typedoc": "^0.26.11",
     "typedoc-plugin-markdown": "^4.2.9"
   },
