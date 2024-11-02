@@ -1,2 +1,0 @@
-[install.scopes]
-"@twine-protocol" = { token = "$GITHUB_TOKEN", url = "https://npm.pkg.github.com" }
