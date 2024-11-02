@@ -4,9 +4,9 @@
   "module": "./dist/index.js",
   "exports": {
     ".": {
-      "default": "./dist/index.js",
       "types": "./dist/src/index.d.ts",
-      "bun": "./src/index.ts"
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
     }
   },
   "type": "module",
