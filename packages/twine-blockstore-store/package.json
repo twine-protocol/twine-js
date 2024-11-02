@@ -1,12 +1,13 @@
 {
   "name": "@twine-protocol/twine-blockstore-store",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.3",
   "module": "./dist/index.js",
+  "private": false,
   "exports": {
     ".": {
-      "default": "./dist/index.js",
       "types": "./dist/src/index.d.ts",
-      "bun": "./src/index.ts"
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
     }
   },
   "type": "module",
@@ -21,18 +22,20 @@
     "@twine-protocol/twine-core": "workspace:*",
     "interface-blockstore": "^5.2.6",
     "interface-datastore": "^8.2.5",
-    "multiformats": "^12.1.2"
+    "multiformats": "^13.2.3"
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
-    "blockstore-core": "^4.3.4",
-    "bun-plugin-dts": "^0.2.1",
+    "blockstore-core": "5.0.2",
+    "typescript": "^5.0.0",
     "bun-types": "latest",
-    "datastore-core": "^9.2.3",
-    "esbuild": "^0.24.0",
-    "tsc": "^2.0.4"
+    "datastore-core": "10.0.2",
+    "esbuild": "^0.24.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

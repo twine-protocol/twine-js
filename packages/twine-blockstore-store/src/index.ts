@@ -2,7 +2,7 @@ import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pul
 import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine, along, crawl, isChain } from '@twine-protocol/twine-core'
 import { Blockstore } from 'interface-blockstore'
 import { Datastore, Key } from 'interface-datastore'
-import { CID } from 'multiformats'
+import { CID } from 'multiformats/cid'
 
 /**
  * Storage wrapper for storing Twine objects inside datastore and a blockstore
@@ -35,7 +35,7 @@ export class BlockstoreStore implements Store {
       const bytes = await this.datastore.get(key)
       return CID.decode(bytes)
     } catch (e: any) {
-      if (e.code == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e
@@ -86,7 +86,7 @@ export class BlockstoreStore implements Store {
       const bytes = await this.datastore.get(key)
       return CID.decode(bytes)
     } catch (e: any) {
-      if (e.code == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e
@@ -205,7 +205,7 @@ export class BlockstoreStore implements Store {
       const bytes = new Uint8Array(buffer)
       return await fromBytes({ bytes, cid })
     } catch (e: any) {
-      if (e.code == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e

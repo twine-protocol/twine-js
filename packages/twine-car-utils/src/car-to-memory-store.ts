@@ -36,6 +36,7 @@ export async function *blocksToTwines(blocks: AsyncIterable<Block>): AsyncIterab
  */
 export async function toMemoryStore(reader: CarReader): Promise<MemoryStore> {
   const store = new MemoryStore()
+  // @ts-ignore
   for await (const block of blocksToTwines(reader.blocks())) {
     store.save(block)
   }
