@@ -5,7 +5,7 @@ import * as codec from '@ipld/dag-cbor'
 import { sha3512 } from '@multiformats/sha3'
 import * as jose from 'jose'
 import { InvalidSignature, InvalidTwineData } from './errors'
-import { MultihashDigest } from 'multiformats/hashes/digest'
+import { MultihashDigest } from 'multiformats'
 import { isChain, isTwine } from './checks'
 
 /**

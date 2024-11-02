@@ -64,10 +64,12 @@ async function parseCarResponse(res: Response, cache?: TwineCache): Promise<Twin
   const car = await CarReader.fromIterable(res.body)
   const twines: Twine<TwineValue>[] = []
   for await (const { cid, bytes } of car.blocks()) {
-    if (cache?.has(cid)) {
-      twines.push(cache.fetch(cid)!)
+    // TODO: fix this when multiformats gets CID figured out
+    let _cid = CID.asCID(cid)!
+    if (cache?.has(_cid)) {
+      twines.push(cache.fetch(_cid)!)
     } else {
-      const twine = await fromBytes({ cid, bytes })
+      const twine = await fromBytes({ cid: _cid, bytes })
       twines.push(twine)
     }
   }

@@ -21,14 +21,14 @@
     "@twine-protocol/twine-core": "workspace:*",
     "interface-blockstore": "^5.2.6",
     "interface-datastore": "^8.2.5",
-    "multiformats": "^12.1.2"
+    "multiformats": "^13.2.3"
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
-    "blockstore-core": "^4.3.4",
+    "blockstore-core": "5.0.2",
     "typescript": "^5.0.0",
     "bun-types": "latest",
-    "datastore-core": "^9.2.3",
+    "datastore-core": "10.0.2",
     "esbuild": "^0.24.0"
   },
   "peerDependencies": {

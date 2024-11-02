@@ -20,7 +20,7 @@
   "dependencies": {
     "@ipld/car": "5.2.4",
     "@twine-protocol/twine-core": "workspace:*",
-    "multiformats": "^12.1.2"
+    "multiformats": "13.3.1"
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",

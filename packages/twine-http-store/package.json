@@ -21,7 +21,7 @@
     "@ipld/car": "5.2.4",
     "@twine-protocol/twine-core": "workspace:*",
     "itty-fetcher": "^0.9.4",
-    "multiformats": "^12.1.2"
+    "multiformats": "13.3.1"
   },
   "devDependencies": {
     "@aryzing/bun-mock-fetch": "^0.2.2",
