@@ -25,26 +25,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-
-  release:
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
-    name: Publish twine-core to npmjs
-
-    runs-on: ubuntu-latest
-    needs: release-please
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Change working directory to packages/twine-core
-        run: cd packages/twine-core
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'
-          registry-url: 'https://registry.npmjs.org'
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun run build
-      - run: bun run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
