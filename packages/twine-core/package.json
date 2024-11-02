@@ -36,5 +36,9 @@
     "@multiformats/sha3": "^3.0.1",
     "jose": "^4.15.3",
     "multiformats": "13.3.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
