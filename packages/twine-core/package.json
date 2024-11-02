@@ -25,7 +25,6 @@
     "@twine-protocol/twine-builder": "workspace:*",
     "bun-types": "latest",
     "esbuild": "^0.24.0",
-    "tsc": "^2.0.4",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
