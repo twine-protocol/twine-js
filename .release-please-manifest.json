@@ -2,7 +2,7 @@
   "packages/twine-core": "0.0.2",
   "packages/twine-builder": "0.0.2",
   "packages/twine-cli": "0.0.2",
-  "packages/twine-http-store": "0.0.2",
+  "packages/twine-http-store": "0.1.0",
   "packages/twine-blockstore-store": "0.0.2",
   "packages/twine-car-utils": "0.0.2"
 }
