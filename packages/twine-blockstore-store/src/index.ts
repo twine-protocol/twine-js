@@ -35,7 +35,7 @@ export class BlockstoreStore implements Store {
       const bytes = await this.datastore.get(key)
       return CID.decode(bytes)
     } catch (e: any) {
-      if (e.name == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e
@@ -86,7 +86,7 @@ export class BlockstoreStore implements Store {
       const bytes = await this.datastore.get(key)
       return CID.decode(bytes)
     } catch (e: any) {
-      if (e.name == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e
@@ -205,7 +205,7 @@ export class BlockstoreStore implements Store {
       const bytes = new Uint8Array(buffer)
       return await fromBytes({ bytes, cid })
     } catch (e: any) {
-      if (e.name == 'ERR_NOT_FOUND') {
+      if (e.name == 'NotFoundError') {
         return null
       }
       throw e
