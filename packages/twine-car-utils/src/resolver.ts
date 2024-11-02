@@ -40,6 +40,8 @@ export class CarResolver implements Resolver {
     for (const root of roots) {
       const block = await this._reader.get(root)
       if (!block) { continue }
+      // TODO: fix this when CID is worked out
+      // @ts-ignore
       const twine = await fromBytes(block)
       if (isChain(twine)) {
         chains.set(twine.cid.toString(), twine)
@@ -77,6 +79,8 @@ export class CarResolver implements Resolver {
     if (ch) { return ch }
     const block = await this._reader.get(cid)
     if (!block) { return null }
+    // TODO: fix this when CID is worked out
+    // @ts-ignore
     return await fromBytes(block)
   }
 

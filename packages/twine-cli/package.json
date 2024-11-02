@@ -4,6 +4,7 @@
   "bin": {
     "twine": "./dist/cli.js"
   },
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "esbuild ./src/cli.ts --bundle --format=esm --platform=node --packages=external --outfile=./dist/cli.js"
@@ -20,7 +21,7 @@
     "cli-progress": "^3.12.0",
     "datastore-fs": "^9.1.5",
     "datastore-level": "^10.1.4",
-    "multiformats": "^12.1.2",
+    "multiformats": "13.3.1",
     "streaming-iterables": "^8.0.1",
     "yargs": "^17.7.2"
   },
@@ -28,9 +29,13 @@
     "@types/cli-progress": "^3.11.4",
     "@types/yargs": "^17.0.29",
     "bun-types": "latest",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

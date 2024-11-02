@@ -1,0 +1,24 @@
+name: Publish Packages to npmjs
+on:
+  release:
+    types: [published, released]
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Publish twine-core to npmjs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run build
+      - run: bun run test
+      - run: bun run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

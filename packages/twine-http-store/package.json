@@ -2,11 +2,12 @@
   "name": "@twine-protocol/twine-http-store",
   "version": "0.0.1-alpha.2",
   "module": "./dist/index.js",
+  "private": false,
   "exports": {
     ".": {
-      "default": "./dist/index.js",
       "types": "./dist/src/index.d.ts",
-      "bun": "./src/index.ts"
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
     }
   },
   "type": "module",
@@ -21,16 +22,19 @@
     "@ipld/car": "5.2.4",
     "@twine-protocol/twine-core": "workspace:*",
     "itty-fetcher": "^0.9.4",
-    "multiformats": "^12.1.2"
+    "multiformats": "13.3.1"
   },
   "devDependencies": {
     "@aryzing/bun-mock-fetch": "^0.2.2",
     "@twine-protocol/twine-builder": "workspace:*",
     "bun-types": "latest",
     "esbuild": "^0.24.0",
-    "tsc": "^2.0.4"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

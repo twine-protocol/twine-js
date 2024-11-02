@@ -2,11 +2,12 @@
   "name": "@twine-protocol/twine-car-utils",
   "version": "0.0.3",
   "module": "./dist/index.js",
+  "private": false,
   "exports": {
     ".": {
-      "default": "./dist/index.js",
       "types": "./dist/src/index.d.ts",
-      "bun": "./src/index.ts"
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
     }
   },
   "type": "module",
@@ -20,16 +21,18 @@
   "dependencies": {
     "@ipld/car": "5.2.4",
     "@twine-protocol/twine-core": "workspace:*",
-    "multiformats": "^12.1.2"
+    "multiformats": "13.3.1"
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
-    "bun-plugin-dts": "^0.2.1",
     "bun-types": "latest",
     "esbuild": "^0.24.0",
-    "tsc": "^2.0.4"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

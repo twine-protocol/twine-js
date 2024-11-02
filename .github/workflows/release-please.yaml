@@ -14,8 +14,18 @@ env:
   NODE_ENV: production
 
 jobs:
+  check-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run build
+      - run: bun run test
+
   release-please:
     runs-on: ubuntu-latest
+    needs: check-build
     outputs:
       releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
@@ -25,31 +35,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-      - name: Print release outputs for debugging
-        continue-on-error: true
-        run: |
-          echo "Release outputs:"
-          echo "${{ toJson(steps.release.outputs) }}"
-
-  release:
-    if: ${{ needs.release-please.outputs.releases_created }}
-    name: Publish twine-core to npmjs
-
-    runs-on: ubuntu-latest
-    needs: release-please
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Change working directory to packages/twine-core
-        run: cd packages/twine-core
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun run build
-      - run: bun run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
