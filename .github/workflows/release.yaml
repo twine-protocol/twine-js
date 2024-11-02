@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Change working directory to packages/twine-core
-        run: cd packages/twine-core
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
