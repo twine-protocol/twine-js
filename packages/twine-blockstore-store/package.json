@@ -1,6 +1,6 @@
 {
   "name": "@twine-protocol/twine-blockstore-store",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.3",
   "module": "./dist/index.js",
   "private": false,
   "exports": {
