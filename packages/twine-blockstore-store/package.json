@@ -26,13 +26,12 @@
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
     "blockstore-core": "^4.3.4",
-    "bun-plugin-dts": "^0.2.1",
+    "typescript": "^5.0.0",
     "bun-types": "latest",
     "datastore-core": "^9.2.3",
     "esbuild": "^0.24.0",
     "tsc": "^2.0.4"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
   }
 }

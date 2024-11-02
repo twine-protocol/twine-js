@@ -28,9 +28,10 @@
     "@types/cli-progress": "^3.11.4",
     "@types/yargs": "^17.0.29",
     "bun-types": "latest",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
   }
 }

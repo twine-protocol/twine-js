@@ -23,13 +23,12 @@
   },
   "devDependencies": {
     "@twine-protocol/twine-builder": "workspace:*",
-    "bun-plugin-dts": "^0.2.1",
     "bun-types": "latest",
-    "esbuild": "^0.19.5",
-    "tsc": "^2.0.4"
+    "esbuild": "^0.24.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@ipld/dag-cbor": "^9.0.6",
