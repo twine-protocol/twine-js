@@ -1,5 +1,5 @@
 {
-  "packages/twine-core": "0.0.2",
+  "packages/twine-core": "0.1.0",
   "packages/twine-builder": "0.0.2",
   "packages/twine-cli": "0.0.2",
   "packages/twine-http-store": "0.0.2",
