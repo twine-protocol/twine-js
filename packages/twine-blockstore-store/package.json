@@ -2,6 +2,7 @@
   "name": "@twine-protocol/twine-blockstore-store",
   "version": "0.0.3",
   "module": "./dist/index.js",
+  "private": false,
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
@@ -31,5 +32,10 @@
     "datastore-core": "10.0.2",
     "esbuild": "^0.24.0"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

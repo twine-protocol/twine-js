@@ -4,6 +4,7 @@
   "bin": {
     "twine": "./dist/cli.js"
   },
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "esbuild ./src/cli.ts --bundle --format=esm --platform=node --packages=external --outfile=./dist/cli.js"
@@ -32,5 +33,9 @@
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
