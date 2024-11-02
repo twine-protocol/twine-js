@@ -27,7 +27,7 @@ jobs:
           manifest-file: .release-please-manifest.json
 
   release:
-    if: needs.release-please.outputs.releases_created
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     name: Publish twine-core to npmjs
 
     runs-on: ubuntu-latest
