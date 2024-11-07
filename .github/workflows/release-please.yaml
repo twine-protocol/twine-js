@@ -41,6 +41,7 @@ jobs:
     needs: release-please
     if: ${{ needs.release-please.outputs.created == 'true' }}
     uses: ./.github/workflows/release.yaml
+    secrets: inherit
 
   docs:
     name: Build Docs
