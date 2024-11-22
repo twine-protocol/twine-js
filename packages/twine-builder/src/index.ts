@@ -21,6 +21,7 @@
  *   foo: 'some more data',
  * }, signer)
  * // etc...
+ * ```
  */
 
 export * from './factory'
