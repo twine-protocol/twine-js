@@ -47,7 +47,7 @@ The algorithm to use
 
 #### Defined in
 
-[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L46)
+[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L46)
 
 ## Properties
 
@@ -59,7 +59,7 @@ Private Key
 
 #### Defined in
 
-[jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L19)
+[jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L19)
 
 ***
 
@@ -71,7 +71,7 @@ Public Key
 
 #### Defined in
 
-[jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L21)
+[jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L21)
 
 ***
 
@@ -83,7 +83,7 @@ Algorithm
 
 #### Defined in
 
-[jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L23)
+[jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L23)
 
 ## Methods
 
@@ -113,7 +113,7 @@ Options for the key pair
 
 #### Defined in
 
-[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L34)
+[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L34)
 
 ***
 
@@ -137,7 +137,7 @@ Get the public JWK
 
 #### Defined in
 
-[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L62)
+[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L62)
 
 ***
 
@@ -165,4 +165,4 @@ Sign some bytes
 
 #### Defined in
 
-[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L72)
+[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L72)

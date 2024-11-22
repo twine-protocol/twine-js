@@ -36,7 +36,7 @@ The blockstore to use
 
 #### Defined in
 
-[index.ts:25](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L25)
+[index.ts:25](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L25)
 
 ## Methods
 
@@ -64,7 +64,7 @@ The CID of the pulse, or null if not found
 
 #### Defined in
 
-[index.ts:88](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L88)
+[index.ts:88](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L88)
 
 ***
 
@@ -86,7 +86,7 @@ The CID of the latest pulse
 
 #### Defined in
 
-[index.ts:107](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L107)
+[index.ts:107](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L107)
 
 ***
 
@@ -112,7 +112,7 @@ The index
 
 #### Defined in
 
-[index.ts:137](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L137)
+[index.ts:137](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L137)
 
 ***
 
@@ -138,7 +138,7 @@ The twine to save
 
 #### Defined in
 
-[index.ts:145](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L145)
+[index.ts:145](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L145)
 
 ***
 
@@ -164,7 +164,7 @@ The twines to save
 
 #### Defined in
 
-[index.ts:164](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L164)
+[index.ts:164](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L164)
 
 ***
 
@@ -190,7 +190,7 @@ The CID of the twine to delete
 
 #### Defined in
 
-[index.ts:170](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L170)
+[index.ts:170](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L170)
 
 ***
 
@@ -214,7 +214,7 @@ Fetch a twine by it's CID
 
 #### Defined in
 
-[index.ts:204](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L204)
+[index.ts:204](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L204)
 
 ***
 
@@ -242,7 +242,7 @@ const chains = await collect(resolver.chains())
 
 #### Defined in
 
-[index.ts:221](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L221)
+[index.ts:221](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L221)
 
 ***
 
@@ -287,7 +287,7 @@ for await (const pulse of resolver.pulses('bafybeib3...')) {
 
 #### Defined in
 
-[index.ts:231](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L231)
+[index.ts:231](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L231)
 
 ***
 
@@ -311,7 +311,7 @@ Check if a Twine is present in the blockstore
 
 #### Defined in
 
-[index.ts:256](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L256)
+[index.ts:256](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L256)
 
 ***
 
@@ -356,7 +356,7 @@ if (resolution.pulse) {
 
 #### Defined in
 
-[index.ts:267](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L267)
+[index.ts:267](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L267)
 
 ***
 
@@ -384,7 +384,7 @@ Resolves a twine query
 
 ##### Defined in
 
-[index.ts:276](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L276)
+[index.ts:276](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L276)
 
 #### resolve(query, options)
 
@@ -408,7 +408,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[index.ts:277](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L277)
+[index.ts:277](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L277)
 
 ***
 
@@ -432,4 +432,4 @@ Resolves the latest pulse for specified chain
 
 #### Defined in
 
-[index.ts:288](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L288)
+[index.ts:288](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L288)

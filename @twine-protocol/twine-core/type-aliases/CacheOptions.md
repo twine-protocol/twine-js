@@ -28,4 +28,4 @@ Defaults to 10000, set to 0 for no limit
 
 ## Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:5](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L5)
+[packages/twine-core/src/store/cache-helpers.ts:5](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L5)

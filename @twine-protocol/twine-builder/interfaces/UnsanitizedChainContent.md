@@ -24,7 +24,7 @@ Short identifier to denote the source producing this chain
 
 #### Defined in
 
-[sanitize.ts:14](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L14)
+[sanitize.ts:14](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L14)
 
 ***
 
@@ -36,7 +36,7 @@ Twine specification (eg: "twine/1.0.x/my-spec/1.0.0")
 
 #### Defined in
 
-[sanitize.ts:18](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L18)
+[sanitize.ts:18](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L18)
 
 ***
 
@@ -48,7 +48,7 @@ JWK to sign the chain
 
 #### Defined in
 
-[sanitize.ts:22](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L22)
+[sanitize.ts:22](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L22)
 
 ***
 
@@ -70,7 +70,7 @@ A value of 0 is interpreted as a no-radix list. Pulses will just be linked to th
 
 #### Defined in
 
-[sanitize.ts:32](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L32)
+[sanitize.ts:32](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L32)
 
 ***
 
@@ -82,7 +82,7 @@ List of mixins
 
 #### Defined in
 
-[sanitize.ts:36](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L36)
+[sanitize.ts:36](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L36)
 
 ***
 
@@ -94,4 +94,4 @@ General Metadata
 
 #### Defined in
 
-[sanitize.ts:40](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/sanitize.ts#L40)
+[sanitize.ts:40](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/sanitize.ts#L40)

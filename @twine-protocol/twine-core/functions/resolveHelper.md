@@ -94,7 +94,7 @@ class MemoryStore {
 
 ### Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:183](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/helpers.ts#L183)
+[packages/twine-core/src/resolver/helpers.ts:183](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L183)
 
 ## resolveHelper(callers, thing, options)
 
@@ -149,4 +149,4 @@ class MemoryStore {
 
 ### Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:184](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/helpers.ts#L184)
+[packages/twine-core/src/resolver/helpers.ts:184](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L184)

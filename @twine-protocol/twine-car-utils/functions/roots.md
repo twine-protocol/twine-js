@@ -20,4 +20,4 @@ Get CIDs of chains and their latest pulses
 
 ## Defined in
 
-[index.ts:79](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/index.ts#L79)
+[index.ts:79](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/index.ts#L79)

@@ -57,7 +57,7 @@ package to create a twine instance.
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:47](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L47)
+[packages/twine-core/src/twine.ts:47](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L47)
 
 ## Properties
 
@@ -69,7 +69,7 @@ is a twine instance (true)
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:24](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L24)
+[packages/twine-core/src/twine.ts:24](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L24)
 
 ***
 
@@ -81,7 +81,7 @@ is this a chain
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L26)
+[packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L26)
 
 ***
 
@@ -93,7 +93,7 @@ chain CID (either this CID or the pulse's chain CID)
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:28](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L28)
+[packages/twine-core/src/twine.ts:28](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L28)
 
 ***
 
@@ -167,7 +167,7 @@ Is this a pulse
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:82](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L82)
+[packages/twine-core/src/twine.ts:82](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L82)
 
 ## Methods
 
@@ -187,7 +187,7 @@ thing is Chain \| Pulse
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:31](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L31)
+[packages/twine-core/src/twine.ts:31](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L31)
 
 ***
 
@@ -203,7 +203,7 @@ Get the twine data as a DAG-JSON object
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:89](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L89)
+[packages/twine-core/src/twine.ts:89](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L89)
 
 ***
 
@@ -219,7 +219,7 @@ Get the twine content field hash digest
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:101](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L101)
+[packages/twine-core/src/twine.ts:101](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L101)
 
 ***
 
@@ -244,7 +244,7 @@ Chain instance to use for verification
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:113](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L113)
+[packages/twine-core/src/twine.ts:113](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L113)
 
 ***
 

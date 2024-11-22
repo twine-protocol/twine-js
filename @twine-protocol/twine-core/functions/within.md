@@ -16,4 +16,4 @@ Create a guide that visits all skiplist links as they are seen
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:136](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/crawl.ts#L136)
+[packages/twine-core/src/crawl.ts:136](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/crawl.ts#L136)

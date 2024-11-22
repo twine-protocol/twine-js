@@ -36,7 +36,7 @@ The maximum number of twines to keep in memory (default 10000)
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:287](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L287)
+[packages/twine-core/src/store/memory-store.ts:287](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L287)
 
 ## Properties
 
@@ -52,7 +52,7 @@ Chains are stored in a map with the CID as the key
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:37](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L37)
+[packages/twine-core/src/store/memory-store.ts:37](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L37)
 
 ***
 
@@ -68,7 +68,7 @@ Chain storage metadata
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:41](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L41)
+[packages/twine-core/src/store/memory-store.ts:41](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L41)
 
 ***
 
@@ -84,7 +84,7 @@ Pulses are stored in a map with the CID as the key
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:45](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L45)
+[packages/twine-core/src/store/memory-store.ts:45](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L45)
 
 ***
 
@@ -100,7 +100,7 @@ The maximum number of twines to keep in memory
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:49](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L49)
+[packages/twine-core/src/store/memory-store.ts:49](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L49)
 
 ## Methods
 
@@ -120,7 +120,7 @@ The maximum number of twines to keep in memory
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:294](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L294)
+[packages/twine-core/src/store/memory-store.ts:294](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L294)
 
 ***
 
@@ -140,7 +140,7 @@ The maximum number of twines to keep in memory
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:303](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L303)
+[packages/twine-core/src/store/memory-store.ts:303](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L303)
 
 ***
 
@@ -166,7 +166,7 @@ If the store is already larger than the new max size, the oldest twines will be 
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:70](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L70)
+[packages/twine-core/src/store/memory-store.ts:70](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L70)
 
 ***
 
@@ -195,7 +195,7 @@ The CID of the twine to fetch
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:81](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L81)
+[packages/twine-core/src/store/memory-store.ts:81](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L81)
 
 ***
 
@@ -223,7 +223,7 @@ True if the CID can be resolved, false otherwise
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:97](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L97)
+[packages/twine-core/src/store/memory-store.ts:97](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L97)
 
 ***
 
@@ -249,7 +249,7 @@ The CID of the twine to delete
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:105](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L105)
+[packages/twine-core/src/store/memory-store.ts:105](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L105)
 
 ***
 
@@ -275,7 +275,7 @@ The twine to save
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:147](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L147)
+[packages/twine-core/src/store/memory-store.ts:147](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L147)
 
 ***
 
@@ -305,7 +305,7 @@ The twines to save
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:159](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L159)
+[packages/twine-core/src/store/memory-store.ts:159](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L159)
 
 #### saveMany(twines)
 
@@ -327,7 +327,7 @@ Save many twines to storage
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:160](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L160)
+[packages/twine-core/src/store/memory-store.ts:160](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L160)
 
 ***
 
@@ -347,7 +347,7 @@ Get an iterator of all the chains in the store
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:181](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L181)
+[packages/twine-core/src/store/memory-store.ts:181](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L181)
 
 ***
 
@@ -375,7 +375,7 @@ Get an async iterator of all the pulses in a chain
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:188](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L188)
+[packages/twine-core/src/store/memory-store.ts:188](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L188)
 
 ***
 
@@ -455,7 +455,7 @@ if (pulse) {
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:215](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L215)
+[packages/twine-core/src/store/memory-store.ts:215](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L215)
 
 #### resolve(query, options)
 
@@ -481,7 +481,7 @@ A chain or pulse resolution
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:216](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L216)
+[packages/twine-core/src/store/memory-store.ts:216](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L216)
 
 ***
 
@@ -513,7 +513,7 @@ A pulse resolution
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:230](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L230)
+[packages/twine-core/src/store/memory-store.ts:230](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L230)
 
 ***
 
@@ -549,4 +549,4 @@ A pulse resolution
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:246](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L246)
+[packages/twine-core/src/store/memory-store.ts:246](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L246)

@@ -22,7 +22,7 @@ If true, all resolvers will be queried and the best/latest result will be return
 
 #### Defined in
 
-[packages/twine-core/src/resolver/combine.ts:37](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/combine.ts#L37)
+[packages/twine-core/src/resolver/combine.ts:37](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/combine.ts#L37)
 
 ***
 
@@ -38,7 +38,7 @@ If true, the resolver will not verify the signature of the resolved twine
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:161](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L161)
+[packages/twine-core/src/resolver/types.ts:161](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L161)
 
 ***
 
@@ -54,4 +54,4 @@ If true, the resolver will bypass the cache
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:165](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L165)
+[packages/twine-core/src/resolver/types.ts:165](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L165)

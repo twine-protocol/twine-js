@@ -28,6 +28,7 @@ const next = await createPulse(chain, previous, {
   foo: 'some more data',
 }, signer)
 // etc...
+```
 
 ## Interfaces
 

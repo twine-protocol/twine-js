@@ -46,7 +46,7 @@ Options for the cache
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:30](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L30)
+[packages/twine-core/src/store/cache-helpers.ts:30](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L30)
 
 ## Properties
 
@@ -150,7 +150,7 @@ If the cache is already larger than the new max size, the oldest items will be r
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:40](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L40)
+[packages/twine-core/src/store/cache-helpers.ts:40](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L40)
 
 ***
 
@@ -176,7 +176,7 @@ See [Map.set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:57](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L57)
+[packages/twine-core/src/store/cache-helpers.ts:57](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L57)
 
 ***
 
@@ -200,7 +200,7 @@ See [Map.get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:66](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L66)
+[packages/twine-core/src/store/cache-helpers.ts:66](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L66)
 
 ***
 

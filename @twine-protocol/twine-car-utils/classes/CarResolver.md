@@ -38,7 +38,7 @@ Create a new CarResolver
 
 #### Defined in
 
-[resolver.ts:32](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L32)
+[resolver.ts:32](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L32)
 
 ## Methods
 
@@ -60,7 +60,7 @@ Create a new CarResolver
 
 #### Defined in
 
-[resolver.ts:59](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L59)
+[resolver.ts:59](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L59)
 
 ***
 
@@ -135,7 +135,7 @@ if (pulse) {
 
 ##### Defined in
 
-[resolver.ts:87](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L87)
+[resolver.ts:87](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L87)
 
 #### resolve(query, options)
 
@@ -163,7 +163,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[resolver.ts:88](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L88)
+[resolver.ts:88](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L88)
 
 ***
 
@@ -191,7 +191,7 @@ Resolve a pulse (with its chain) from a query
 
 #### Defined in
 
-[resolver.ts:102](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L102)
+[resolver.ts:102](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L102)
 
 ***
 
@@ -221,7 +221,7 @@ Resolve a pulse (with its chain) from a query
 
 #### Defined in
 
-[resolver.ts:113](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L113)
+[resolver.ts:113](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L113)
 
 ***
 
@@ -247,7 +247,7 @@ Resolve a pulse (with its chain) from a query
 
 #### Defined in
 
-[resolver.ts:135](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L135)
+[resolver.ts:135](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L135)
 
 ***
 
@@ -277,7 +277,7 @@ Resolve a pulse (with its chain) from a query
 
 #### Defined in
 
-[resolver.ts:142](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L142)
+[resolver.ts:142](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L142)
 
 ***
 
@@ -293,4 +293,4 @@ Close the reader
 
 #### Defined in
 
-[resolver.ts:162](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L162)
+[resolver.ts:162](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/resolver.ts#L162)
