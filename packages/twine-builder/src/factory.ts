@@ -18,6 +18,7 @@ const specificationRegex = /^twine\/(0|[1-9]\d*)\.(0|[1-9]\d*)\.x($|(\/[\w-_\d]+
  *
  * If the chain has a links radix of 0, the next pulse will have a single link to the previous pulse.
  *
+ * @internal
  * @param chain The chain
  * @param previous The previous pulse, or false for first pulse
  */

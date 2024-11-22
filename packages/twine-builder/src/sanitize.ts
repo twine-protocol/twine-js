@@ -5,6 +5,7 @@ import { isObjectLike, isPlainObject } from './checks'
 
 /**
  * Chain content accepted by the builder
+ * @internal
  */
 export interface UnsanitizedChainContent<M extends AnyMap> {
   /**
@@ -41,6 +42,7 @@ export interface UnsanitizedChainContent<M extends AnyMap> {
 
 /**
  * Pulse content accepted by the builder
+ * @internal
  */
 export interface UnsanitizedPulseContent {
   /**
@@ -69,6 +71,10 @@ export interface UnsanitizedPulseContent {
   , payload: object
 }
 
+/**
+ * Ensure that mixins are correct format
+ * @internal
+ */
 export const sanitizeMixins = (mixins: IntoMixin[], chainCid?: CID) => {
   const parsedMixins = mixins.map(asMixin)
   if (!parsedMixins.every(m => m !== null)) {
@@ -84,6 +90,10 @@ export const sanitizeMixins = (mixins: IntoMixin[], chainCid?: CID) => {
   return parsedMixins as Mixin[]
 }
 
+/**
+ * Ensure that mixins are in the same order as the previous pulse
+ * @internal
+ */
 export const correctlyOrderedMixins = (mixins: Mixin[], previous: Pulse | false) => {
   if (previous === false) { return mixins }
   // Ensure that the mixins are in the same order as the previous pulse mixins
@@ -101,10 +111,18 @@ export const correctlyOrderedMixins = (mixins: Mixin[], previous: Pulse | false)
   return ret.concat(mixins)
 }
 
+/**
+ * Ensure that links are in the correct format
+ * @internal
+ */
 export const sanitizeLinks = (links: IntoCid[]) => {
   return links.map(l => coerceCid(l))
 }
 
+/**
+ * Ensure that the payload is correctly formatted
+ * @internal
+ */
 export const sanitizePayload = (payload: object): AnyMap => {
 
   function recurse(value: any): any {
@@ -140,14 +158,7 @@ export const sanitizePayload = (payload: object): AnyMap => {
 }
 
 /**
- * @param {object} param0
- * @param {string} param0.source
- * @param {string} param0.specification
- * @param {Types.JWK} param0.key
- * @param {number} param0.links_radix
- * @param {any[]} param0.mixins
- * @param {object} param0.meta
- * @returns {Types.ChainContent}
+ * @internal
  */
 export const sanitizeChainContent = ({
   source,
@@ -187,6 +198,9 @@ export const sanitizeChainContent = ({
   }
 }
 
+/**
+ * @internal
+ */
 export const sanitizePulseContent = ({
   chain
   , source

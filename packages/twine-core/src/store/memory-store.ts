@@ -12,6 +12,7 @@ function warnDeprecated(name: string){
 
 /**
  * Metadata used by the memory store to keep track of chains and pulses
+ * @category Internal
  */
 export type ChainStorageMeta = {
   /** The CID of the chain */
@@ -27,7 +28,7 @@ export type ChainStorageMeta = {
  *
  * This store is the base for the {@link TwineCache}.
  *
- * @group Storage
+ * @category Storage
  */
 export class MemoryStore implements Store {
   /**
@@ -266,8 +267,7 @@ export class MemoryStore implements Store {
 /**
  * A store that caches twines in memory
  *
- * @group Cache
- * @group Storage
+ * @category Cache
  */
 export class TwineCache extends MemoryStore {
 
@@ -310,7 +310,6 @@ export class TwineCache extends MemoryStore {
 /**
  * A singleton cache store
  *
- * @group Cache
- * @group Storage
+ * @category Cache
  */
 export const CACHE_SINGLETON = new TwineCache()

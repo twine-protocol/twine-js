@@ -2,6 +2,7 @@
   "name": "@twine-protocol/twine-http-store",
   "version": "0.1.0",
   "module": "./dist/index.js",
+  "description": "HTTP store for Twine objects",
   "private": false,
   "exports": {
     ".": {

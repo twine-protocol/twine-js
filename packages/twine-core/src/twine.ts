@@ -6,13 +6,18 @@ import { InvalidTwineData } from './errors'
 import { isChain, isChainValue, isPulse, isPulseValue, isTwine } from './checks'
 import { getContentDigest, verifySignature } from './verify'
 
-/** A Twine that is a Chain */
+/**
+ * A Twine that is a Chain
+ */
 export type Chain<M extends AnyMap = AnyMap> = Twine<ChainValue<M>>
-/** A Twine that is a Pulse */
+/**
+ * A Twine that is a Pulse
+ */
 export type Pulse<P extends AnyMap = AnyMap> = Twine<PulseValue<P>>
 
 /**
- * Generic type for twine data
+ * Generic class for twine data
+ * @category Twine Data
  */
 export class Twine<T extends ChainValue | PulseValue> extends Block.Block<T, number, number, Version> {
   /** is a twine instance (true) */

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "module": "./dist/index.js",
   "private": false,
+  "description": "Build Twine objects",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",

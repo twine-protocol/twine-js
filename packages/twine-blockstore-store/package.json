@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "module": "./dist/index.js",
   "private": false,
+  "description": "Store twine objects in a blockstore",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",

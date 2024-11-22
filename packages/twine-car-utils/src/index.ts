@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * This package provides utilities for converting twine data to and from CAR files.
+ */
+
 import type { Twine, TwineValue, AnyIterable, Resolver, Awaitable } from '@twine-protocol/twine-core'
 import { CarWriter } from '@ipld/car'
 import { CID } from 'multiformats'

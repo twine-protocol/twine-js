@@ -1,5 +1,6 @@
 /**
  * Cache options
+ * @category Cache
  */
 export type CacheOptions = {
   /**
@@ -15,7 +16,7 @@ export type CacheOptions = {
 /**
  * A map that caches the most recently accessed items
  *
- * @category Store
+ * @category Cache
  */
 export class CacheMap<K, V> extends Map<K, V> {
   private maxSize: number

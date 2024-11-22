@@ -6,7 +6,7 @@ import { asMixin } from './conversion'
  *
  * Useful for checking if mixins have changed from one pulse to another.
  *
- * @group Compare
+ * @category Comparison
  */
 export const mixinDiff = (reference: Mixin[], toCheck: Mixin[]) => {
   const ref = reference.map(asMixin)

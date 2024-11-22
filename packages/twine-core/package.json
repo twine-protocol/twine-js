@@ -2,6 +2,7 @@
   "name": "@twine-protocol/twine-core",
   "version": "0.1.0",
   "module": "./dist/index.js",
+  "description": "The core library for reading and verifying twine data.",
   "private": false,
   "exports": {
     ".": {

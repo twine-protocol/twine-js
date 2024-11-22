@@ -5,7 +5,7 @@ import type { Resolver } from '../resolver/types'
 /**
  * A store that can fetch and save twines
  *
- * @group Storage
+ * @category Storage
  */
 export interface Store extends Resolver {
   /**

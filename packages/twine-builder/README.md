@@ -1,4 +1,4 @@
-# twine-core
+# Twine builder
 
 To install dependencies:
 

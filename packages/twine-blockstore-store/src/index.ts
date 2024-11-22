@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * This package provides {@link BlockstoreStore}, a class that
+ * implements the {@link Store} interface for storing Twine objects
+ * in a blockstore and a datastore from [ipfs js-stores](https://github.com/ipfs/js-stores).
+ */
 import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pulse, AnyIterable, PulseIndex, PulseResolution, IntoResolveChainQuery, ChainResolution, IntoResolvePulseQuery } from '@twine-protocol/twine-core'
 import { TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine, along, crawl, isChain } from '@twine-protocol/twine-core'
 import { Blockstore } from 'interface-blockstore'

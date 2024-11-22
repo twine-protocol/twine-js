@@ -6,7 +6,6 @@ import { TwineCache } from '../store'
  * Options for combining resolvers
  *
  * @category Resolving
- *
  */
 export type CombineResolversOptions = {
   /** The maximum number of items to cache */

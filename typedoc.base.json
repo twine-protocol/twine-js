@@ -15,6 +15,7 @@
   },
   "includeVersion": true,
   "readme": "none",
+  "entryFileName": "index.md",
   "exclude": [
     "*.test.ts",
     "*.test.js",
@@ -38,5 +39,12 @@
     "Accessor",
     "TypeAlias"
   ],
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true,
+    "includeFolders": true
+  },
+  "categorizeByGroup": true,
+  "sort": ["kind"],
   "indexFormat": "table"
 }

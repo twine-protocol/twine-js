@@ -1,3 +1,15 @@
+/**
+ * @packageDocumentation
+ * This package contains {@link HttpStore}, an HTTP client that implements
+ * the {@link Store} interface used to interact with a Twine HTTP API.
+ *
+ * @example
+ * ```js
+ * const store = new HttpStore('https://example.com')
+ * const { chain, pulse } = await store.resolveLatest("bafyreilskdjflksjdflksj...")
+ * console.log(chain, pulse)
+ * ```
+ */
 import type { IntoCid, Twine, Resolution, ResolveOptions, TwineValue, Chain, Pulse, AnyIterable, PulseIndex, PulseResolution, IntoResolveChainQuery, ChainResolution, IntoResolvePulseQuery } from '@twine-protocol/twine-core'
 import type { FetcherType, FetcherOptions } from 'itty-fetcher'
 import { memoized, TwineCache, fromBytes, fromJSON, coerceCid, isPulse, resolveHelper, Store, isTwine } from '@twine-protocol/twine-core'
@@ -161,13 +173,6 @@ export type HttpStoreOptions = {
 
 /**
  * An HTTP client that implements Store
- *
- * @example
- * ```typescript
- * const store = new HttpStore('https://example.com')
- * const { chain, pulse } = await store.resolveLatest("bafyreilskdjflksjdflksj...")
- * console.log(chain, pulse)
- * ```
  */
 export class HttpStore implements Store {
   private fetcher: FetcherType

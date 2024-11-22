@@ -20,7 +20,7 @@ import * as codec from '@ipld/dag-cbor'
 /**
  * Collect an async iterable into an array
  *
- * @group Conversion
+ * @category Conversion
  * @param iterable - The async iterable to collect
  *
  * @example
@@ -40,7 +40,7 @@ export async function collect<T>(iterable: AsyncIterable<T>): Promise<T[]> {
 /**
  * Convert something mixin-like into a mixin
  *
- * @group Conversion
+ * @category Conversion
  * @param m - The mixin-like object
  * @returns The mixin or null if it could not be converted
  *
@@ -83,7 +83,7 @@ export function asMixin(m: IntoMixin): Mixin | null {
 /**
  * Convert something into a CID
  *
- * @group Conversion
+ * @category Conversion
  * @param val - The value to convert
  * @returns The CID or null if it could not be converted
  *
@@ -115,7 +115,7 @@ export const asCid = (val: any): CID | null => {
  *
  * Throws an error if the value can not be coerced into a CID
  *
- * @group Conversion
+ * @category Conversion
  * @see {@link asCid}
  */
 export const coerceCid = (val: IntoCid): CID => {
@@ -129,7 +129,7 @@ export const coerceCid = (val: IntoCid): CID => {
 /**
  * Convert bytes into a hex string
  *
- * @group Conversion
+ * @category Conversion
  */
 export function bytesToHex(bytes: Uint8Array) {
   return Array.prototype.map.call(
@@ -141,7 +141,7 @@ export function bytesToHex(bytes: Uint8Array) {
 /**
  * Convert a hex string into bytes
  *
- * @group Conversion
+ * @category Conversion
  */
 export function hex2bytes(input: string) {
   if (typeof input !== 'string') {
@@ -170,7 +170,7 @@ const isJsonParseResult = (obj: any): obj is { cid: CID, data: any } => {
  *
  * Throws an error if the data is invalid.
  *
- * @group Conversion
+ * @category Conversion
  */
 export const fromJSON = async (json: string | object): Promise<Chain | Pulse> => {
   const obj = typeof json === 'string' ? JSON.parse(json) : json
@@ -206,7 +206,7 @@ export const fromJSON = async (json: string | object): Promise<Chain | Pulse> =>
  *
  * Throws an error if the data is invalid.
  *
- * @group Conversion
+ * @category Conversion
  */
 export const fromBytes = async (
   { bytes, cid, hasher = sha3512 }: {
@@ -234,7 +234,7 @@ export const fromBytes = async (
  *
  * This is useful for resolving a pulse's links.
  *
- * @group Conversion
+ * @category Conversion
  * @example
  * ```js
  * const pulse = await resolve(pulseQuery)
@@ -261,7 +261,7 @@ export function asQuery(val: any): ResolveQueryStrict | null
  *
  * This is used internally to enable the flexibility of the resolver api.
  *
- * @group Conversion
+ * @category Conversion
  */
 export function asQuery(val: any): ResolveQueryStrict | null {
   if (!val) { return null }
@@ -302,7 +302,7 @@ export function asQuery(val: any): ResolveQueryStrict | null {
  *
  * Throws an error if the value can not be coerced into a query
  *
- * @group Conversion
+ * @category Conversion
  * @see {@link asQuery}
  */
 export const coerceQuery = (val: any): ResolveQueryStrict => {

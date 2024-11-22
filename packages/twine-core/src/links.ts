@@ -3,7 +3,7 @@
  * is an anchor for.
  * For example: in base 10, for the following indicies...
  *
- * @group Skiplist
+ * @category Skiplist
  *
  * @example
  * ```js
@@ -53,7 +53,7 @@ export const getLayerPos = (radix: number, index: number) => {
  * just has the previous pulse cid, therefore a radix 0 skiplist
  * is just a decreasing list of pulse indices.
  *
- * @group Skiplist
+ * @category Skiplist
  *
  * @param radix - The radix used for the chain
  * @param fromIndex - The higher index

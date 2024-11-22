@@ -2,7 +2,7 @@ import type { Resolver, ResolvePulseQueryStrict, FulfilledPulseResolution, Resol
 import { IncompleteResolution, skipList, coerceCid, coerceQuery, ResolveOptions, isFulfilledPulseResolution, linksAsQueries, asQuery, isIterable, isPulseQuery } from '.'
 
 /**
- * @groupDescription Crawling
+ * @categoryDescription Crawling
  * Crawling is the process of moving through the tapestry via pulse links and mixins.
  * It is not possible to crawl "up" a chain, only "down" the chain.
  *
@@ -12,21 +12,21 @@ import { IncompleteResolution, skipList, coerceCid, coerceQuery, ResolveOptions,
 /**
  * Something that could be a value or an iterator over that value type
  *
- * @group Crawling
+ * @category Crawling
  */
 export type MaybeIterable<T> = Iterable<T> | T
 
 /**
  * A path is a list of resolved pulse resolutions
  *
- * @group Crawling
+ * @category Crawling
  */
 export type Path = FulfilledPulseResolution[]
 
 /**
  * An object that contains a path
  *
- * @group Crawling
+ * @category Crawling
  */
 export type CrawlPathContainer = {
   /** The path taken to get to this result */
@@ -36,7 +36,7 @@ export type CrawlPathContainer = {
 /**
  * Options for the loader
  *
- * @group Crawling
+ * @category Crawling
  */
 export type LoaderOptions = {
   /** Whether to throw an exception if something can't be resolved */
@@ -46,7 +46,7 @@ export type LoaderOptions = {
 /**
  * An object containing a load function that represents a pending crawl result
  *
- * @group Crawling
+ * @category Crawling
  */
 export type CrawlPending = {
   /** Loads the pending result using a resolver */
@@ -56,13 +56,13 @@ export type CrawlPending = {
 /**
  * The result of a crawl that is a pulse resolution with a path
  *
- * @group Crawling
+ * @category Crawling
  */
 export type CrawlResult = PulseResolution & CrawlPathContainer
 /**
  * The result of a crawl that is a fulfilled pulse resolution with a path
  *
- * @group Crawling
+ * @category Crawling
  */
 export type FulfilledCrawlResult = FulfilledPulseResolution & CrawlPathContainer
 
@@ -72,7 +72,7 @@ export type FulfilledCrawlResult = FulfilledPulseResolution & CrawlPathContainer
  * A crawl guide directs the crawl task by specifying the next
  * pulses to visit.
  *
- * @group Crawling
+ * @category Crawling
  * @example
  * ```js
  * // a guide that directs the crawl along one chain
@@ -110,7 +110,7 @@ const coerceQueryArray = (v: any): ResolvePulseQueryStrict[] => {
 /**
  * Create a guide that moves horizontally across chains
  *
- * @group Crawling
+ * @category Crawling
  * @group CrawlGuide
  * @param {boolean} [revisit] if true, will revisit chains that have already been visited
  */
@@ -130,7 +130,7 @@ export const across = (revisit?: boolean): CrawlGuide => {
 /**
  * Create a guide that visits all skiplist links as they are seen
  *
- * @group Crawling
+ * @category Crawling
  * @group CrawlGuide
  */
 export const within = (): CrawlGuide => ({ pulse }) => linksAsQueries(pulse)
@@ -138,7 +138,7 @@ export const within = (): CrawlGuide => ({ pulse }) => linksAsQueries(pulse)
 /**
  * Create a guide that moves along chains
  *
- * @group Crawling
+ * @category Crawling
  * @group CrawlGuide
  * @param {{ chain: Chain, pulse: Pulse | PulseIndex }} [target] if supplied, will skip towards this target
  */
@@ -175,7 +175,7 @@ export const along = (target?: { chain: Chain, pulse: Pulse | PulseIndex }): Cra
 /**
  * Create a guide that spreads out in all directions
  *
- * @group Crawling
+ * @category Crawling
  * @group CrawlGuide
  * @param {boolean} [depthFirst] crawl along chains first
  */
@@ -192,7 +192,7 @@ export const spread = (depthFirst = true): CrawlGuide => {
 /**
  * Create a guide that does a random walk through the tapestry
  *
- * @group Crawling
+ * @category Crawling
  * @group CrawlGuide
  */
 export const randomWalk = (): CrawlGuide => {
@@ -209,6 +209,8 @@ export const randomWalk = (): CrawlGuide => {
 /**
  * Create a guide that moves efficiently towards a target pulse
  *
+ * @category Crawling
+ * @group CrawlGuide
  * @param {FulfilledPulseResolution} target
  */
 export const towards = (target: FulfilledPulseResolution): CrawlGuide => {
@@ -273,7 +275,7 @@ export const towards = (target: FulfilledPulseResolution): CrawlGuide => {
  * console.log(Array.from(chains.values()))
  * ```
  *
- * @group Crawling
+ * @category Crawling
  * @param {MaybeIterable<IntoResolvePulseQuery>} inputs - The starting pulse or pulses
  * @param {CrawlGuide} [direct] - The guide to use for crawling
  * @param {Set<string>} [visited] - The Set object to use for tracking visited pulses
@@ -346,7 +348,7 @@ export async function* crawl(inputs: MaybeIterable<Awaitable<IntoResolvePulseQue
  * }
  * ```
  *
- * @group Crawling
+ * @category Crawling
  * @param {IntoResolvePulseQuery} start - The starting pulse, or a query for the starting pulse
  * @param {IntoResolvePulseQuery} target - The target pulse, or a query for the target pulse
  * @param {Resolver} resolver - The resolver to use for resolving pulses

@@ -26,7 +26,9 @@ export type Mixin = {
   value: CID,
 }
 
-/** Generic map */
+/**
+ * Generic map
+ */
 export type AnyMap = {
   [key: string]: any,
 }
@@ -49,11 +51,13 @@ export type ChainContent<M extends AnyMap = AnyMap> = {
   specification: string,
 }
 
-/** Pulse index (block height) */
+/**
+ * Pulse index (block height)
+ */
 export type PulseIndex = number
 
 /**
- * Pulse
+ * Pulse content
  */
 export type PulseContent<P extends AnyMap = AnyMap> = {
   /** Chain CID this pulse belongs to */
@@ -70,10 +74,14 @@ export type PulseContent<P extends AnyMap = AnyMap> = {
   source: string,
 }
 
-/** Chain or pulse content */
+/**
+ * Chain or pulse content
+ */
 export type TwineContent = ChainContent | PulseContent;
 
-/** Value field for chains */
+/**
+ * Value field for chains
+ */
 export type ChainValue<M extends AnyMap = AnyMap> = {
   /** Chain content */
   content: ChainContent<M>;
@@ -81,7 +89,9 @@ export type ChainValue<M extends AnyMap = AnyMap> = {
   signature: Signature;
 }
 
-/** Value field for pulses */
+/**
+ * Value field for pulses
+ */
 export type PulseValue<P extends AnyMap = AnyMap> = {
   /** Pulse content */
   content: PulseContent<P>;
@@ -89,19 +99,26 @@ export type PulseValue<P extends AnyMap = AnyMap> = {
   signature: Signature;
 }
 
-/** Value field for chain or pulse */
+/**
+ * Value field for chain or pulse
+ */
 export type TwineValue<M extends AnyMap = AnyMap, P extends AnyMap = AnyMap> = ChainValue<M> | PulseValue<P>;
 
 import type { Twine } from './twine'
 import { IntoResolvePulseQuery } from '.'
-/** Any type that can be coerced into a CID */
+/**
+ * Any type that can be coerced into a CID
+ */
 export type IntoCid = CID | string | Uint8Array | Twine<TwineValue>
 
-/** Any type that can be coerced into a mixin */
+/**
+ * Any type that can be coerced into a mixin
+ */
 export type IntoMixin = IntoResolvePulseQuery
 
 /**
  * Any class implementing this interface can be used as a signer for Twine
+ * @category Signer
  */
 export interface Signer {
   /**
