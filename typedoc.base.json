@@ -46,5 +46,10 @@
   },
   "categorizeByGroup": true,
   "sort": ["kind"],
-  "indexFormat": "table"
+  "indexFormat": "table",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table"
 }
