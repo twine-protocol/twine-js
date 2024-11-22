@@ -16,13 +16,10 @@ If the chain has a links radix of 0, the next pulse will have a single link to t
 
 ## Parameters
 
-• **chain**: `Chain`
-
-The chain
-
-• **previous**: `false` \| `Pulse`
-
-The previous pulse, or false for first pulse
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | `Chain` | The chain |
+| `previous` | `false` \| `Pulse` | The previous pulse, or false for first pulse |
 
 ## Returns
 
@@ -30,4 +27,4 @@ The previous pulse, or false for first pulse
 
 ## Defined in
 
-[factory.ts:25](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/factory.ts#L25)
+[factory.ts:25](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/factory.ts#L25)

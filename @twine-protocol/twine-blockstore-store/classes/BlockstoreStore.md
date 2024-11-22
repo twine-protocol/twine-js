@@ -22,13 +22,10 @@ Create a new BlockstoreStore
 
 #### Parameters
 
-• **datastore**: `Datastore`\<`object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`\>
-
-The datastore to use
-
-• **blockstore**: `Blockstore`\<`object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`\>
-
-The blockstore to use
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `datastore` | `Datastore`\<`object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`\> | The datastore to use |
+| `blockstore` | `Blockstore`\<`object`, `object`, `object`, `object`, `object`, `object`, `object`, `object`\> | The blockstore to use |
 
 #### Returns
 
@@ -36,7 +33,7 @@ The blockstore to use
 
 #### Defined in
 
-[index.ts:25](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L25)
+[index.ts:25](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L25)
 
 ## Methods
 
@@ -48,13 +45,10 @@ Get cid of pulse with specified index
 
 #### Parameters
 
-• **chain**: `IntoCid`
-
-The chain CID
-
-• **index**: `number`
-
-The index
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | `IntoCid` | The chain CID |
+| `index` | `number` | The index |
 
 #### Returns
 
@@ -64,7 +58,7 @@ The CID of the pulse, or null if not found
 
 #### Defined in
 
-[index.ts:88](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L88)
+[index.ts:88](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L88)
 
 ***
 
@@ -76,9 +70,9 @@ Reindex a chain
 
 #### Parameters
 
-• **latestCid**: `IntoCid`
-
-The CID of the latest pulse
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `latestCid` | `IntoCid` | The CID of the latest pulse |
 
 #### Returns
 
@@ -86,7 +80,7 @@ The CID of the latest pulse
 
 #### Defined in
 
-[index.ts:107](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L107)
+[index.ts:107](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L107)
 
 ***
 
@@ -98,13 +92,10 @@ fetch by index
 
 #### Parameters
 
-• **chain**: `IntoCid`
-
-The chain CID
-
-• **index**: `number`
-
-The index
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | `IntoCid` | The chain CID |
+| `index` | `number` | The index |
 
 #### Returns
 
@@ -112,7 +103,7 @@ The index
 
 #### Defined in
 
-[index.ts:137](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L137)
+[index.ts:137](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L137)
 
 ***
 
@@ -124,9 +115,9 @@ Save a twine to storage
 
 #### Parameters
 
-• **twine**: `Twine`\<`TwineValue`\>
-
-The twine to save
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `twine` | `Twine`\<`TwineValue`\> | The twine to save |
 
 #### Returns
 
@@ -138,7 +129,7 @@ The twine to save
 
 #### Defined in
 
-[index.ts:145](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L145)
+[index.ts:145](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L145)
 
 ***
 
@@ -150,9 +141,9 @@ Save many twines to storage
 
 #### Parameters
 
-• **twines**: `AnyIterable`\<`Twine`\<`TwineValue`\>\>
-
-The twines to save
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `twines` | `AnyIterable`\<`Twine`\<`TwineValue`\>\> | The twines to save |
 
 #### Returns
 
@@ -164,7 +155,7 @@ The twines to save
 
 #### Defined in
 
-[index.ts:164](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L164)
+[index.ts:164](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L164)
 
 ***
 
@@ -176,9 +167,9 @@ Delete a twine from storage
 
 #### Parameters
 
-• **cid**: `IntoCid`
-
-The CID of the twine to delete
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cid` | `IntoCid` | The CID of the twine to delete |
 
 #### Returns
 
@@ -190,7 +181,7 @@ The CID of the twine to delete
 
 #### Defined in
 
-[index.ts:170](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L170)
+[index.ts:170](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L170)
 
 ***
 
@@ -202,7 +193,9 @@ Fetch a twine by it's CID
 
 #### Parameters
 
-• **cid**: `IntoCid`
+| Parameter | Type |
+| ------ | ------ |
+| `cid` | `IntoCid` |
 
 #### Returns
 
@@ -214,7 +207,7 @@ Fetch a twine by it's CID
 
 #### Defined in
 
-[index.ts:204](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L204)
+[index.ts:204](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L204)
 
 ***
 
@@ -242,7 +235,7 @@ const chains = await collect(resolver.chains())
 
 #### Defined in
 
-[index.ts:221](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L221)
+[index.ts:221](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L221)
 
 ***
 
@@ -254,17 +247,11 @@ Get the pulses of a chain
 
 #### Parameters
 
-• **chain**: `IntoCid`
-
-The chain CID or chain itself to get the pulses from
-
-• **start?**: `number` \| `IntoCid`
-
-The index or CID of the pulse to start from
-
-• **options?**: `ResolveOptions`
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | `IntoCid` | The chain CID or chain itself to get the pulses from |
+| `start`? | `number` \| `IntoCid` | The index or CID of the pulse to start from |
+| `options`? | `ResolveOptions` | Options for the resolution |
 
 #### Returns
 
@@ -287,7 +274,7 @@ for await (const pulse of resolver.pulses('bafybeib3...')) {
 
 #### Defined in
 
-[index.ts:231](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L231)
+[index.ts:231](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L231)
 
 ***
 
@@ -299,7 +286,9 @@ Check if a Twine is present in the blockstore
 
 #### Parameters
 
-• **cid**: `IntoCid`
+| Parameter | Type |
+| ------ | ------ |
+| `cid` | `IntoCid` |
 
 #### Returns
 
@@ -311,7 +300,7 @@ Check if a Twine is present in the blockstore
 
 #### Defined in
 
-[index.ts:256](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L256)
+[index.ts:256](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L256)
 
 ***
 
@@ -323,17 +312,11 @@ Resolve a pulse by index
 
 #### Parameters
 
-• **chain**: `IntoCid`
-
-The chain CID or chain itself to resolve the pulse from
-
-• **index**: `number`
-
-The index of the pulse to resolve
-
-• **options?**: `ResolveOptions`
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | `IntoCid` | The chain CID or chain itself to resolve the pulse from |
+| `index` | `number` | The index of the pulse to resolve |
+| `options`? | `ResolveOptions` | Options for the resolution |
 
 #### Returns
 
@@ -356,7 +339,7 @@ if (resolution.pulse) {
 
 #### Defined in
 
-[index.ts:267](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L267)
+[index.ts:267](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L267)
 
 ***
 
@@ -370,9 +353,10 @@ Resolves a twine query
 
 ##### Parameters
 
-• **query**: `IntoResolvePulseQuery`
-
-• **options?**: `ResolveOptions`
+| Parameter | Type |
+| ------ | ------ |
+| `query` | `IntoResolvePulseQuery` |
+| `options`? | `ResolveOptions` |
 
 ##### Returns
 
@@ -384,7 +368,7 @@ Resolves a twine query
 
 ##### Defined in
 
-[index.ts:276](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L276)
+[index.ts:276](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L276)
 
 #### resolve(query, options)
 
@@ -394,9 +378,10 @@ Resolve a pulse (with its chain) from a query
 
 ##### Parameters
 
-• **query**: `IntoResolveChainQuery`
-
-• **options?**: `ResolveOptions`
+| Parameter | Type |
+| ------ | ------ |
+| `query` | `IntoResolveChainQuery` |
+| `options`? | `ResolveOptions` |
 
 ##### Returns
 
@@ -408,7 +393,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[index.ts:277](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L277)
+[index.ts:277](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L277)
 
 ***
 
@@ -420,7 +405,9 @@ Resolves the latest pulse for specified chain
 
 #### Parameters
 
-• **chain**: `IntoCid`
+| Parameter | Type |
+| ------ | ------ |
+| `chain` | `IntoCid` |
 
 #### Returns
 
@@ -432,4 +419,4 @@ Resolves the latest pulse for specified chain
 
 #### Defined in
 
-[index.ts:288](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-blockstore-store/src/index.ts#L288)
+[index.ts:288](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-blockstore-store/src/index.ts#L288)

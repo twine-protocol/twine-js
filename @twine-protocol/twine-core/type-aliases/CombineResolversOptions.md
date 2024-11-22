@@ -12,12 +12,10 @@ Options for combining resolvers
 
 ## Type declaration
 
-### cacheSize?
-
-> `optional` **cacheSize**: `number`
-
-The maximum number of items to cache
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `cacheSize`? | `number` | The maximum number of items to cache | [packages/twine-core/src/resolver/combine.ts:12](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L12) |
 
 ## Defined in
 
-[packages/twine-core/src/resolver/combine.ts:10](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/combine.ts#L10)
+[packages/twine-core/src/resolver/combine.ts:10](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L10)

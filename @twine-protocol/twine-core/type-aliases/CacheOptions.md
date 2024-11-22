@@ -12,20 +12,10 @@ Cache options
 
 ## Type declaration
 
-### maxSize?
-
-> `optional` **maxSize**: `number`
-
-The maximum number of items to keep in the cache
-
-Defaults to 10000, set to 0 for no limit
-
-#### Default
-
-```ts
-10000
-```
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `maxSize`? | `number` | The maximum number of items to keep in the cache Defaults to 10000, set to 0 for no limit **Default** `10000` | [packages/twine-core/src/store/cache-helpers.ts:13](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L13) |
 
 ## Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:5](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L5)
+[packages/twine-core/src/store/cache-helpers.ts:5](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L5)

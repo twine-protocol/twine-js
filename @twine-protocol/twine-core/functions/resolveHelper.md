@@ -49,11 +49,11 @@ A helper function for implementing the [Resolver.resolve](../interfaces/Resolver
 
 ### Parameters
 
-• **callers**: [`ResolveCallers`](../type-aliases/ResolveCallers.md)
-
-• **thing**: [`IntoResolveChainQuery`](../type-aliases/IntoResolveChainQuery.md)
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+| Parameter | Type |
+| ------ | ------ |
+| `callers` | [`ResolveCallers`](../type-aliases/ResolveCallers.md) |
+| `thing` | [`IntoResolveChainQuery`](../type-aliases/IntoResolveChainQuery.md) |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) |
 
 ### Returns
 
@@ -94,7 +94,7 @@ class MemoryStore {
 
 ### Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:183](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L183)
+[packages/twine-core/src/resolver/helpers.ts:183](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L183)
 
 ## resolveHelper(callers, thing, options)
 
@@ -104,11 +104,11 @@ A helper function for implementing the [Resolver.resolve](../interfaces/Resolver
 
 ### Parameters
 
-• **callers**: [`ResolveCallers`](../type-aliases/ResolveCallers.md)
-
-• **thing**: [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md)
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+| Parameter | Type |
+| ------ | ------ |
+| `callers` | [`ResolveCallers`](../type-aliases/ResolveCallers.md) |
+| `thing` | [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md) |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) |
 
 ### Returns
 
@@ -149,4 +149,4 @@ class MemoryStore {
 
 ### Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:184](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L184)
+[packages/twine-core/src/resolver/helpers.ts:184](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L184)

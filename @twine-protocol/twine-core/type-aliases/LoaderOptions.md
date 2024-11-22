@@ -12,12 +12,10 @@ Options for the loader
 
 ## Type declaration
 
-### throwUnresolvable?
-
-> `optional` **throwUnresolvable**: `boolean`
-
-Whether to throw an exception if something can't be resolved
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `throwUnresolvable`? | `boolean` | Whether to throw an exception if something can't be resolved | [packages/twine-core/src/crawl.ts:43](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/crawl.ts#L43) |
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:41](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/crawl.ts#L41)
+[packages/twine-core/src/crawl.ts:41](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/crawl.ts#L41)

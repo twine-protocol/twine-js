@@ -12,24 +12,12 @@ Metadata used by the memory store to keep track of chains and pulses
 
 ## Type declaration
 
-### chainCid
-
-> **chainCid**: [`CID`](../classes/CID.md)
-
-The CID of the chain
-
-### latestIndex
-
-> **latestIndex**: `number`
-
-The latest index of the chain
-
-### indexMap
-
-> **indexMap**: [`CacheMap`](../classes/CacheMap.md)\<`number`, [`Pulse`](Pulse.md)\>
-
-A map of pulse index to pulse CID
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `chainCid` | [`CID`](../classes/CID.md) | The CID of the chain | [packages/twine-core/src/store/memory-store.ts:19](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/memory-store.ts#L19) |
+| `latestIndex` | `number` | The latest index of the chain | [packages/twine-core/src/store/memory-store.ts:21](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/memory-store.ts#L21) |
+| `indexMap` | [`CacheMap`](../classes/CacheMap.md)\<`number`, [`Pulse`](Pulse.md)\> | A map of pulse index to pulse CID | [packages/twine-core/src/store/memory-store.ts:23](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/memory-store.ts#L23) |
 
 ## Defined in
 
-[packages/twine-core/src/store/memory-store.ts:17](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/memory-store.ts#L17)
+[packages/twine-core/src/store/memory-store.ts:17](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/memory-store.ts#L17)

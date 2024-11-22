@@ -12,22 +12,17 @@ Value field for pulses
 
 ## Type Parameters
 
-• **P** *extends* [`AnyMap`](AnyMap.md) = [`AnyMap`](AnyMap.md)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `P` *extends* [`AnyMap`](AnyMap.md) | [`AnyMap`](AnyMap.md) |
 
 ## Type declaration
 
-### content
-
-> **content**: [`PulseContent`](PulseContent.md)\<`P`\>
-
-Pulse content
-
-### signature
-
-> **signature**: [`Signature`](Signature.md)
-
-Pulse signature
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `content` | [`PulseContent`](PulseContent.md)\<`P`\> | Pulse content | [packages/twine-core/src/types.ts:97](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/types.ts#L97) |
+| `signature` | [`Signature`](Signature.md) | Pulse signature | [packages/twine-core/src/types.ts:99](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/types.ts#L99) |
 
 ## Defined in
 
-[packages/twine-core/src/types.ts:95](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/types.ts#L95)
+[packages/twine-core/src/types.ts:95](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/types.ts#L95)

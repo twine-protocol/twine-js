@@ -12,9 +12,9 @@ Create a guide that spreads out in all directions
 
 ## Parameters
 
-• **depthFirst?**: `boolean` = `true`
-
-crawl along chains first
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `depthFirst`? | `boolean` | `true` | crawl along chains first |
 
 ## Returns
 
@@ -22,4 +22,4 @@ crawl along chains first
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:182](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/crawl.ts#L182)
+[packages/twine-core/src/crawl.ts:182](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/crawl.ts#L182)

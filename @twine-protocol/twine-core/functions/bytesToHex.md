@@ -12,7 +12,9 @@ Convert bytes into a hex string
 
 ## Parameters
 
-• **bytes**: `Uint8Array`
+| Parameter | Type |
+| ------ | ------ |
+| `bytes` | `Uint8Array` |
 
 ## Returns
 
@@ -20,4 +22,4 @@ Convert bytes into a hex string
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:134](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L134)
+[packages/twine-core/src/conversion.ts:134](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L134)

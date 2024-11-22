@@ -22,7 +22,7 @@ Get the public key in JWK format
 
 #### Defined in
 
-[packages/twine-core/src/types.ts:127](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/types.ts#L127)
+[packages/twine-core/src/types.ts:127](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/types.ts#L127)
 
 ***
 
@@ -34,9 +34,9 @@ Sign the given bytes
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
-
-Bytes to sign
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `bytes` | `Uint8Array` | Bytes to sign |
 
 #### Returns
 
@@ -44,4 +44,4 @@ Bytes to sign
 
 #### Defined in
 
-[packages/twine-core/src/types.ts:132](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/types.ts#L132)
+[packages/twine-core/src/types.ts:132](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/types.ts#L132)

@@ -25,9 +25,9 @@ that is for the [Resolver](Resolver.md) to do.
 
 #### Parameters
 
-• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The CID of the twine to fetch
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cid` | [`IntoCid`](../type-aliases/IntoCid.md) | The CID of the twine to fetch |
 
 #### Returns
 
@@ -35,7 +35,7 @@ The CID of the twine to fetch
 
 #### Defined in
 
-[packages/twine-core/src/store/types.ts:22](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/types.ts#L22)
+[packages/twine-core/src/store/types.ts:22](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/types.ts#L22)
 
 ***
 
@@ -47,9 +47,9 @@ Save a twine to storage
 
 #### Parameters
 
-• **twine**: [`Twine`](../classes/Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>
-
-The twine to save
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `twine` | [`Twine`](../classes/Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\> | The twine to save |
 
 #### Returns
 
@@ -57,7 +57,7 @@ The twine to save
 
 #### Defined in
 
-[packages/twine-core/src/store/types.ts:28](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/types.ts#L28)
+[packages/twine-core/src/store/types.ts:28](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/types.ts#L28)
 
 ***
 
@@ -69,9 +69,9 @@ Save many twines to storage
 
 #### Parameters
 
-• **twines**: [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Twine`](../classes/Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>\>
-
-The twines to save
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `twines` | [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Twine`](../classes/Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>\> | The twines to save |
 
 #### Returns
 
@@ -79,7 +79,7 @@ The twines to save
 
 #### Defined in
 
-[packages/twine-core/src/store/types.ts:34](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/types.ts#L34)
+[packages/twine-core/src/store/types.ts:34](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/types.ts#L34)
 
 ***
 
@@ -91,9 +91,9 @@ Delete a twine from storage
 
 #### Parameters
 
-• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The CID of the twine to delete
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cid` | [`IntoCid`](../type-aliases/IntoCid.md) | The CID of the twine to delete |
 
 #### Returns
 
@@ -101,7 +101,7 @@ The CID of the twine to delete
 
 #### Defined in
 
-[packages/twine-core/src/store/types.ts:40](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/types.ts#L40)
+[packages/twine-core/src/store/types.ts:40](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/types.ts#L40)
 
 ***
 
@@ -124,13 +124,10 @@ a chain or pulse resolution.
 
 ##### Parameters
 
-• **query**: [`IntoResolveChainQuery`](../type-aliases/IntoResolveChainQuery.md)
-
-The query to resolve
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `query` | [`IntoResolveChainQuery`](../type-aliases/IntoResolveChainQuery.md) | The query to resolve |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) | Options for the resolution |
 
 ##### Returns
 
@@ -168,7 +165,7 @@ if (pulse) {
 
 ##### Defined in
 
-[packages/twine-core/src/resolver/types.ts:233](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L233)
+[packages/twine-core/src/resolver/types.ts:233](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L233)
 
 #### resolve(query, options)
 
@@ -178,9 +175,10 @@ Resolve a pulse (with its chain) from a query
 
 ##### Parameters
 
-• **query**: [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md)
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+| Parameter | Type |
+| ------ | ------ |
+| `query` | [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md) |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) |
 
 ##### Returns
 
@@ -192,7 +190,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[packages/twine-core/src/resolver/types.ts:237](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L237)
+[packages/twine-core/src/resolver/types.ts:237](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L237)
 
 ***
 
@@ -204,13 +202,10 @@ Resolve the latest pulse of a chain
 
 #### Parameters
 
-• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to resolve the latest pulse from
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | [`IntoCid`](../type-aliases/IntoCid.md) | The chain CID or chain itself to resolve the latest pulse from |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) | Options for the resolution |
 
 #### Returns
 
@@ -238,7 +233,7 @@ const resolution = await resolver.resolveLatest(chain)
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:260](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L260)
+[packages/twine-core/src/resolver/types.ts:260](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L260)
 
 ***
 
@@ -250,17 +245,11 @@ Resolve a pulse by index
 
 #### Parameters
 
-• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to resolve the pulse from
-
-• **index**: `number`
-
-The index of the pulse to resolve
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | [`IntoCid`](../type-aliases/IntoCid.md) | The chain CID or chain itself to resolve the pulse from |
+| `index` | `number` | The index of the pulse to resolve |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) | Options for the resolution |
 
 #### Returns
 
@@ -283,7 +272,7 @@ if (resolution.pulse) {
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:278](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L278)
+[packages/twine-core/src/resolver/types.ts:278](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L278)
 
 ***
 
@@ -295,9 +284,9 @@ Check if a cid can be resolved
 
 #### Parameters
 
-• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The CID to check
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cid` | [`IntoCid`](../type-aliases/IntoCid.md) | The CID to check |
 
 #### Returns
 
@@ -322,7 +311,7 @@ if (exists) {
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:295](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L295)
+[packages/twine-core/src/resolver/types.ts:295](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L295)
 
 ***
 
@@ -334,17 +323,11 @@ Get the pulses of a chain
 
 #### Parameters
 
-• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to get the pulses from
-
-• **start?**: `number` \| [`IntoCid`](../type-aliases/IntoCid.md)
-
-The index or CID of the pulse to start from
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain` | [`IntoCid`](../type-aliases/IntoCid.md) | The chain CID or chain itself to get the pulses from |
+| `start`? | `number` \| [`IntoCid`](../type-aliases/IntoCid.md) | The index or CID of the pulse to start from |
+| `options`? | [`ResolveOptions`](../type-aliases/ResolveOptions.md) | Options for the resolution |
 
 #### Returns
 
@@ -367,7 +350,7 @@ for await (const pulse of resolver.pulses('bafybeib3...')) {
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:313](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L313)
+[packages/twine-core/src/resolver/types.ts:313](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L313)
 
 ***
 
@@ -395,4 +378,4 @@ const chains = await collect(resolver.chains())
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:324](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L324)
+[packages/twine-core/src/resolver/types.ts:324](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L324)

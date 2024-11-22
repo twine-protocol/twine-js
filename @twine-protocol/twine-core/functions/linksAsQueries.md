@@ -14,7 +14,9 @@ This is useful for resolving a pulse's links.
 
 ## Parameters
 
-• **pulse**: [`Pulse`](../type-aliases/Pulse.md)
+| Parameter | Type |
+| ------ | ------ |
+| `pulse` | [`Pulse`](../type-aliases/Pulse.md) |
 
 ## Returns
 
@@ -30,4 +32,4 @@ const resolvedLinks = await Promise.all(links.map(q => resolve(q)))
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:245](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L245)
+[packages/twine-core/src/conversion.ts:245](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L245)

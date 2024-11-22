@@ -12,9 +12,9 @@ Convert something mixin-like into a mixin
 
 ## Parameters
 
-• **m**: [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md)
-
-The mixin-like object
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `m` | [`IntoResolvePulseQuery`](../type-aliases/IntoResolvePulseQuery.md) | The mixin-like object |
 
 ## Returns
 
@@ -31,4 +31,4 @@ const anotherMixin = asMixin(somePulse)
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:53](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L53)
+[packages/twine-core/src/conversion.ts:53](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L53)

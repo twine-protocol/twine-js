@@ -14,13 +14,16 @@ Within the delay interval, the same promise is returned
 
 ## Type Parameters
 
-• **T**
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-• **fn**
-
-• **delay?**: `number`
+| Parameter | Type |
+| ------ | ------ |
+| `fn` | (...`x`) => `Promise`\<`T`\> |
+| `delay`? | `number` |
 
 ## Returns
 
@@ -28,7 +31,9 @@ Within the delay interval, the same promise is returned
 
 ### Parameters
 
-• ...**args**: `any`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | `any`[] |
 
 ### Returns
 
@@ -36,4 +41,4 @@ Within the delay interval, the same promise is returned
 
 ## Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:13](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L13)
+[packages/twine-core/src/resolver/helpers.ts:13](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L13)

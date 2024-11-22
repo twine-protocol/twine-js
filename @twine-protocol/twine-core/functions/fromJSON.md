@@ -16,7 +16,9 @@ Throws an error if the data is invalid.
 
 ## Parameters
 
-• **json**: `string` \| `object`
+| Parameter | Type |
+| ------ | ------ |
+| `json` | `string` \| `object` |
 
 ## Returns
 
@@ -24,4 +26,4 @@ Throws an error if the data is invalid.
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:175](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L175)
+[packages/twine-core/src/conversion.ts:175](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L175)

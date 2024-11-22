@@ -12,7 +12,9 @@ Is this a twine value (pulse or chain)
 
 ## Parameters
 
-• **value**: `any`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `any` |
 
 ## Returns
 
@@ -20,4 +22,4 @@ Is this a twine value (pulse or chain)
 
 ## Defined in
 
-[packages/twine-core/src/checks.ts:160](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/checks.ts#L160)
+[packages/twine-core/src/checks.ts:160](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/checks.ts#L160)

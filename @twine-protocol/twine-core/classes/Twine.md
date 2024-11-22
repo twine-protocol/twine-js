@@ -18,7 +18,9 @@ Generic class for twine data
 
 ## Type Parameters
 
-• **T** *extends* [`ChainValue`](../type-aliases/ChainValue.md) \| [`PulseValue`](../type-aliases/PulseValue.md)
+| Type Parameter |
+| ------ |
+| `T` *extends* [`ChainValue`](../type-aliases/ChainValue.md) \| [`PulseValue`](../type-aliases/PulseValue.md) |
 
 ## Constructors
 
@@ -39,13 +41,12 @@ package to create a twine instance.
 
 #### Parameters
 
-• **\_\_namedParameters**
-
-• **\_\_namedParameters.cid**: [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>
-
-• **\_\_namedParameters.bytes**: `Uint8Array`
-
-• **\_\_namedParameters.value**: `T`
+| Parameter | Type |
+| ------ | ------ |
+| `__namedParameters` | `object` |
+| `__namedParameters.cid` | [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\> |
+| `__namedParameters.bytes` | `Uint8Array` |
+| `__namedParameters.value` | `T` |
 
 #### Returns
 
@@ -57,99 +58,19 @@ package to create a twine instance.
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:47](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L47)
+[packages/twine-core/src/twine.ts:47](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L47)
 
 ## Properties
 
-### isTwineInstance
-
-> **isTwineInstance**: `boolean` = `true`
-
-is a twine instance (true)
-
-#### Defined in
-
-[packages/twine-core/src/twine.ts:24](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L24)
-
-***
-
-### isChain
-
-> **isChain**: `boolean`
-
-is this a chain
-
-#### Defined in
-
-[packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L26)
-
-***
-
-### chainCid
-
-> **chainCid**: [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>
-
-chain CID (either this CID or the pulse's chain CID)
-
-#### Defined in
-
-[packages/twine-core/src/twine.ts:28](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L28)
-
-***
-
-### cid
-
-> `readonly` **cid**: [`CID`](CID.md)\<`T`, `number`, `number`, `Version`\>
-
-#### Inherited from
-
-`Block.Block.cid`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/block.d.ts:10
-
-***
-
-### bytes
-
-> `readonly` **bytes**: `ByteView`\<`T`\>
-
-#### Inherited from
-
-`Block.Block.bytes`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/block.d.ts:11
-
-***
-
-### value
-
-> `readonly` **value**: `T`
-
-#### Inherited from
-
-`Block.Block.value`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/block.d.ts:12
-
-***
-
-### asBlock
-
-> `readonly` **asBlock**: [`Twine`](Twine.md)\<`T`\>
-
-#### Inherited from
-
-`Block.Block.asBlock`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/block.d.ts:13
+| Property | Modifier | Type | Default value | Description | Inherited from | Defined in |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| `isTwineInstance` | `public` | `boolean` | `true` | is a twine instance (true) | - | [packages/twine-core/src/twine.ts:24](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L24) |
+| `isChain` | `public` | `boolean` | `undefined` | is this a chain | - | [packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L26) |
+| `chainCid` | `public` | [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\> | `undefined` | chain CID (either this CID or the pulse's chain CID) | - | [packages/twine-core/src/twine.ts:28](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L28) |
+| `cid` | `readonly` | [`CID`](CID.md)\<`T`, `number`, `number`, `Version`\> | `undefined` | - | `Block.Block.cid` | node\_modules/multiformats/dist/src/block.d.ts:10 |
+| `bytes` | `readonly` | `ByteView`\<`T`\> | `undefined` | - | `Block.Block.bytes` | node\_modules/multiformats/dist/src/block.d.ts:11 |
+| `value` | `readonly` | `T` | `undefined` | - | `Block.Block.value` | node\_modules/multiformats/dist/src/block.d.ts:12 |
+| `asBlock` | `readonly` | [`Twine`](Twine.md)\<`T`\> | `undefined` | - | `Block.Block.asBlock` | node\_modules/multiformats/dist/src/block.d.ts:13 |
 
 ## Accessors
 
@@ -167,7 +88,7 @@ Is this a pulse
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:82](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L82)
+[packages/twine-core/src/twine.ts:82](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L82)
 
 ## Methods
 
@@ -179,7 +100,9 @@ Check if a value is a twine
 
 #### Parameters
 
-• **thing**: `any`
+| Parameter | Type |
+| ------ | ------ |
+| `thing` | `any` |
 
 #### Returns
 
@@ -187,7 +110,7 @@ thing is Chain \| Pulse
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:31](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L31)
+[packages/twine-core/src/twine.ts:31](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L31)
 
 ***
 
@@ -203,7 +126,7 @@ Get the twine data as a DAG-JSON object
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:89](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L89)
+[packages/twine-core/src/twine.ts:89](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L89)
 
 ***
 
@@ -219,7 +142,7 @@ Get the twine content field hash digest
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:101](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L101)
+[packages/twine-core/src/twine.ts:101](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L101)
 
 ***
 
@@ -234,9 +157,9 @@ a chain instance must be provided.
 
 #### Parameters
 
-• **chain?**: [`Chain`](../type-aliases/Chain.md)\<[`AnyMap`](../type-aliases/AnyMap.md)\>
-
-Chain instance to use for verification
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `chain`? | [`Chain`](../type-aliases/Chain.md)\<[`AnyMap`](../type-aliases/AnyMap.md)\> | Chain instance to use for verification |
 
 #### Returns
 
@@ -244,7 +167,7 @@ Chain instance to use for verification
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:113](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L113)
+[packages/twine-core/src/twine.ts:113](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L113)
 
 ***
 
@@ -290,7 +213,9 @@ node\_modules/multiformats/dist/src/block.d.ts:20
 
 #### Parameters
 
-• **path?**: `string`
+| Parameter | Type |
+| ------ | ------ |
+| `path`? | `string` |
 
 #### Returns
 

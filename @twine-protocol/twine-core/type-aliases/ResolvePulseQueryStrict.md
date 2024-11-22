@@ -12,18 +12,11 @@ A query to resolve a pulse strictly using CID objects
 
 ## Type declaration
 
-### chain
-
-> **chain**: [`CID`](../classes/CID.md)
-
-The CID of the chain
-
-### pulse
-
-> **pulse**: [`CID`](../classes/CID.md)
-
-The CID of the pulse
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `chain` | [`CID`](../classes/CID.md) | The CID of the chain | [packages/twine-core/src/resolver/types.ts:43](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L43) |
+| `pulse` | [`CID`](../classes/CID.md) | The CID of the pulse | [packages/twine-core/src/resolver/types.ts:45](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L45) |
 
 ## Defined in
 
-[packages/twine-core/src/resolver/types.ts:41](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L41)
+[packages/twine-core/src/resolver/types.ts:41](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L41)

@@ -12,7 +12,9 @@ Create a guide that moves efficiently towards a target pulse
 
 ## Parameters
 
-• **target**: [`FulfilledPulseResolution`](../type-aliases/FulfilledPulseResolution.md)
+| Parameter | Type |
+| ------ | ------ |
+| `target` | [`FulfilledPulseResolution`](../type-aliases/FulfilledPulseResolution.md) |
 
 ## Returns
 
@@ -20,4 +22,4 @@ Create a guide that moves efficiently towards a target pulse
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:216](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/crawl.ts#L216)
+[packages/twine-core/src/crawl.ts:216](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/crawl.ts#L216)

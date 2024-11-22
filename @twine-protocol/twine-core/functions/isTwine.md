@@ -12,7 +12,9 @@ Is this a twine
 
 ## Parameters
 
-• **twine**: `any`
+| Parameter | Type |
+| ------ | ------ |
+| `twine` | `any` |
 
 ## Returns
 
@@ -20,4 +22,4 @@ twine is Chain \| Pulse
 
 ## Defined in
 
-[packages/twine-core/src/checks.ts:169](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/checks.ts#L169)
+[packages/twine-core/src/checks.ts:169](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/checks.ts#L169)

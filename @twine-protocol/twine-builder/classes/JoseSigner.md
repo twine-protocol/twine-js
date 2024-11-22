@@ -29,17 +29,11 @@ Create a new JoseSigner from a JWK
 
 #### Parameters
 
-• **privateKey**: `KeyLike`
-
-The private key
-
-• **publicKey**: `KeyLike`
-
-The public key
-
-• **alg**: `string`
-
-The algorithm to use
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `privateKey` | `KeyLike` | The private key |
+| `publicKey` | `KeyLike` | The public key |
+| `alg` | `string` | The algorithm to use |
 
 #### Returns
 
@@ -47,43 +41,15 @@ The algorithm to use
 
 #### Defined in
 
-[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L46)
+[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L46)
 
 ## Properties
 
-### privateKey
-
-> **privateKey**: `KeyLike`
-
-Private Key
-
-#### Defined in
-
-[jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L19)
-
-***
-
-### publicKey
-
-> **publicKey**: `KeyLike`
-
-Public Key
-
-#### Defined in
-
-[jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L21)
-
-***
-
-### algorithm
-
-> **algorithm**: `string`
-
-Algorithm
-
-#### Defined in
-
-[jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L23)
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `privateKey` | `KeyLike` | Private Key | [jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L19) |
+| `publicKey` | `KeyLike` | Public Key | [jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L21) |
+| `algorithm` | `string` | Algorithm | [jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L23) |
 
 ## Methods
 
@@ -95,13 +61,10 @@ Create a new JoseSigner from a random key pair
 
 #### Parameters
 
-• **alg**: `string` = `'ES256'`
-
-The algorithm to use
-
-• **options**: `GenerateKeyPairOptions` = `{}`
-
-Options for the key pair
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `alg` | `string` | `'ES256'` | The algorithm to use |
+| `options` | `GenerateKeyPairOptions` | `{}` | Options for the key pair |
 
 #### Returns
 
@@ -113,7 +76,7 @@ Options for the key pair
 
 #### Defined in
 
-[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L34)
+[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L34)
 
 ***
 
@@ -137,7 +100,7 @@ Get the public JWK
 
 #### Defined in
 
-[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L62)
+[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L62)
 
 ***
 
@@ -149,7 +112,9 @@ Sign some bytes
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+| Parameter | Type |
+| ------ | ------ |
+| `bytes` | `Uint8Array` |
 
 #### Returns
 
@@ -165,4 +130,4 @@ Sign some bytes
 
 #### Defined in
 
-[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/jose-signer.ts#L72)
+[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/jose-signer.ts#L72)

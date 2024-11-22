@@ -12,12 +12,10 @@ Options for the HTTP store
 
 ## Type declaration
 
-### allowDuplicateRequests?
-
-> `optional` **allowDuplicateRequests**: `boolean`
-
-Allow duplicate requests to be made
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `allowDuplicateRequests`? | `boolean` | Allow duplicate requests to be made | [index.ts:171](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-http-store/src/index.ts#L171) |
 
 ## Defined in
 
-[index.ts:167](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-http-store/src/index.ts#L167)
+[index.ts:167](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-http-store/src/index.ts#L167)

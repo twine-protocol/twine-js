@@ -12,18 +12,11 @@ CIDs for a pulse lookup
 
 ## Type declaration
 
-### chainCID?
-
-> `optional` **chainCID**: [`CID`](../classes/CID.md)
-
-Chain CID (maybe)
-
-### pulseCID
-
-> **pulseCID**: [`CID`](../classes/CID.md)
-
-Pulse CID
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `chainCID`? | [`CID`](../classes/CID.md) | Chain CID (maybe) | [packages/twine-core/src/resolver/helpers.ts:77](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L77) |
+| `pulseCID` | [`CID`](../classes/CID.md) | Pulse CID | [packages/twine-core/src/resolver/helpers.ts:79](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L79) |
 
 ## Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:75](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L75)
+[packages/twine-core/src/resolver/helpers.ts:75](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L75)

@@ -15,25 +15,18 @@ multiple requests for the same twine.
 
 ## Type Parameters
 
-• **T**
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-• **cache**: `Map`\<`string`, `Promise`\<`T`\>\>
-
-The cache to use
-
-• **key**: `string`
-
-The key to use
-
-• **fn**
-
-The function to call
-
-• ...**args**: `any`[]
-
-The arguments to pass to the function
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cache` | `Map`\<`string`, `Promise`\<`T`\>\> | The cache to use |
+| `key` | `string` | The key to use |
+| `fn` | (...`args`) => [`Awaitable`](../type-aliases/Awaitable.md)\<`T`\> | The function to call |
+| ...`args` | `any`[] | The arguments to pass to the function |
 
 ## Returns
 
@@ -41,4 +34,4 @@ The arguments to pass to the function
 
 ## Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:45](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/helpers.ts#L45)
+[packages/twine-core/src/resolver/helpers.ts:45](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/helpers.ts#L45)

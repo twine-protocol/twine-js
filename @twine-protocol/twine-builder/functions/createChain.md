@@ -14,21 +14,17 @@ Note: The only supported hash function is SHA3-512 at the moment
 
 ## Type Parameters
 
-• **M** *extends* `AnyMap`
+| Type Parameter |
+| ------ |
+| `M` *extends* `AnyMap` |
 
 ## Parameters
 
-• **arg0**: [`UnsanitizedChainContent`](../interfaces/UnsanitizedChainContent.md)\<`object` \| `M`\>
-
-The chain content
-
-• **signer**: `Signer`
-
-The signer
-
-• **hasher**: `MultihashHasher`\<`number`\> = `sha3512`
-
-The hasher
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `arg0` | [`UnsanitizedChainContent`](../interfaces/UnsanitizedChainContent.md)\<`object` \| `M`\> | `undefined` | The chain content |
+| `signer` | `Signer` | `undefined` | The signer |
+| `hasher` | `MultihashHasher`\<`number`\> | `sha3512` | The hasher |
 
 ## Returns
 
@@ -38,4 +34,4 @@ The chain as a Twine object
 
 ## Defined in
 
-[factory.ts:85](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/factory.ts#L85)
+[factory.ts:85](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/factory.ts#L85)

@@ -23,21 +23,12 @@ is just a decreasing list of pulse indices.
 
 ## Parameters
 
-• **radix**: `number`
-
-The radix used for the chain
-
-• **fromIndex**: `number`
-
-The higher index
-
-• **toIndex**: `number`
-
-The lower index
-
-• **byLink**: `boolean` = `false`
-
-If true, will return the list of array indices for the links list
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `radix` | `number` | `undefined` | The radix used for the chain |
+| `fromIndex` | `number` | `undefined` | The higher index |
+| `toIndex` | `number` | `undefined` | The lower index |
+| `byLink` | `boolean` | `false` | If true, will return the list of array indices for the links list |
 
 ## Returns
 
@@ -64,4 +55,4 @@ Array.from(skipList(10, 23, 5, true)) // == [ 1, 1, 0, 0, 0, 0 ]
 
 ## Defined in
 
-[packages/twine-core/src/links.ts:81](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/links.ts#L81)
+[packages/twine-core/src/links.ts:81](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/links.ts#L81)

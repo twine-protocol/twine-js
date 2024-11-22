@@ -14,9 +14,10 @@ For example: in base 10, for the following indicies...
 
 ## Parameters
 
-• **radix**: `number`
-
-• **index**: `number`
+| Parameter | Type |
+| ------ | ------ |
+| `radix` | `number` |
+| `index` | `number` |
 
 ## Returns
 
@@ -33,4 +34,4 @@ getLayerPos(10, 3700) == 2 // (multiple 100)
 
 ## Defined in
 
-[packages/twine-core/src/links.ts:16](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/links.ts#L16)
+[packages/twine-core/src/links.ts:16](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/links.ts#L16)

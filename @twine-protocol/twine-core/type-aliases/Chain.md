@@ -12,8 +12,10 @@ A Twine that is a Chain
 
 ## Type Parameters
 
-• **M** *extends* [`AnyMap`](AnyMap.md) = [`AnyMap`](AnyMap.md)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `M` *extends* [`AnyMap`](AnyMap.md) | [`AnyMap`](AnyMap.md) |
 
 ## Defined in
 
-[packages/twine-core/src/twine.ts:12](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/twine.ts#L12)
+[packages/twine-core/src/twine.ts:12](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/twine.ts#L12)

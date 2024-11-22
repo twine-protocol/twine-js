@@ -14,37 +14,21 @@ Note: The only supported hash function is SHA3-512 at the moment
 
 ## Type Parameters
 
-• **P** *extends* `AnyMap`
+| Type Parameter |
+| ------ |
+| `P` *extends* `AnyMap` |
 
 ## Parameters
 
-• **chain**: `Chain`
-
-The chain
-
-• **previous**: `false` \| `Pulse`
-
-The previous pulse, or false for first pulse
-
-• **arg2**
-
-The mixins and payload
-
-• **arg2.mixins?**: `IntoResolvePulseQuery`[] = `[]`
-
-The mixins
-
-• **arg2.payload?**: `object` \| `P` = `{}`
-
-The payload
-
-• **signer**: `Signer`
-
-The signer
-
-• **hasher**: `MultihashHasher`\<`number`\> = `sha3512`
-
-The hasher
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `chain` | `Chain` | `undefined` | The chain |
+| `previous` | `false` \| `Pulse` | `undefined` | The previous pulse, or false for first pulse |
+| `arg2` | `object` | `undefined` | The mixins and payload |
+| `arg2.mixins`? | `IntoResolvePulseQuery`[] | `[]` | The mixins |
+| `arg2.payload`? | `object` \| `P` | `{}` | The payload |
+| `signer` | `Signer` | `undefined` | The signer |
+| `hasher` | `MultihashHasher`\<`number`\> | `sha3512` | The hasher |
 
 ## Returns
 
@@ -54,4 +38,4 @@ The pulse as a Twine object
 
 ## Defined in
 
-[factory.ts:125](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-builder/src/factory.ts#L125)
+[factory.ts:125](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-builder/src/factory.ts#L125)

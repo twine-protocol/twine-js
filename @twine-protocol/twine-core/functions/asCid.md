@@ -12,9 +12,9 @@ Convert something into a CID
 
 ## Parameters
 
-• **val**: `any`
-
-The value to convert
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `val` | `any` | The value to convert |
 
 ## Returns
 
@@ -31,4 +31,4 @@ const anotherCid = asCid(somePulse)
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:96](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L96)
+[packages/twine-core/src/conversion.ts:96](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L96)

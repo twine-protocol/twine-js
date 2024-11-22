@@ -17,13 +17,12 @@ Throws an error if the data is invalid.
 
 ## Parameters
 
-• **\_\_namedParameters**
-
-• **\_\_namedParameters.bytes**: `Uint8Array`
-
-• **\_\_namedParameters.cid**: [`CID`](../classes/CID.md)\<`unknown`, `number`, `number`, `Version`\>
-
-• **\_\_namedParameters.hasher?**: `MultihashHasher`\<`number`\> = `sha3512`
+| Parameter | Type |
+| ------ | ------ |
+| `__namedParameters` | `object` |
+| `__namedParameters.bytes` | `Uint8Array` |
+| `__namedParameters.cid` | [`CID`](../classes/CID.md)\<`unknown`, `number`, `number`, `Version`\> |
+| `__namedParameters.hasher`? | `MultihashHasher`\<`number`\> |
 
 ## Returns
 
@@ -31,4 +30,4 @@ Throws an error if the data is invalid.
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:211](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L211)
+[packages/twine-core/src/conversion.ts:211](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L211)

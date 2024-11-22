@@ -12,12 +12,10 @@ A query to resolve a chain strictly using a CID object
 
 ## Type declaration
 
-### chain
-
-> **chain**: [`CID`](../classes/CID.md)
-
-The CID of the chain
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `chain` | [`CID`](../classes/CID.md) | The CID of the chain | [packages/twine-core/src/resolver/types.ts:33](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L33) |
 
 ## Defined in
 
-[packages/twine-core/src/resolver/types.ts:31](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/types.ts#L31)
+[packages/twine-core/src/resolver/types.ts:31](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/types.ts#L31)

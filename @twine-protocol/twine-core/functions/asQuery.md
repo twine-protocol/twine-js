@@ -20,7 +20,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`FulfilledChainResolution`](../type-aliases/FulfilledChainResolution.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`FulfilledChainResolution`](../type-aliases/FulfilledChainResolution.md) |
 
 ### Returns
 
@@ -28,7 +30,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:252](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L252)
+[packages/twine-core/src/conversion.ts:252](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L252)
 
 ## asQuery(val)
 
@@ -40,7 +42,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`FulfilledPulseResolution`](../type-aliases/FulfilledPulseResolution.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`FulfilledPulseResolution`](../type-aliases/FulfilledPulseResolution.md) |
 
 ### Returns
 
@@ -48,7 +52,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:253](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L253)
+[packages/twine-core/src/conversion.ts:253](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L253)
 
 ## asQuery(val)
 
@@ -60,7 +64,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`Chain`](../type-aliases/Chain.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`Chain`](../type-aliases/Chain.md) |
 
 ### Returns
 
@@ -68,7 +74,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:254](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L254)
+[packages/twine-core/src/conversion.ts:254](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L254)
 
 ## asQuery(val)
 
@@ -80,7 +86,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`Pulse`](../type-aliases/Pulse.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`Pulse`](../type-aliases/Pulse.md) |
 
 ### Returns
 
@@ -88,7 +96,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:255](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L255)
+[packages/twine-core/src/conversion.ts:255](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L255)
 
 ## asQuery(val)
 
@@ -100,7 +108,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`Mixin`](../type-aliases/Mixin.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`Mixin`](../type-aliases/Mixin.md) |
 
 ### Returns
 
@@ -108,7 +118,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:256](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L256)
+[packages/twine-core/src/conversion.ts:256](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L256)
 
 ## asQuery(val)
 
@@ -120,7 +130,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: [`ResolveQueryStrict`](../type-aliases/ResolveQueryStrict.md)
+| Parameter | Type |
+| ------ | ------ |
+| `val` | [`ResolveQueryStrict`](../type-aliases/ResolveQueryStrict.md) |
 
 ### Returns
 
@@ -128,7 +140,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:257](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L257)
+[packages/twine-core/src/conversion.ts:257](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L257)
 
 ## asQuery(val)
 
@@ -140,7 +152,9 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Parameters
 
-• **val**: `any`
+| Parameter | Type |
+| ------ | ------ |
+| `val` | `any` |
 
 ### Returns
 
@@ -148,4 +162,4 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:258](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L258)
+[packages/twine-core/src/conversion.ts:258](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L258)

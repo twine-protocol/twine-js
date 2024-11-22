@@ -12,13 +12,10 @@ Combine multiple resolvers into a single resolver
 
 ## Parameters
 
-• **resolverList**: [`Resolver`](../interfaces/Resolver.md)[] = `[]`
-
-The resolvers to combine
-
-• **options**: [`CombineResolversOptions`](../type-aliases/CombineResolversOptions.md) = `{}`
-
-Options for the combined resolver
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `resolverList` | [`Resolver`](../interfaces/Resolver.md)[] | `[]` | The resolvers to combine |
+| `options` | [`CombineResolversOptions`](../type-aliases/CombineResolversOptions.md) | `{}` | Options for the combined resolver |
 
 ## Returns
 
@@ -42,4 +39,4 @@ console.log(chain) // someChain
 
 ## Defined in
 
-[packages/twine-core/src/resolver/combine.ts:153](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/combine.ts#L153)
+[packages/twine-core/src/resolver/combine.ts:153](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L153)

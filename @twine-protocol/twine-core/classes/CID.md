@@ -8,13 +8,12 @@
 
 ## Type Parameters
 
-• **Data** = `unknown`
-
-• **Format** *extends* `number` = `number`
-
-• **Alg** *extends* `number` = `number`
-
-• **Version** *extends* `API.Version` = `API.Version`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Data` | `unknown` |
+| `Format` *extends* `number` | `number` |
+| `Alg` *extends* `number` | `number` |
+| `Version` *extends* `API.Version` | `API.Version` |
 
 ## Implements
 
@@ -28,19 +27,12 @@
 
 #### Parameters
 
-• **version**: `Version`
-
-Version of the CID
-
-• **code**: `Format`
-
-Code of the codec content is encoded in, see https://github.com/multiformats/multicodec/blob/master/table.csv
-
-• **multihash**: `MultihashDigest`\<`Alg`\>
-
-(Multi)hash of the of the content.
-
-• **bytes**: `Uint8Array`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `version` | `Version` | Version of the CID |
+| `code` | `Format` | Code of the codec content is encoded in, see https://github.com/multiformats/multicodec/blob/master/table.csv |
+| `multihash` | `MultihashDigest`\<`Alg`\> | (Multi)hash of the of the content. |
+| `bytes` | `Uint8Array` | - |
 
 #### Returns
 
@@ -52,79 +44,14 @@ node\_modules/multiformats/dist/src/cid.d.ts:17
 
 ## Properties
 
-### code
-
-> `readonly` **code**: `Format`
-
-#### Implementation of
-
-`API.Link.code`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:7
-
-***
-
-### version
-
-> `readonly` **version**: `Version`
-
-#### Implementation of
-
-`API.Link.version`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:8
-
-***
-
-### multihash
-
-> `readonly` **multihash**: `MultihashDigest`\<`Alg`\>
-
-#### Implementation of
-
-`API.Link.multihash`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:9
-
-***
-
-### bytes
-
-> `readonly` **bytes**: `Uint8Array`
-
-#### Implementation of
-
-`API.Link.bytes`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:10
-
-***
-
-### /
-
-> `readonly` **/**: `Uint8Array`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:11
-
-***
-
-### \[toStringTag\]
-
-> `readonly` **\[toStringTag\]**: `"CID"` = `"CID"`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:34
+| Property | Modifier | Type | Default value | Defined in |
+| ------ | ------ | ------ | ------ | ------ |
+| `code` | `readonly` | `Format` | `undefined` | node\_modules/multiformats/dist/src/cid.d.ts:7 |
+| `version` | `readonly` | `Version` | `undefined` | node\_modules/multiformats/dist/src/cid.d.ts:8 |
+| `multihash` | `readonly` | `MultihashDigest`\<`Alg`\> | `undefined` | node\_modules/multiformats/dist/src/cid.d.ts:9 |
+| `bytes` | `readonly` | `Uint8Array` | `undefined` | node\_modules/multiformats/dist/src/cid.d.ts:10 |
+| `/` | `readonly` | `Uint8Array` | `undefined` | node\_modules/multiformats/dist/src/cid.d.ts:11 |
+| `[toStringTag]` | `readonly` | `"CID"` | `"CID"` | node\_modules/multiformats/dist/src/cid.d.ts:34 |
 
 ## Accessors
 
@@ -195,19 +122,19 @@ node\_modules/multiformats/dist/src/cid.d.ts:26
 
 #### Type Parameters
 
-• **Data**
-
-• **Format** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `Data` |
+| `Format` *extends* `number` |
+| `Alg` *extends* `number` |
+| `Version` *extends* `Version` |
 
 #### Parameters
 
-• **self**: `Link`\<`Data`, `Format`, `Alg`, `Version`\>
-
-• **other**: `unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `self` | `Link`\<`Data`, `Format`, `Alg`, `Version`\> |
+| `other` | `unknown` |
 
 #### Returns
 
@@ -234,19 +161,19 @@ co-exist and interop as long as binary interface is compatible.
 
 #### Type Parameters
 
-• **Data**
-
-• **Format** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
-
-• **U**
+| Type Parameter |
+| ------ |
+| `Data` |
+| `Format` *extends* `number` |
+| `Alg` *extends* `number` |
+| `Version` *extends* `Version` |
+| `U` |
 
 #### Parameters
 
-• **input**: `U` \| `Link`\<`Data`, `Format`, `Alg`, `Version`\>
+| Parameter | Type |
+| ------ | ------ |
+| `input` | `U` \| `Link`\<`Data`, `Format`, `Alg`, `Version`\> |
 
 #### Returns
 
@@ -264,27 +191,20 @@ node\_modules/multiformats/dist/src/cid.d.ts:45
 
 #### Type Parameters
 
-• **Data**
-
-• **Format** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `Data` |
+| `Format` *extends* `number` |
+| `Alg` *extends* `number` |
+| `Version` *extends* `Version` |
 
 #### Parameters
 
-• **version**: `Version`
-
-Version of the CID
-
-• **code**: `Format`
-
-Code of the codec content is encoded in, see https://github.com/multiformats/multicodec/blob/master/table.csv
-
-• **digest**: `MultihashDigest`\<`Alg`\>
-
-(Multi)hash of the of the content.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `version` | `Version` | Version of the CID |
+| `code` | `Format` | Code of the codec content is encoded in, see https://github.com/multiformats/multicodec/blob/master/table.csv |
+| `digest` | `MultihashDigest`\<`Alg`\> | (Multi)hash of the of the content. |
 
 #### Returns
 
@@ -304,11 +224,15 @@ Simplified version of `create` for CIDv0.
 
 #### Type Parameters
 
-• **T** = `unknown`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
 
 #### Parameters
 
-• **digest**: `MultihashDigest`\<`18`\>
+| Parameter | Type |
+| ------ | ------ |
+| `digest` | `MultihashDigest`\<`18`\> |
 
 #### Returns
 
@@ -328,21 +252,18 @@ Simplified version of `create` for CIDv1.
 
 #### Type Parameters
 
-• **Data**
-
-• **Code** *extends* `number`
-
-• **Alg** *extends* `number`
+| Type Parameter |
+| ------ |
+| `Data` |
+| `Code` *extends* `number` |
+| `Alg` *extends* `number` |
 
 #### Parameters
 
-• **code**: `Code`
-
-Content encoding format code.
-
-• **digest**: `MultihashDigest`\<`Alg`\>
-
-Multihash of the content.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `code` | `Code` | Content encoding format code. |
+| `digest` | `MultihashDigest`\<`Alg`\> | Multihash of the content. |
 
 #### Returns
 
@@ -366,17 +287,18 @@ binary representation of a CID.
 
 #### Type Parameters
 
-• **Data**
-
-• **Code** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `Data` |
+| `Code` *extends* `number` |
+| `Alg` *extends* `number` |
+| `Version` *extends* `Version` |
 
 #### Parameters
 
-• **bytes**: `ByteView`\<`Link`\<`Data`, `Code`, `Alg`, `Version`\>\>
+| Parameter | Type |
+| ------ | ------ |
+| `bytes` | `ByteView`\<`Link`\<`Data`, `Code`, `Alg`, `Version`\>\> |
 
 #### Returns
 
@@ -402,17 +324,18 @@ binary CID representation.
 
 #### Type Parameters
 
-• **T**
-
-• **C** *extends* `number`
-
-• **A** *extends* `number`
-
-• **V** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `T` |
+| `C` *extends* `number` |
+| `A` *extends* `number` |
+| `V` *extends* `Version` |
 
 #### Parameters
 
-• **bytes**: `ByteView`\<`Link`\<`T`, `C`, `A`, `V`\>\>
+| Parameter | Type |
+| ------ | ------ |
+| `bytes` | `ByteView`\<`Link`\<`T`, `C`, `A`, `V`\>\> |
 
 #### Returns
 
@@ -438,45 +361,31 @@ inspection.
 
 #### Type Parameters
 
-• **T**
-
-• **C** *extends* `number`
-
-• **A** *extends* `number`
-
-• **V** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `T` |
+| `C` *extends* `number` |
+| `A` *extends* `number` |
+| `V` *extends* `Version` |
 
 #### Parameters
 
-• **initialBytes**: `ByteView`\<`Link`\<`T`, `C`, `A`, `V`\>\>
+| Parameter | Type |
+| ------ | ------ |
+| `initialBytes` | `ByteView`\<`Link`\<`T`, `C`, `A`, `V`\>\> |
 
 #### Returns
 
 `object`
 
-##### version
-
-> **version**: `V`
-
-##### codec
-
-> **codec**: `C`
-
-##### multihashCode
-
-> **multihashCode**: `A`
-
-##### digestSize
-
-> **digestSize**: `number`
-
-##### multihashSize
-
-> **multihashSize**: `number`
-
-##### size
-
-> **size**: `number`
+| Name | Type | Defined in |
+| ------ | ------ | ------ |
+| `version` | `V` | node\_modules/multiformats/dist/src/cid.d.ts:91 |
+| `codec` | `C` | node\_modules/multiformats/dist/src/cid.d.ts:92 |
+| `multihashCode` | `A` | node\_modules/multiformats/dist/src/cid.d.ts:93 |
+| `digestSize` | `number` | node\_modules/multiformats/dist/src/cid.d.ts:94 |
+| `multihashSize` | `number` | node\_modules/multiformats/dist/src/cid.d.ts:95 |
+| `size` | `number` | node\_modules/multiformats/dist/src/cid.d.ts:96 |
 
 #### Defined in
 
@@ -495,21 +404,20 @@ a default decoder).
 
 #### Type Parameters
 
-• **Prefix** *extends* `string`
-
-• **Data**
-
-• **Code** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
+| Type Parameter |
+| ------ |
+| `Prefix` *extends* `string` |
+| `Data` |
+| `Code` *extends* `number` |
+| `Alg` *extends* `number` |
+| `Version` *extends* `Version` |
 
 #### Parameters
 
-• **source**: `ToString`\<`Link`\<`Data`, `Code`, `Alg`, `Version`\>, `Prefix`\>
-
-• **base?**: `MultibaseDecoder`\<`Prefix`\>
+| Parameter | Type |
+| ------ | ------ |
+| `source` | `ToString`\<`Link`\<`Data`, `Code`, `Alg`, `Version`\>, `Prefix`\> |
+| `base`? | `MultibaseDecoder`\<`Prefix`\> |
 
 #### Returns
 
@@ -559,7 +467,9 @@ node\_modules/multiformats/dist/src/cid.d.ts:28
 
 #### Parameters
 
-• **other**: `unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `other` | `unknown` |
 
 #### Returns
 
@@ -581,7 +491,9 @@ node\_modules/multiformats/dist/src/cid.d.ts:29
 
 #### Parameters
 
-• **base?**: `MultibaseEncoder`\<`string`\>
+| Parameter | Type |
+| ------ | ------ |
+| `base`? | `MultibaseEncoder`\<`string`\> |
 
 #### Returns
 

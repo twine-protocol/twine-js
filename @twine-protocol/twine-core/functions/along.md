@@ -12,13 +12,11 @@ Create a guide that moves along chains
 
 ## Parameters
 
-• **target?**
-
-if supplied, will skip towards this target
-
-• **target.chain?**: [`Chain`](../type-aliases/Chain.md)
-
-• **target.pulse?**: `number` \| [`Pulse`](../type-aliases/Pulse.md)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `target`? | `object` | if supplied, will skip towards this target |
+| `target.chain`? | [`Chain`](../type-aliases/Chain.md) | - |
+| `target.pulse`? | `number` \| [`Pulse`](../type-aliases/Pulse.md) | - |
 
 ## Returns
 
@@ -26,4 +24,4 @@ if supplied, will skip towards this target
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:145](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/crawl.ts#L145)
+[packages/twine-core/src/crawl.ts:145](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/crawl.ts#L145)

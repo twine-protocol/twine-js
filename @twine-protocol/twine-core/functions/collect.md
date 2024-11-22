@@ -12,13 +12,15 @@ Collect an async iterable into an array
 
 ## Type Parameters
 
-• **T**
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-• **iterable**: `AsyncIterable`\<`T`, `any`, `any`\>
-
-The async iterable to collect
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `iterable` | `AsyncIterable`\<`T`, `any`, `any`\> | The async iterable to collect |
 
 ## Returns
 
@@ -33,4 +35,4 @@ const chains = await collect(resolver.chains())
 
 ## Defined in
 
-[packages/twine-core/src/conversion.ts:32](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/conversion.ts#L32)
+[packages/twine-core/src/conversion.ts:32](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/conversion.ts#L32)

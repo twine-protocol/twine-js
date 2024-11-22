@@ -14,9 +14,10 @@ A map that caches the most recently accessed items
 
 ## Type Parameters
 
-• **K**
-
-• **V**
+| Type Parameter |
+| ------ |
+| `K` |
+| `V` |
 
 ## Constructors
 
@@ -28,13 +29,10 @@ Create a new cache map
 
 #### Parameters
 
-• **iterable?**: `Iterable`\<[`K`, `V`], `any`, `any`\>
-
-An iterable of key-value pairs
-
-• **options?**: [`CacheOptions`](../type-aliases/CacheOptions.md)
-
-Options for the cache
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `iterable`? | `Iterable`\<[`K`, `V`], `any`, `any`\> | An iterable of key-value pairs |
+| `options`? | [`CacheOptions`](../type-aliases/CacheOptions.md) | Options for the cache |
 
 #### Returns
 
@@ -46,53 +44,15 @@ Options for the cache
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:30](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L30)
+[packages/twine-core/src/store/cache-helpers.ts:30](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L30)
 
 ## Properties
 
-### \[species\]
-
-> `readonly` `static` **\[species\]**: `MapConstructor`
-
-#### Inherited from
-
-`Map.[species]`
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
-
-***
-
-### size
-
-> `readonly` **size**: `number`
-
-#### Returns
-
-the number of elements in the Map.
-
-#### Inherited from
-
-`Map.size`
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es2015.collection.d.ts:45
-
-***
-
-### \[toStringTag\]
-
-> `readonly` **\[toStringTag\]**: `string`
-
-#### Inherited from
-
-`Map.[toStringTag]`
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
+| Property | Modifier | Type | Description | Inherited from | Defined in |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| `[species]` | `readonly` | `MapConstructor` | - | `Map.[species]` | node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319 |
+| `size` | `readonly` | `number` |  | `Map.size` | node\_modules/typescript/lib/lib.es2015.collection.d.ts:45 |
+| `[toStringTag]` | `readonly` | `string` | - | `Map.[toStringTag]` | node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137 |
 
 ## Methods
 
@@ -104,19 +64,17 @@ Groups members of an iterable according to the return value of the passed callba
 
 #### Type Parameters
 
-• **K**
-
-• **T**
+| Type Parameter |
+| ------ |
+| `K` |
+| `T` |
 
 #### Parameters
 
-• **items**: `Iterable`\<`T`, `any`, `any`\>
-
-An iterable.
-
-• **keySelector**
-
-A callback which will be invoked for each item in items.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `items` | `Iterable`\<`T`, `any`, `any`\> | An iterable. |
+| `keySelector` | (`item`, `index`) => `K` | A callback which will be invoked for each item in items. |
 
 #### Returns
 
@@ -142,7 +100,9 @@ If the cache is already larger than the new max size, the oldest items will be r
 
 #### Parameters
 
-• **maxSize**: `number`
+| Parameter | Type |
+| ------ | ------ |
+| `maxSize` | `number` |
 
 #### Returns
 
@@ -150,7 +110,7 @@ If the cache is already larger than the new max size, the oldest items will be r
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:40](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L40)
+[packages/twine-core/src/store/cache-helpers.ts:40](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L40)
 
 ***
 
@@ -162,9 +122,10 @@ See [Map.set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Parameters
 
-• **key**: `K`
-
-• **value**: `V`
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `K` |
+| `value` | `V` |
 
 #### Returns
 
@@ -176,7 +137,7 @@ See [Map.set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:57](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L57)
+[packages/twine-core/src/store/cache-helpers.ts:57](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L57)
 
 ***
 
@@ -188,7 +149,9 @@ See [Map.get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Parameters
 
-• **key**: `K`
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `K` |
 
 #### Returns
 
@@ -200,7 +163,7 @@ See [Map.get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:66](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/store/cache-helpers.ts#L66)
+[packages/twine-core/src/store/cache-helpers.ts:66](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/store/cache-helpers.ts#L66)
 
 ***
 
@@ -228,7 +191,9 @@ node\_modules/typescript/lib/lib.es2015.collection.d.ts:20
 
 #### Parameters
 
-• **key**: `K`
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `K` |
 
 #### Returns
 
@@ -254,9 +219,10 @@ Executes a provided function once per each key/value pair in the Map, in inserti
 
 #### Parameters
 
-• **callbackfn**
-
-• **thisArg?**: `any`
+| Parameter | Type |
+| ------ | ------ |
+| `callbackfn` | (`value`, `key`, `map`) => `void` |
+| `thisArg`? | `any` |
 
 #### Returns
 
@@ -278,7 +244,9 @@ node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
 
 #### Parameters
 
-• **key**: `K`
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `K` |
 
 #### Returns
 

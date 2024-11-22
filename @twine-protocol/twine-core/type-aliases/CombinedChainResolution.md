@@ -12,18 +12,11 @@ A combined chain resolution
 
 ## Type declaration
 
-### errors?
-
-> `optional` **errors**: `Error`[]
-
-Any errors that occurred during resolution
-
-### resolver?
-
-> `optional` **resolver**: [`Resolver`](../interfaces/Resolver.md)
-
-The resolver that provided the result
+| Name | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| `errors`? | `Error`[] | Any errors that occurred during resolution | [packages/twine-core/src/resolver/combine.ts:95](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L95) |
+| `resolver`? | [`Resolver`](../interfaces/Resolver.md) | The resolver that provided the result | [packages/twine-core/src/resolver/combine.ts:99](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L99) |
 
 ## Defined in
 
-[packages/twine-core/src/resolver/combine.ts:91](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-core/src/resolver/combine.ts#L91)
+[packages/twine-core/src/resolver/combine.ts:91](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-core/src/resolver/combine.ts#L91)

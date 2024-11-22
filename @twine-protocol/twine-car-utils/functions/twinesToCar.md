@@ -12,13 +12,10 @@ Convert an iterable of twines to a CARv2 formatted async iterable of byte arrays
 
 ## Parameters
 
-• **twines**: `AnyIterable`\<`Twine`\<`TwineValue`\>\>
-
-An iterable of twines
-
-• **roots**: `AnyIterable`\<[`CID`](../../twine-core/classes/CID.md)\<`unknown`, `number`, `number`, `Version`\>\> = `...`
-
-An iterable of CIDs to use as roots (typically the latest pulse of each chain, and the chain itself)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `twines` | `AnyIterable`\<`Twine`\<`TwineValue`\>\> | An iterable of twines |
+| `roots` | `AnyIterable`\<[`CID`](../../twine-core/classes/CID.md)\<`unknown`, `number`, `number`, `Version`\>\> | An iterable of CIDs to use as roots (typically the latest pulse of each chain, and the chain itself) |
 
 ## Returns
 
@@ -28,4 +25,4 @@ An async iterable of byte arrays
 
 ## Defined in
 
-[index.ts:41](https://github.com/twine-protocol/twine-js/blob/afcd6a4191783e38a824b15e0910dbcaa4196a95/packages/twine-car-utils/src/index.ts#L41)
+[index.ts:41](https://github.com/twine-protocol/twine-js/blob/3800995f9c83f4f5711bcf3062ea754a1e4448ce/packages/twine-car-utils/src/index.ts#L41)
