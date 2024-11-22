@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CacheOptions
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CacheOptions
 
 # Type Alias: CacheOptions
 
@@ -28,4 +28,4 @@ Defaults to 10000, set to 0 for no limit
 
 ## Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:4](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/cache-helpers.ts#L4)
+[packages/twine-core/src/store/cache-helpers.ts:5](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L5)

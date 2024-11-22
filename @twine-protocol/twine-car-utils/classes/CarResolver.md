@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-car-utils v0.0.3**](../README.md) • **Docs**
+[**@twine-protocol/twine-car-utils v0.0.3**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-car-utils](../README.md) / CarResolver
+[twine-js](../../../index.md) / [@twine-protocol/twine-car-utils](../index.md) / CarResolver
 
 # Class: CarResolver
 
@@ -38,7 +38,7 @@ Create a new CarResolver
 
 #### Defined in
 
-[resolver.ts:32](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L32)
+[resolver.ts:32](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L32)
 
 ## Methods
 
@@ -60,79 +60,7 @@ Create a new CarResolver
 
 #### Defined in
 
-[resolver.ts:59](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L59)
-
-***
-
-### close()
-
-> **close**(): `void`
-
-Close the reader
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[resolver.ts:162](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L162)
-
-***
-
-### has()
-
-> **has**(`cid`): `Promise`\<`boolean`\>
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-#### See
-
-{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#has | Resolver.has}
-
-#### Implementation of
-
-`Resolver.has`
-
-#### Defined in
-
-[resolver.ts:135](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L135)
-
-***
-
-### pulses()
-
-> **pulses**(`chain`, `start`?, `options`?): `AsyncGenerator`\<`Pulse`, `void`, `unknown`\>
-
-#### Parameters
-
-• **chain**: `IntoCid`
-
-• **start?**: `number` \| `IntoCid`
-
-• **options?**: `ResolveOptions`
-
-#### Returns
-
-`AsyncGenerator`\<`Pulse`, `void`, `unknown`\>
-
-#### See
-
-{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#pulses | Resolver.pulses}
-
-#### Implementation of
-
-`Resolver.pulses`
-
-#### Defined in
-
-[resolver.ts:142](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L142)
+[resolver.ts:59](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L59)
 
 ***
 
@@ -207,7 +135,7 @@ if (pulse) {
 
 ##### Defined in
 
-[resolver.ts:87](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L87)
+[resolver.ts:87](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L87)
 
 #### resolve(query, options)
 
@@ -235,7 +163,35 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[resolver.ts:88](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L88)
+[resolver.ts:88](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L88)
+
+***
+
+### resolveLatest()
+
+> **resolveLatest**(`chainCid`, `options`?): `Promise`\<`PulseResolution`\>
+
+#### Parameters
+
+• **chainCid**: `IntoCid`
+
+• **options?**: `ResolveOptions`
+
+#### Returns
+
+`Promise`\<`PulseResolution`\>
+
+#### See
+
+{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#resolveLatest | Resolver.resolveLatest}
+
+#### Implementation of
+
+`Resolver.resolveLatest`
+
+#### Defined in
+
+[resolver.ts:102](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L102)
 
 ***
 
@@ -265,32 +221,76 @@ Resolve a pulse (with its chain) from a query
 
 #### Defined in
 
-[resolver.ts:113](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L113)
+[resolver.ts:113](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L113)
 
 ***
 
-### resolveLatest()
+### has()
 
-> **resolveLatest**(`chainCid`, `options`?): `Promise`\<`PulseResolution`\>
+> **has**(`cid`): `Promise`\<`boolean`\>
 
 #### Parameters
 
-• **chainCid**: `IntoCid`
+• **cid**: `IntoCid`
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+#### See
+
+{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#has | Resolver.has}
+
+#### Implementation of
+
+`Resolver.has`
+
+#### Defined in
+
+[resolver.ts:135](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L135)
+
+***
+
+### pulses()
+
+> **pulses**(`chain`, `start`?, `options`?): `AsyncGenerator`\<`Pulse`, `void`, `unknown`\>
+
+#### Parameters
+
+• **chain**: `IntoCid`
+
+• **start?**: `number` \| `IntoCid`
 
 • **options?**: `ResolveOptions`
 
 #### Returns
 
-`Promise`\<`PulseResolution`\>
+`AsyncGenerator`\<`Pulse`, `void`, `unknown`\>
 
 #### See
 
-{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#resolveLatest | Resolver.resolveLatest}
+{@https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Resolver.md#pulses | Resolver.pulses}
 
 #### Implementation of
 
-`Resolver.resolveLatest`
+`Resolver.pulses`
 
 #### Defined in
 
-[resolver.ts:102](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-car-utils/src/resolver.ts#L102)
+[resolver.ts:142](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L142)
+
+***
+
+### close()
+
+> **close**(): `void`
+
+Close the reader
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[resolver.ts:162](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-car-utils/src/resolver.ts#L162)

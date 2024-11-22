@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-builder v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-builder v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-builder](../README.md) / createPulse
+[twine-js](../../../index.md) / [@twine-protocol/twine-builder](../index.md) / createPulse
 
 # Function: createPulse()
 
@@ -54,4 +54,4 @@ The pulse as a Twine object
 
 ## Defined in
 
-[factory.ts:124](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/factory.ts#L124)
+[factory.ts:125](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/factory.ts#L125)

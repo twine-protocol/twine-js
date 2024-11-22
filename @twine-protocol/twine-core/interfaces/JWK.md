@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / JWK
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / JWK
 
 # Interface: JWK
 
@@ -207,6 +207,16 @@ node\_modules/jose/dist/types/types.d.ts:64
 
 ***
 
+### y?
+
+> `optional` **y**: `string`
+
+#### Defined in
+
+node\_modules/jose/dist/types/types.d.ts:65
+
+***
+
 ### x5c?
 
 > `optional` **x5c**: `string`[]
@@ -252,13 +262,3 @@ JWK "x5u" (X.509 URL) Parameter.
 #### Defined in
 
 node\_modules/jose/dist/types/types.d.ts:73
-
-***
-
-### y?
-
-> `optional` **y**: `string`
-
-#### Defined in
-
-node\_modules/jose/dist/types/types.d.ts:65

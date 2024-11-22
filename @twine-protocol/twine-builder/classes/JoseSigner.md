@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-builder v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-builder v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-builder](../README.md) / JoseSigner
+[twine-js](../../../index.md) / [@twine-protocol/twine-builder](../index.md) / JoseSigner
 
 # Class: JoseSigner
 
@@ -47,21 +47,9 @@ The algorithm to use
 
 #### Defined in
 
-[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L46)
+[jose-signer.ts:46](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L46)
 
 ## Properties
-
-### algorithm
-
-> **algorithm**: `string`
-
-Algorithm
-
-#### Defined in
-
-[jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L23)
-
-***
 
 ### privateKey
 
@@ -71,7 +59,7 @@ Private Key
 
 #### Defined in
 
-[jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L19)
+[jose-signer.ts:19](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L19)
 
 ***
 
@@ -83,61 +71,21 @@ Public Key
 
 #### Defined in
 
-[jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L21)
+[jose-signer.ts:21](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L21)
+
+***
+
+### algorithm
+
+> **algorithm**: `string`
+
+Algorithm
+
+#### Defined in
+
+[jose-signer.ts:23](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L23)
 
 ## Methods
-
-### getPublicJWK()
-
-> **getPublicJWK**(): `Promise`\<[`JWK`](../../twine-core/interfaces/JWK.md)\>
-
-Get the public JWK
-
-#### Returns
-
-`Promise`\<[`JWK`](../../twine-core/interfaces/JWK.md)\>
-
-#### See
-
-[Signer.getPublicJWK](https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Signer.md#getpublicjwk)
-
-#### Implementation of
-
-`Signer.getPublicJWK`
-
-#### Defined in
-
-[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L62)
-
-***
-
-### sign()
-
-> **sign**(`bytes`): `Promise`\<`string`\>
-
-Sign some bytes
-
-#### Parameters
-
-• **bytes**: `Uint8Array`
-
-#### Returns
-
-`Promise`\<`string`\>
-
-#### See
-
-[Signer.sign](https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Signer.md#sign)
-
-#### Implementation of
-
-`Signer.sign`
-
-#### Defined in
-
-[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L72)
-
-***
 
 ### fromRandomness()
 
@@ -165,4 +113,56 @@ Options for the key pair
 
 #### Defined in
 
-[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/jose-signer.ts#L34)
+[jose-signer.ts:34](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L34)
+
+***
+
+### getPublicJWK()
+
+> **getPublicJWK**(): `Promise`\<[`JWK`](../../twine-core/interfaces/JWK.md)\>
+
+Get the public JWK
+
+#### Returns
+
+`Promise`\<[`JWK`](../../twine-core/interfaces/JWK.md)\>
+
+#### See
+
+[Signer.getPublicJWK](https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Signer.md#getpublicjwk)
+
+#### Implementation of
+
+`Signer.getPublicJWK`
+
+#### Defined in
+
+[jose-signer.ts:62](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L62)
+
+***
+
+### sign()
+
+> **sign**(`bytes`): `Promise`\<`string`\>
+
+Sign some bytes
+
+#### Parameters
+
+• **bytes**: `Uint8Array`
+
+#### Returns
+
+`Promise`\<`string`\>
+
+#### See
+
+[Signer.sign](https://github.com/twine-protocol/twine-js/blob/master/packages/twine-core/docs/interfaces/Signer.md#sign)
+
+#### Implementation of
+
+`Signer.sign`
+
+#### Defined in
+
+[jose-signer.ts:72](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/jose-signer.ts#L72)

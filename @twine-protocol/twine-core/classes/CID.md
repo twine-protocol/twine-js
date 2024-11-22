@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CID
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CID
 
 # Class: CID\<Data, Format, Alg, Version\>
 
@@ -52,40 +52,6 @@ node\_modules/multiformats/dist/src/cid.d.ts:17
 
 ## Properties
 
-### \[toStringTag\]
-
-> `readonly` **\[toStringTag\]**: `"CID"` = `"CID"`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:34
-
-***
-
-### /
-
-> `readonly` **/**: `Uint8Array`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:11
-
-***
-
-### bytes
-
-> `readonly` **bytes**: `Uint8Array`
-
-#### Implementation of
-
-`API.Link.bytes`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:10
-
-***
-
 ### code
 
 > `readonly` **code**: `Format`
@@ -97,6 +63,20 @@ node\_modules/multiformats/dist/src/cid.d.ts:10
 #### Defined in
 
 node\_modules/multiformats/dist/src/cid.d.ts:7
+
+***
+
+### version
+
+> `readonly` **version**: `Version`
+
+#### Implementation of
+
+`API.Link.version`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:8
 
 ***
 
@@ -114,17 +94,37 @@ node\_modules/multiformats/dist/src/cid.d.ts:9
 
 ***
 
-### version
+### bytes
 
-> `readonly` **version**: `Version`
+> `readonly` **bytes**: `Uint8Array`
 
 #### Implementation of
 
-`API.Link.version`
+`API.Link.bytes`
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/cid.d.ts:8
+node\_modules/multiformats/dist/src/cid.d.ts:10
+
+***
+
+### /
+
+> `readonly` **/**: `Uint8Array`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:11
+
+***
+
+### \[toStringTag\]
+
+> `readonly` **\[toStringTag\]**: `"CID"` = `"CID"`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:34
 
 ## Accessors
 
@@ -149,26 +149,6 @@ node\_modules/multiformats/dist/src/cid.d.ts:24
 
 ***
 
-### byteLength
-
-#### Get Signature
-
-> **get** **byteLength**(): `number`
-
-##### Returns
-
-`number`
-
-#### Implementation of
-
-`API.Link.byteLength`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:26
-
-***
-
 ### byteOffset
 
 #### Get Signature
@@ -187,113 +167,55 @@ node\_modules/multiformats/dist/src/cid.d.ts:26
 
 node\_modules/multiformats/dist/src/cid.d.ts:25
 
+***
+
+### byteLength
+
+#### Get Signature
+
+> **get** **byteLength**(): `number`
+
+##### Returns
+
+`number`
+
+#### Implementation of
+
+`API.Link.byteLength`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:26
+
 ## Methods
 
 ### equals()
 
-> **equals**(`other`): `other is CID<Data, Format, Alg, Version>`
+> `static` **equals**\<`Data`, `Format`, `Alg`, `Version`\>(`self`, `other`): `other is CID<unknown, number, number, Version>`
+
+#### Type Parameters
+
+• **Data**
+
+• **Format** *extends* `number`
+
+• **Alg** *extends* `number`
+
+• **Version** *extends* `Version`
 
 #### Parameters
+
+• **self**: `Link`\<`Data`, `Format`, `Alg`, `Version`\>
 
 • **other**: `unknown`
 
 #### Returns
 
-`other is CID<Data, Format, Alg, Version>`
-
-#### Implementation of
-
-`API.Link.equals`
+`other is CID<unknown, number, number, Version>`
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/cid.d.ts:29
-
-***
-
-### link()
-
-> **link**(): `this`
-
-#### Returns
-
-`this`
-
-#### Implementation of
-
-`API.Link.link`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:33
-
-***
-
-### toJSON()
-
-> **toJSON**(): `LinkJSON`\<[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `Version`\>\>
-
-#### Returns
-
-`LinkJSON`\<[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `Version`\>\>
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:32
-
-***
-
-### toString()
-
-> **toString**(`base`?): `string`
-
-#### Parameters
-
-• **base?**: `MultibaseEncoder`\<`string`\>
-
-#### Returns
-
-`string`
-
-#### Implementation of
-
-`API.Link.toString`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:31
-
-***
-
-### toV0()
-
-> **toV0**(): [`CID`](CID.md)\<`Data`, `112`, `18`, `0`\>
-
-#### Returns
-
-[`CID`](CID.md)\<`Data`, `112`, `18`, `0`\>
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:27
-
-***
-
-### toV1()
-
-> **toV1**(): [`CID`](CID.md)\<`Data`, `Format`, `Alg`, `1`\>
-
-#### Returns
-
-[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `1`\>
-
-#### Implementation of
-
-`API.Link.toV1`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:28
+node\_modules/multiformats/dist/src/cid.d.ts:30
 
 ***
 
@@ -502,36 +424,6 @@ node\_modules/multiformats/dist/src/cid.d.ts:80
 
 ***
 
-### equals()
-
-> `static` **equals**\<`Data`, `Format`, `Alg`, `Version`\>(`self`, `other`): `other is CID<unknown, number, number, Version>`
-
-#### Type Parameters
-
-• **Data**
-
-• **Format** *extends* `number`
-
-• **Alg** *extends* `number`
-
-• **Version** *extends* `Version`
-
-#### Parameters
-
-• **self**: `Link`\<`Data`, `Format`, `Alg`, `Version`\>
-
-• **other**: `unknown`
-
-#### Returns
-
-`other is CID<unknown, number, number, Version>`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/cid.d.ts:30
-
-***
-
 ### inspectBytes()
 
 > `static` **inspectBytes**\<`T`, `C`, `A`, `V`\>(`initialBytes`): `object`
@@ -562,17 +454,21 @@ inspection.
 
 `object`
 
+##### version
+
+> **version**: `V`
+
 ##### codec
 
 > **codec**: `C`
 
-##### digestSize
-
-> **digestSize**: `number`
-
 ##### multihashCode
 
 > **multihashCode**: `A`
+
+##### digestSize
+
+> **digestSize**: `number`
 
 ##### multihashSize
 
@@ -581,10 +477,6 @@ inspection.
 ##### size
 
 > **size**: `number`
-
-##### version
-
-> **version**: `V`
 
 #### Defined in
 
@@ -626,3 +518,111 @@ a default decoder).
 #### Defined in
 
 node\_modules/multiformats/dist/src/cid.d.ts:104
+
+***
+
+### toV0()
+
+> **toV0**(): [`CID`](CID.md)\<`Data`, `112`, `18`, `0`\>
+
+#### Returns
+
+[`CID`](CID.md)\<`Data`, `112`, `18`, `0`\>
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:27
+
+***
+
+### toV1()
+
+> **toV1**(): [`CID`](CID.md)\<`Data`, `Format`, `Alg`, `1`\>
+
+#### Returns
+
+[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `1`\>
+
+#### Implementation of
+
+`API.Link.toV1`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:28
+
+***
+
+### equals()
+
+> **equals**(`other`): `other is CID<Data, Format, Alg, Version>`
+
+#### Parameters
+
+• **other**: `unknown`
+
+#### Returns
+
+`other is CID<Data, Format, Alg, Version>`
+
+#### Implementation of
+
+`API.Link.equals`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:29
+
+***
+
+### toString()
+
+> **toString**(`base`?): `string`
+
+#### Parameters
+
+• **base?**: `MultibaseEncoder`\<`string`\>
+
+#### Returns
+
+`string`
+
+#### Implementation of
+
+`API.Link.toString`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:31
+
+***
+
+### toJSON()
+
+> **toJSON**(): `LinkJSON`\<[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `Version`\>\>
+
+#### Returns
+
+`LinkJSON`\<[`CID`](CID.md)\<`Data`, `Format`, `Alg`, `Version`\>\>
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:32
+
+***
+
+### link()
+
+> **link**(): `this`
+
+#### Returns
+
+`this`
+
+#### Implementation of
+
+`API.Link.link`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/cid.d.ts:33

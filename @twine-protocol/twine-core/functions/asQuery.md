@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / asQuery
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / asQuery
 
 # Function: asQuery()
 
@@ -28,7 +28,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:252](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L252)
+[packages/twine-core/src/conversion.ts:252](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L252)
 
 ## asQuery(val)
 
@@ -48,7 +48,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:253](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L253)
+[packages/twine-core/src/conversion.ts:253](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L253)
 
 ## asQuery(val)
 
@@ -68,7 +68,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:254](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L254)
+[packages/twine-core/src/conversion.ts:254](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L254)
 
 ## asQuery(val)
 
@@ -88,7 +88,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:255](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L255)
+[packages/twine-core/src/conversion.ts:255](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L255)
 
 ## asQuery(val)
 
@@ -108,7 +108,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:256](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L256)
+[packages/twine-core/src/conversion.ts:256](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L256)
 
 ## asQuery(val)
 
@@ -128,7 +128,7 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:257](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L257)
+[packages/twine-core/src/conversion.ts:257](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L257)
 
 ## asQuery(val)
 
@@ -148,4 +148,4 @@ This is used internally to enable the flexibility of the resolver api.
 
 ### Defined in
 
-[packages/twine-core/src/conversion.ts:258](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/conversion.ts#L258)
+[packages/twine-core/src/conversion.ts:258](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/conversion.ts#L258)

@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / isChainContent
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / isChainContent
 
 # Function: isChainContent()
 
@@ -20,4 +20,4 @@ Is this valid chain content
 
 ## Defined in
 
-[packages/twine-core/src/checks.ts:126](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/checks.ts#L126)
+[packages/twine-core/src/checks.ts:120](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/checks.ts#L120)

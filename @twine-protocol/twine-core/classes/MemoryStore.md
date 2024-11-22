@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / MemoryStore
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / MemoryStore
 
 # Class: MemoryStore
 
@@ -38,21 +38,9 @@ The maximum number of twines to keep in memory (default infinite)
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:59](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L59)
+[packages/twine-core/src/store/memory-store.ts:60](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L60)
 
 ## Properties
-
-### chainStorageMeta
-
-> `protected` **chainStorageMeta**: `Map`\<`string`, [`ChainStorageMeta`](../type-aliases/ChainStorageMeta.md)\>
-
-Chain storage metadata
-
-#### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:40](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L40)
-
-***
 
 ### chainStore
 
@@ -62,19 +50,19 @@ Chains are stored in a map with the CID as the key
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:36](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L36)
+[packages/twine-core/src/store/memory-store.ts:37](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L37)
 
 ***
 
-### maxSize
+### chainStorageMeta
 
-> `protected` **maxSize**: `number`
+> `protected` **chainStorageMeta**: `Map`\<`string`, [`ChainStorageMeta`](../type-aliases/ChainStorageMeta.md)\>
 
-The maximum number of twines to keep in memory
+Chain storage metadata
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:48](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L48)
+[packages/twine-core/src/store/memory-store.ts:41](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L41)
 
 ***
 
@@ -86,53 +74,41 @@ Pulses are stored in a map with the CID as the key
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:44](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L44)
-
-## Methods
-
-### chains()
-
-> **chains**(): `MapIterator`\<[`Chain`](../type-aliases/Chain.md)\>
-
-Get an iterator of all the chains in the store
-
-#### Returns
-
-`MapIterator`\<[`Chain`](../type-aliases/Chain.md)\>
-
-#### Implementation of
-
-[`Store`](../interfaces/Store.md).[`chains`](../interfaces/Store.md#chains)
-
-#### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:180](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L180)
+[packages/twine-core/src/store/memory-store.ts:45](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L45)
 
 ***
 
-### delete()
+### maxSize
 
-> **delete**(`cid`): `void`
+> `protected` **maxSize**: `number`
 
-Delete a twine from storage
+The maximum number of twines to keep in memory
+
+#### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:49](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L49)
+
+## Methods
+
+### setMaxSize()
+
+> **setMaxSize**(`maxSize`): `void`
+
+Set the maximum number of twines to keep in memory
+
+If the store is already larger than the new max size, the oldest twines will be removed.
 
 #### Parameters
 
-• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The CID of the twine to delete
+• **maxSize**: `number`
 
 #### Returns
 
 `void`
 
-#### Implementation of
-
-[`Store`](../interfaces/Store.md).[`delete`](../interfaces/Store.md#delete)
-
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:104](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L104)
+[packages/twine-core/src/store/memory-store.ts:70](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L70)
 
 ***
 
@@ -161,7 +137,7 @@ The CID of the twine to fetch
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:80](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L80)
+[packages/twine-core/src/store/memory-store.ts:81](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L81)
 
 ***
 
@@ -189,7 +165,131 @@ True if the CID can be resolved, false otherwise
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:96](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L96)
+[packages/twine-core/src/store/memory-store.ts:97](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L97)
+
+***
+
+### delete()
+
+> **delete**(`cid`): `void`
+
+Delete a twine from storage
+
+#### Parameters
+
+• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
+
+The CID of the twine to delete
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[`Store`](../interfaces/Store.md).[`delete`](../interfaces/Store.md#delete)
+
+#### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:105](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L105)
+
+***
+
+### save()
+
+> **save**(`twine`): `void`
+
+Save a twine to storage
+
+#### Parameters
+
+• **twine**: [`Twine`](Twine.md)\<`any`\>
+
+The twine to save
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[`Store`](../interfaces/Store.md).[`save`](../interfaces/Store.md#save)
+
+#### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:147](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L147)
+
+***
+
+### saveMany()
+
+Save many twines to storage
+
+#### saveMany(twines)
+
+> **saveMany**(`twines`): `Promise`\<`void`\>
+
+Save many twines to storage
+
+##### Parameters
+
+• **twines**: `AsyncIterable`\<[`Twine`](Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>, `any`, `any`\>
+
+The twines to save
+
+##### Returns
+
+`Promise`\<`void`\>
+
+##### Implementation of
+
+[`Store`](../interfaces/Store.md).[`saveMany`](../interfaces/Store.md#savemany)
+
+##### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:159](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L159)
+
+#### saveMany(twines)
+
+> **saveMany**(`twines`): `void`
+
+Save many twines to storage
+
+##### Parameters
+
+• **twines**: `Iterable`\<[`Twine`](Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>, `any`, `any`\>
+
+##### Returns
+
+`void`
+
+##### Implementation of
+
+`Store.saveMany`
+
+##### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:160](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L160)
+
+***
+
+### chains()
+
+> **chains**(): `MapIterator`\<[`Chain`](../type-aliases/Chain.md)\>
+
+Get an iterator of all the chains in the store
+
+#### Returns
+
+`MapIterator`\<[`Chain`](../type-aliases/Chain.md)\>
+
+#### Implementation of
+
+[`Store`](../interfaces/Store.md).[`chains`](../interfaces/Store.md#chains)
+
+#### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:181](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L181)
 
 ***
 
@@ -217,7 +317,7 @@ Get an async iterator of all the pulses in a chain
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:187](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L187)
+[packages/twine-core/src/store/memory-store.ts:188](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L188)
 
 ***
 
@@ -297,7 +397,7 @@ if (pulse) {
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:214](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L214)
+[packages/twine-core/src/store/memory-store.ts:215](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L215)
 
 #### resolve(query, options)
 
@@ -323,7 +423,39 @@ A chain or pulse resolution
 
 ##### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:215](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L215)
+[packages/twine-core/src/store/memory-store.ts:216](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L216)
+
+***
+
+### resolveLatest()
+
+> **resolveLatest**(`chainCid`, `options`?): `Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
+
+Resolve the latest pulse of a chain
+
+#### Parameters
+
+• **chainCid**: [`IntoCid`](../type-aliases/IntoCid.md)
+
+The chain CID or chain itself to resolve the latest pulse from
+
+• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+
+Options for the resolution
+
+#### Returns
+
+`Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
+
+A pulse resolution
+
+#### Implementation of
+
+[`Store`](../interfaces/Store.md).[`resolveLatest`](../interfaces/Store.md#resolvelatest)
+
+#### Defined in
+
+[packages/twine-core/src/store/memory-store.ts:230](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L230)
 
 ***
 
@@ -359,136 +491,4 @@ A pulse resolution
 
 #### Defined in
 
-[packages/twine-core/src/store/memory-store.ts:245](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L245)
-
-***
-
-### resolveLatest()
-
-> **resolveLatest**(`chainCid`, `options`?): `Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
-
-Resolve the latest pulse of a chain
-
-#### Parameters
-
-• **chainCid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to resolve the latest pulse from
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
-
-#### Returns
-
-`Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
-
-A pulse resolution
-
-#### Implementation of
-
-[`Store`](../interfaces/Store.md).[`resolveLatest`](../interfaces/Store.md#resolvelatest)
-
-#### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:229](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L229)
-
-***
-
-### save()
-
-> **save**(`twine`): `void`
-
-Save a twine to storage
-
-#### Parameters
-
-• **twine**: [`Twine`](Twine.md)\<`any`\>
-
-The twine to save
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-[`Store`](../interfaces/Store.md).[`save`](../interfaces/Store.md#save)
-
-#### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:146](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L146)
-
-***
-
-### saveMany()
-
-Save many twines to storage
-
-#### saveMany(twines)
-
-> **saveMany**(`twines`): `Promise`\<`void`\>
-
-Save many twines to storage
-
-##### Parameters
-
-• **twines**: `AsyncIterable`\<[`Twine`](Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>, `any`, `any`\>
-
-The twines to save
-
-##### Returns
-
-`Promise`\<`void`\>
-
-##### Implementation of
-
-[`Store`](../interfaces/Store.md).[`saveMany`](../interfaces/Store.md#savemany)
-
-##### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:158](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L158)
-
-#### saveMany(twines)
-
-> **saveMany**(`twines`): `void`
-
-Save many twines to storage
-
-##### Parameters
-
-• **twines**: `Iterable`\<[`Twine`](Twine.md)\<[`TwineValue`](../type-aliases/TwineValue.md)\>, `any`, `any`\>
-
-##### Returns
-
-`void`
-
-##### Implementation of
-
-`Store.saveMany`
-
-##### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:159](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L159)
-
-***
-
-### setMaxSize()
-
-> **setMaxSize**(`maxSize`): `void`
-
-Set the maximum number of twines to keep in memory
-
-If the store is already larger than the new max size, the oldest twines will be removed.
-
-#### Parameters
-
-• **maxSize**: `number`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[packages/twine-core/src/store/memory-store.ts:69](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L69)
+[packages/twine-core/src/store/memory-store.ts:246](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L246)

@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-blockstore-store v0.0.3**](../README.md) • **Docs**
+[**@twine-protocol/twine-blockstore-store v0.0.3**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-blockstore-store](../README.md) / BlockstoreStore
+[twine-js](../../../index.md) / [@twine-protocol/twine-blockstore-store](../index.md) / BlockstoreStore
 
 # Class: BlockstoreStore
 
@@ -36,7 +36,7 @@ The blockstore to use
 
 #### Defined in
 
-[index.ts:19](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L19)
+[index.ts:25](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L25)
 
 ## Methods
 
@@ -64,7 +64,157 @@ The CID of the pulse, or null if not found
 
 #### Defined in
 
-[index.ts:82](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L82)
+[index.ts:88](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L88)
+
+***
+
+### reIndex()
+
+> **reIndex**(`latestCid`): `Promise`\<`void`\>
+
+Reindex a chain
+
+#### Parameters
+
+• **latestCid**: `IntoCid`
+
+The CID of the latest pulse
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Defined in
+
+[index.ts:107](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L107)
+
+***
+
+### fetchIndex()
+
+> **fetchIndex**(`chain`, `index`): `Promise`\<`null` \| `Chain` \| `Pulse`\>
+
+fetch by index
+
+#### Parameters
+
+• **chain**: `IntoCid`
+
+The chain CID
+
+• **index**: `number`
+
+The index
+
+#### Returns
+
+`Promise`\<`null` \| `Chain` \| `Pulse`\>
+
+#### Defined in
+
+[index.ts:137](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L137)
+
+***
+
+### save()
+
+> **save**(`twine`): `Promise`\<`void`\>
+
+Save a twine to storage
+
+#### Parameters
+
+• **twine**: `Twine`\<`TwineValue`\>
+
+The twine to save
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Implementation of
+
+`Store.save`
+
+#### Defined in
+
+[index.ts:145](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L145)
+
+***
+
+### saveMany()
+
+> **saveMany**(`twines`): `Promise`\<`void`\>
+
+Save many twines to storage
+
+#### Parameters
+
+• **twines**: `AnyIterable`\<`Twine`\<`TwineValue`\>\>
+
+The twines to save
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Implementation of
+
+`Store.saveMany`
+
+#### Defined in
+
+[index.ts:164](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L164)
+
+***
+
+### delete()
+
+> **delete**(`cid`): `Promise`\<`void`\>
+
+Delete a twine from storage
+
+#### Parameters
+
+• **cid**: `IntoCid`
+
+The CID of the twine to delete
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Implementation of
+
+`Store.delete`
+
+#### Defined in
+
+[index.ts:170](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L170)
+
+***
+
+### fetch()
+
+> **fetch**(`cid`): `Promise`\<`null` \| `Chain` \| `Pulse`\>
+
+Fetch a twine by it's CID
+
+#### Parameters
+
+• **cid**: `IntoCid`
+
+#### Returns
+
+`Promise`\<`null` \| `Chain` \| `Pulse`\>
+
+#### Implementation of
+
+`Store.fetch`
+
+#### Defined in
+
+[index.ts:204](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L204)
 
 ***
 
@@ -92,107 +242,7 @@ const chains = await collect(resolver.chains())
 
 #### Defined in
 
-[index.ts:215](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L215)
-
-***
-
-### delete()
-
-> **delete**(`cid`): `Promise`\<`void`\>
-
-Delete a twine from storage
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-The CID of the twine to delete
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Implementation of
-
-`Store.delete`
-
-#### Defined in
-
-[index.ts:164](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L164)
-
-***
-
-### fetch()
-
-> **fetch**(`cid`): `Promise`\<`null` \| `Chain` \| `Pulse`\>
-
-Fetch a twine by it's CID
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-#### Returns
-
-`Promise`\<`null` \| `Chain` \| `Pulse`\>
-
-#### Implementation of
-
-`Store.fetch`
-
-#### Defined in
-
-[index.ts:198](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L198)
-
-***
-
-### fetchIndex()
-
-> **fetchIndex**(`chain`, `index`): `Promise`\<`null` \| `Chain` \| `Pulse`\>
-
-fetch by index
-
-#### Parameters
-
-• **chain**: `IntoCid`
-
-The chain CID
-
-• **index**: `number`
-
-The index
-
-#### Returns
-
-`Promise`\<`null` \| `Chain` \| `Pulse`\>
-
-#### Defined in
-
-[index.ts:131](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L131)
-
-***
-
-### has()
-
-> **has**(`cid`): `Promise`\<`boolean`\>
-
-Check if a Twine is present in the blockstore
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-#### Implementation of
-
-`Store.has`
-
-#### Defined in
-
-[index.ts:250](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L250)
+[index.ts:221](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L221)
 
 ***
 
@@ -237,81 +287,31 @@ for await (const pulse of resolver.pulses('bafybeib3...')) {
 
 #### Defined in
 
-[index.ts:225](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L225)
+[index.ts:231](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L231)
 
 ***
 
-### reIndex()
+### has()
 
-> **reIndex**(`latestCid`): `Promise`\<`void`\>
+> **has**(`cid`): `Promise`\<`boolean`\>
 
-Reindex a chain
+Check if a Twine is present in the blockstore
 
 #### Parameters
 
-• **latestCid**: `IntoCid`
-
-The CID of the latest pulse
+• **cid**: `IntoCid`
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`boolean`\>
+
+#### Implementation of
+
+`Store.has`
 
 #### Defined in
 
-[index.ts:101](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L101)
-
-***
-
-### resolve()
-
-#### resolve(query, options)
-
-> **resolve**(`query`, `options`?): `Promise`\<`PulseResolution`\>
-
-Resolves a twine query
-
-##### Parameters
-
-• **query**: `IntoResolvePulseQuery`
-
-• **options?**: `ResolveOptions`
-
-##### Returns
-
-`Promise`\<`PulseResolution`\>
-
-##### Implementation of
-
-`Store.resolve`
-
-##### Defined in
-
-[index.ts:270](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L270)
-
-#### resolve(query, options)
-
-> **resolve**(`query`, `options`?): `Promise`\<`ChainResolution`\>
-
-Resolve a pulse (with its chain) from a query
-
-##### Parameters
-
-• **query**: `IntoResolveChainQuery`
-
-• **options?**: `ResolveOptions`
-
-##### Returns
-
-`Promise`\<`ChainResolution`\>
-
-##### Implementation of
-
-`Store.resolve`
-
-##### Defined in
-
-[index.ts:271](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L271)
+[index.ts:256](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L256)
 
 ***
 
@@ -356,7 +356,59 @@ if (resolution.pulse) {
 
 #### Defined in
 
-[index.ts:261](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L261)
+[index.ts:267](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L267)
+
+***
+
+### resolve()
+
+#### resolve(query, options)
+
+> **resolve**(`query`, `options`?): `Promise`\<`PulseResolution`\>
+
+Resolves a twine query
+
+##### Parameters
+
+• **query**: `IntoResolvePulseQuery`
+
+• **options?**: `ResolveOptions`
+
+##### Returns
+
+`Promise`\<`PulseResolution`\>
+
+##### Implementation of
+
+`Store.resolve`
+
+##### Defined in
+
+[index.ts:276](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L276)
+
+#### resolve(query, options)
+
+> **resolve**(`query`, `options`?): `Promise`\<`ChainResolution`\>
+
+Resolve a pulse (with its chain) from a query
+
+##### Parameters
+
+• **query**: `IntoResolveChainQuery`
+
+• **options?**: `ResolveOptions`
+
+##### Returns
+
+`Promise`\<`ChainResolution`\>
+
+##### Implementation of
+
+`Store.resolve`
+
+##### Defined in
+
+[index.ts:277](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L277)
 
 ***
 
@@ -380,56 +432,4 @@ Resolves the latest pulse for specified chain
 
 #### Defined in
 
-[index.ts:282](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L282)
-
-***
-
-### save()
-
-> **save**(`twine`): `Promise`\<`void`\>
-
-Save a twine to storage
-
-#### Parameters
-
-• **twine**: `Twine`\<`TwineValue`\>
-
-The twine to save
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Implementation of
-
-`Store.save`
-
-#### Defined in
-
-[index.ts:139](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L139)
-
-***
-
-### saveMany()
-
-> **saveMany**(`twines`): `Promise`\<`void`\>
-
-Save many twines to storage
-
-#### Parameters
-
-• **twines**: `AnyIterable`\<`Twine`\<`TwineValue`\>\>
-
-The twines to save
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Implementation of
-
-`Store.saveMany`
-
-#### Defined in
-
-[index.ts:158](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-blockstore-store/src/index.ts#L158)
+[index.ts:288](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-blockstore-store/src/index.ts#L288)

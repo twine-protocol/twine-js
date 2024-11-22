@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CacheMap
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CacheMap
 
 # Class: CacheMap\<K, V\>
 
@@ -46,21 +46,21 @@ Options for the cache
 
 #### Defined in
 
-[packages/twine-core/src/store/cache-helpers.ts:29](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/cache-helpers.ts#L29)
+[packages/twine-core/src/store/cache-helpers.ts:30](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L30)
 
 ## Properties
 
-### \[toStringTag\]
+### \[species\]
 
-> `readonly` **\[toStringTag\]**: `string`
+> `readonly` `static` **\[species\]**: `MapConstructor`
 
 #### Inherited from
 
-`Map.[toStringTag]`
+`Map.[species]`
 
 #### Defined in
 
-node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
+node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
 
 ***
 
@@ -82,37 +82,125 @@ node\_modules/typescript/lib/lib.es2015.collection.d.ts:45
 
 ***
 
-### \[species\]
+### \[toStringTag\]
 
-> `readonly` `static` **\[species\]**: `MapConstructor`
+> `readonly` **\[toStringTag\]**: `string`
 
 #### Inherited from
 
-`Map.[species]`
+`Map.[toStringTag]`
 
 #### Defined in
 
-node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:319
+node\_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:137
 
 ## Methods
 
-### \[iterator\]()
+### groupBy()
 
-> **\[iterator\]**(): `MapIterator`\<[`K`, `V`]\>
+> `static` **groupBy**\<`K`, `T`\>(`items`, `keySelector`): `Map`\<`K`, `T`[]\>
 
-Returns an iterable of entries in the map.
+Groups members of an iterable according to the return value of the passed callback.
+
+#### Type Parameters
+
+• **K**
+
+• **T**
+
+#### Parameters
+
+• **items**: `Iterable`\<`T`, `any`, `any`\>
+
+An iterable.
+
+• **keySelector**
+
+A callback which will be invoked for each item in items.
 
 #### Returns
 
-`MapIterator`\<[`K`, `V`]\>
+`Map`\<`K`, `T`[]\>
 
 #### Inherited from
 
-`Map.[iterator]`
+`Map.groupBy`
 
 #### Defined in
 
-node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143
+node\_modules/typescript/lib/lib.esnext.collection.d.ts:25
+
+***
+
+### setMaxSize()
+
+> **setMaxSize**(`maxSize`): `void`
+
+Set the maximum number of items to keep in the cache
+
+If the cache is already larger than the new max size, the oldest items will be removed.
+
+#### Parameters
+
+• **maxSize**: `number`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[packages/twine-core/src/store/cache-helpers.ts:40](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L40)
+
+***
+
+### set()
+
+> **set**(`key`, `value`): [`CacheMap`](CacheMap.md)\<`K`, `V`\>
+
+See [Map.set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set)
+
+#### Parameters
+
+• **key**: `K`
+
+• **value**: `V`
+
+#### Returns
+
+[`CacheMap`](CacheMap.md)\<`K`, `V`\>
+
+#### Overrides
+
+`Map.set`
+
+#### Defined in
+
+[packages/twine-core/src/store/cache-helpers.ts:57](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L57)
+
+***
+
+### get()
+
+> **get**(`key`): `undefined` \| `V`
+
+See [Map.get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get)
+
+#### Parameters
+
+• **key**: `K`
+
+#### Returns
+
+`undefined` \| `V`
+
+#### Overrides
+
+`Map.get`
+
+#### Defined in
+
+[packages/twine-core/src/store/cache-helpers.ts:66](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/cache-helpers.ts#L66)
 
 ***
 
@@ -158,26 +246,6 @@ node\_modules/typescript/lib/lib.es2015.collection.d.ts:24
 
 ***
 
-### entries()
-
-> **entries**(): `MapIterator`\<[`K`, `V`]\>
-
-Returns an iterable of key, value pairs for every entry in the map.
-
-#### Returns
-
-`MapIterator`\<[`K`, `V`]\>
-
-#### Inherited from
-
-`Map.entries`
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
-
-***
-
 ### forEach()
 
 > **forEach**(`callbackfn`, `thisArg`?): `void`
@@ -201,30 +269,6 @@ Executes a provided function once per each key/value pair in the Map, in inserti
 #### Defined in
 
 node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
-
-***
-
-### get()
-
-> **get**(`key`): `undefined` \| `V`
-
-See [Map.get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get)
-
-#### Parameters
-
-• **key**: `K`
-
-#### Returns
-
-`undefined` \| `V`
-
-#### Overrides
-
-`Map.get`
-
-#### Defined in
-
-[packages/twine-core/src/store/cache-helpers.ts:65](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/cache-helpers.ts#L65)
 
 ***
 
@@ -252,6 +296,26 @@ node\_modules/typescript/lib/lib.es2015.collection.d.ts:37
 
 ***
 
+### entries()
+
+> **entries**(): `MapIterator`\<[`K`, `V`]\>
+
+Returns an iterable of key, value pairs for every entry in the map.
+
+#### Returns
+
+`MapIterator`\<[`K`, `V`]\>
+
+#### Inherited from
+
+`Map.entries`
+
+#### Defined in
+
+node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
+
+***
+
 ### keys()
 
 > **keys**(): `MapIterator`\<`K`\>
@@ -269,54 +333,6 @@ Returns an iterable of keys in the map
 #### Defined in
 
 node\_modules/typescript/lib/lib.es2015.iterable.d.ts:153
-
-***
-
-### set()
-
-> **set**(`key`, `value`): [`CacheMap`](CacheMap.md)\<`K`, `V`\>
-
-See [Map.set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set)
-
-#### Parameters
-
-• **key**: `K`
-
-• **value**: `V`
-
-#### Returns
-
-[`CacheMap`](CacheMap.md)\<`K`, `V`\>
-
-#### Overrides
-
-`Map.set`
-
-#### Defined in
-
-[packages/twine-core/src/store/cache-helpers.ts:56](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/cache-helpers.ts#L56)
-
-***
-
-### setMaxSize()
-
-> **setMaxSize**(`maxSize`): `void`
-
-Set the maximum number of items to keep in the cache
-
-If the cache is already larger than the new max size, the oldest items will be removed.
-
-#### Parameters
-
-• **maxSize**: `number`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[packages/twine-core/src/store/cache-helpers.ts:39](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/cache-helpers.ts#L39)
 
 ***
 
@@ -340,36 +356,20 @@ node\_modules/typescript/lib/lib.es2015.iterable.d.ts:158
 
 ***
 
-### groupBy()
+### \[iterator\]()
 
-> `static` **groupBy**\<`K`, `T`\>(`items`, `keySelector`): `Map`\<`K`, `T`[]\>
+> **\[iterator\]**(): `MapIterator`\<[`K`, `V`]\>
 
-Groups members of an iterable according to the return value of the passed callback.
-
-#### Type Parameters
-
-• **K**
-
-• **T**
-
-#### Parameters
-
-• **items**: `Iterable`\<`T`, `any`, `any`\>
-
-An iterable.
-
-• **keySelector**
-
-A callback which will be invoked for each item in items.
+Returns an iterable of entries in the map.
 
 #### Returns
 
-`Map`\<`K`, `T`[]\>
+`MapIterator`\<[`K`, `V`]\>
 
 #### Inherited from
 
-`Map.groupBy`
+`Map.[iterator]`
 
 #### Defined in
 
-node\_modules/typescript/lib/lib.esnext.collection.d.ts:25
+node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143

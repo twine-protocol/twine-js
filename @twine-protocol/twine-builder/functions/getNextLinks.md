@@ -1,12 +1,14 @@
-[**@twine-protocol/twine-builder v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-builder v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-builder](../README.md) / getNextLinks
+[twine-js](../../../index.md) / [@twine-protocol/twine-builder](../index.md) / getNextLinks
 
 # Function: getNextLinks()
 
 > **getNextLinks**(`chain`, `previous`): [`CID`](../../twine-core/classes/CID.md)\<`unknown`, `number`, `number`, `Version`\>[]
+
+**`Internal`**
 
 Next pulses skip links
 
@@ -28,4 +30,4 @@ The previous pulse, or false for first pulse
 
 ## Defined in
 
-[factory.ts:24](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-builder/src/factory.ts#L24)
+[factory.ts:25](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-builder/src/factory.ts#L25)

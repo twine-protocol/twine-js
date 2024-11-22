@@ -2,9 +2,11 @@
 
 ***
 
-[twine-js](../../README.md) / @twine-protocol/twine-car-utils
+[twine-js](../../index.md) / @twine-protocol/twine-car-utils
 
 # @twine-protocol/twine-car-utils
+
+This package provides utilities for converting twine data to and from CAR files.
 
 ## Interfaces
 
@@ -22,12 +24,12 @@
 
 | Function | Description |
 | ------ | ------ |
-| [allTwines](functions/allTwines.md) | Get all twines in a resolver |
-| [blocksToTwines](functions/blocksToTwines.md) | Convert blocks to twines |
-| [dumpToCar](functions/dumpToCar.md) | Dump all resolvable chains to a CARv2 file. |
-| [roots](functions/roots.md) | Get CIDs of chains and their latest pulses |
-| [toMemoryStore](functions/toMemoryStore.md) | Convert a CARv2 reader to a MemoryStore |
 | [twinesToCar](functions/twinesToCar.md) | Convert an iterable of twines to a CARv2 formatted async iterable of byte arrays. |
+| [allTwines](functions/allTwines.md) | Get all twines in a resolver |
+| [roots](functions/roots.md) | Get CIDs of chains and their latest pulses |
+| [dumpToCar](functions/dumpToCar.md) | Dump all resolvable chains to a CARv2 file. |
+| [blocksToTwines](functions/blocksToTwines.md) | Convert blocks to twines |
+| [toMemoryStore](functions/toMemoryStore.md) | Convert a CARv2 reader to a MemoryStore |
 
 ## Resolver
 

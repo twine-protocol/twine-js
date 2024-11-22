@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CombinedResolver
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CombinedResolver
 
 # Interface: CombinedResolver
 
@@ -32,7 +32,7 @@ The resolver to add
 
 #### Defined in
 
-[packages/twine-core/src/resolver/combine.ts:52](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/combine.ts#L52)
+[packages/twine-core/src/resolver/combine.ts:51](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/combine.ts#L51)
 
 ***
 
@@ -54,7 +54,7 @@ The resolver to remove
 
 #### Defined in
 
-[packages/twine-core/src/resolver/combine.ts:58](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/combine.ts#L58)
+[packages/twine-core/src/resolver/combine.ts:57](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/combine.ts#L57)
 
 ***
 
@@ -76,37 +76,9 @@ The maximum number of items to cache
 
 #### Defined in
 
-[packages/twine-core/src/resolver/combine.ts:64](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/combine.ts#L64)
+[packages/twine-core/src/resolver/combine.ts:63](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/combine.ts#L63)
 
 ## Methods
-
-### chains()
-
-> **chains**(): `AsyncGenerator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| `Generator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Chain`](../type-aliases/Chain.md)\>
-
-Get the chains that are known to the resolver
-
-#### Returns
-
-`AsyncGenerator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| `Generator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Chain`](../type-aliases/Chain.md)\>
-
-An sync/async iterable of chains
-
-#### Example
-
-```js
-const chains = await collect(resolver.chains())
-```
-
-#### Inherited from
-
-[`Resolver`](Resolver.md).[`chains`](Resolver.md#chains)
-
-#### Defined in
-
-[packages/twine-core/src/resolver/types.ts:324](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L324)
-
-***
 
 ### close()
 
@@ -120,91 +92,7 @@ Close the resolver (if cleanup is needed in sub-resolvers)
 
 #### Defined in
 
-[packages/twine-core/src/resolver/combine.ts:68](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/combine.ts#L68)
-
-***
-
-### has()
-
-> **has**(`cid`): [`Awaitable`](../type-aliases/Awaitable.md)\<`boolean`\>
-
-Check if a cid can be resolved
-
-#### Parameters
-
-• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The CID to check
-
-#### Returns
-
-[`Awaitable`](../type-aliases/Awaitable.md)\<`boolean`\>
-
-True if the CID can be resolved, false otherwise
-
-#### Example
-
-```js
-const exists = await resolver.has('bafybeib3...')
-if (exists) {
-  console.log('chain exists')
-} else {
-  console.log('chain does not exist')
-}
-```
-
-#### Inherited from
-
-[`Resolver`](Resolver.md).[`has`](Resolver.md#has)
-
-#### Defined in
-
-[packages/twine-core/src/resolver/types.ts:295](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L295)
-
-***
-
-### pulses()
-
-> **pulses**(`chain`, `start`?, `options`?): `AsyncGenerator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| `Generator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Pulse`](../type-aliases/Pulse.md)\>
-
-Get the pulses of a chain
-
-#### Parameters
-
-• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to get the pulses from
-
-• **start?**: `number` \| [`IntoCid`](../type-aliases/IntoCid.md)
-
-The index or CID of the pulse to start from
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
-
-#### Returns
-
-`AsyncGenerator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| `Generator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Pulse`](../type-aliases/Pulse.md)\>
-
-An sync/async iterable of pulses
-
-#### Example
-
-```js
-// loop through pulses and print indices
-for await (const pulse of resolver.pulses('bafybeib3...')) {
-  console.log('pulse', pulse.value.content.index)
-}
-```
-
-#### Inherited from
-
-[`Resolver`](Resolver.md).[`pulses`](Resolver.md#pulses)
-
-#### Defined in
-
-[packages/twine-core/src/resolver/types.ts:313](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L313)
+[packages/twine-core/src/resolver/combine.ts:67](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/combine.ts#L67)
 
 ***
 
@@ -271,7 +159,7 @@ if (pulse) {
 
 ##### Defined in
 
-[packages/twine-core/src/resolver/types.ts:233](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L233)
+[packages/twine-core/src/resolver/types.ts:233](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L233)
 
 #### resolve(query, options)
 
@@ -295,52 +183,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[packages/twine-core/src/resolver/types.ts:237](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L237)
-
-***
-
-### resolveIndex()
-
-> **resolveIndex**(`chain`, `index`, `options`?): `Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
-
-Resolve a pulse by index
-
-#### Parameters
-
-• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
-
-The chain CID or chain itself to resolve the pulse from
-
-• **index**: `number`
-
-The index of the pulse to resolve
-
-• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
-
-Options for the resolution
-
-#### Returns
-
-`Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
-
-A pulse resolution
-
-#### Example
-
-```js
-const resolution = await resolver.resolveIndex('bafybeib3...', 42)
-if (resolution.pulse) {
-  console.log('pulse', resolution.pulse)
-}
-```
-
-#### Inherited from
-
-[`Resolver`](Resolver.md).[`resolveIndex`](Resolver.md#resolveindex)
-
-#### Defined in
-
-[packages/twine-core/src/resolver/types.ts:278](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L278)
+[packages/twine-core/src/resolver/types.ts:237](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L237)
 
 ***
 
@@ -386,4 +229,161 @@ const resolution = await resolver.resolveLatest(chain)
 
 #### Defined in
 
-[packages/twine-core/src/resolver/types.ts:260](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/types.ts#L260)
+[packages/twine-core/src/resolver/types.ts:260](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L260)
+
+***
+
+### resolveIndex()
+
+> **resolveIndex**(`chain`, `index`, `options`?): `Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
+
+Resolve a pulse by index
+
+#### Parameters
+
+• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
+
+The chain CID or chain itself to resolve the pulse from
+
+• **index**: `number`
+
+The index of the pulse to resolve
+
+• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+
+Options for the resolution
+
+#### Returns
+
+`Promise`\<[`PulseResolution`](../type-aliases/PulseResolution.md)\>
+
+A pulse resolution
+
+#### Example
+
+```js
+const resolution = await resolver.resolveIndex('bafybeib3...', 42)
+if (resolution.pulse) {
+  console.log('pulse', resolution.pulse)
+}
+```
+
+#### Inherited from
+
+[`Resolver`](Resolver.md).[`resolveIndex`](Resolver.md#resolveindex)
+
+#### Defined in
+
+[packages/twine-core/src/resolver/types.ts:278](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L278)
+
+***
+
+### has()
+
+> **has**(`cid`): [`Awaitable`](../type-aliases/Awaitable.md)\<`boolean`\>
+
+Check if a cid can be resolved
+
+#### Parameters
+
+• **cid**: [`IntoCid`](../type-aliases/IntoCid.md)
+
+The CID to check
+
+#### Returns
+
+[`Awaitable`](../type-aliases/Awaitable.md)\<`boolean`\>
+
+True if the CID can be resolved, false otherwise
+
+#### Example
+
+```js
+const exists = await resolver.has('bafybeib3...')
+if (exists) {
+  console.log('chain exists')
+} else {
+  console.log('chain does not exist')
+}
+```
+
+#### Inherited from
+
+[`Resolver`](Resolver.md).[`has`](Resolver.md#has)
+
+#### Defined in
+
+[packages/twine-core/src/resolver/types.ts:295](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L295)
+
+***
+
+### pulses()
+
+> **pulses**(`chain`, `start`?, `options`?): `AsyncGenerator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| `Generator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Pulse`](../type-aliases/Pulse.md)\>
+
+Get the pulses of a chain
+
+#### Parameters
+
+• **chain**: [`IntoCid`](../type-aliases/IntoCid.md)
+
+The chain CID or chain itself to get the pulses from
+
+• **start?**: `number` \| [`IntoCid`](../type-aliases/IntoCid.md)
+
+The index or CID of the pulse to start from
+
+• **options?**: [`ResolveOptions`](../type-aliases/ResolveOptions.md)
+
+Options for the resolution
+
+#### Returns
+
+`AsyncGenerator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| `Generator`\<[`Pulse`](../type-aliases/Pulse.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Pulse`](../type-aliases/Pulse.md)\>
+
+An sync/async iterable of pulses
+
+#### Example
+
+```js
+// loop through pulses and print indices
+for await (const pulse of resolver.pulses('bafybeib3...')) {
+  console.log('pulse', pulse.value.content.index)
+}
+```
+
+#### Inherited from
+
+[`Resolver`](Resolver.md).[`pulses`](Resolver.md#pulses)
+
+#### Defined in
+
+[packages/twine-core/src/resolver/types.ts:313](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L313)
+
+***
+
+### chains()
+
+> **chains**(): `AsyncGenerator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| `Generator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Chain`](../type-aliases/Chain.md)\>
+
+Get the chains that are known to the resolver
+
+#### Returns
+
+`AsyncGenerator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| `Generator`\<[`Chain`](../type-aliases/Chain.md), `any`, `any`\> \| [`AnyIterable`](../type-aliases/AnyIterable.md)\<[`Chain`](../type-aliases/Chain.md)\>
+
+An sync/async iterable of chains
+
+#### Example
+
+```js
+const chains = await collect(resolver.chains())
+```
+
+#### Inherited from
+
+[`Resolver`](Resolver.md).[`chains`](Resolver.md#chains)
+
+#### Defined in
+
+[packages/twine-core/src/resolver/types.ts:324](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/types.ts#L324)

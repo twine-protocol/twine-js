@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CrawlGuide
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CrawlGuide
 
 # Type Alias: CrawlGuide()
 
@@ -32,4 +32,4 @@ const crawlAlong: CrawlGuide = ({ pulse, chain }) => {
 
 ## Defined in
 
-[packages/twine-core/src/crawl.ts:84](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/crawl.ts#L84)
+[packages/twine-core/src/crawl.ts:84](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/crawl.ts#L84)

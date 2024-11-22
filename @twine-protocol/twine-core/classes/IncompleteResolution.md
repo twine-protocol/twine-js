@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / IncompleteResolution
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / IncompleteResolution
 
 # Class: IncompleteResolution
 
@@ -58,62 +58,6 @@ node\_modules/typescript/lib/lib.es5.d.ts:1082
 
 ## Properties
 
-### cause?
-
-> `optional` **cause**: `unknown`
-
-#### Inherited from
-
-[`TwineError`](TwineError.md).[`cause`](TwineError.md#cause)
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es2022.error.d.ts:24
-
-***
-
-### message
-
-> **message**: `string`
-
-#### Inherited from
-
-[`TwineError`](TwineError.md).[`message`](TwineError.md#message)
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es5.d.ts:1077
-
-***
-
-### name
-
-> **name**: `string`
-
-#### Inherited from
-
-[`TwineError`](TwineError.md).[`name`](TwineError.md#name)
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es5.d.ts:1076
-
-***
-
-### stack?
-
-> `optional` **stack**: `string`
-
-#### Inherited from
-
-[`TwineError`](TwineError.md).[`stack`](TwineError.md#stack)
-
-#### Defined in
-
-node\_modules/typescript/lib/lib.es5.d.ts:1078
-
-***
-
 ### prepareStackTrace()?
 
 > `static` `optional` **prepareStackTrace**: (`err`, `stackTraces`) => `any`
@@ -155,6 +99,62 @@ node\_modules/@types/node/globals.d.ts:28
 #### Defined in
 
 node\_modules/@types/node/globals.d.ts:30
+
+***
+
+### name
+
+> **name**: `string`
+
+#### Inherited from
+
+[`TwineError`](TwineError.md).[`name`](TwineError.md#name)
+
+#### Defined in
+
+node\_modules/typescript/lib/lib.es5.d.ts:1076
+
+***
+
+### message
+
+> **message**: `string`
+
+#### Inherited from
+
+[`TwineError`](TwineError.md).[`message`](TwineError.md#message)
+
+#### Defined in
+
+node\_modules/typescript/lib/lib.es5.d.ts:1077
+
+***
+
+### stack?
+
+> `optional` **stack**: `string`
+
+#### Inherited from
+
+[`TwineError`](TwineError.md).[`stack`](TwineError.md#stack)
+
+#### Defined in
+
+node\_modules/typescript/lib/lib.es5.d.ts:1078
+
+***
+
+### cause?
+
+> `optional` **cause**: `unknown`
+
+#### Inherited from
+
+[`TwineError`](TwineError.md).[`cause`](TwineError.md#cause)
+
+#### Defined in
+
+node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 ## Methods
 

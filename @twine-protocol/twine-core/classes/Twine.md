@@ -1,12 +1,12 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / Twine
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / Twine
 
 # Class: Twine\<T\>
 
-Generic type for twine data
+Generic class for twine data
 
 ## Extends
 
@@ -41,9 +41,9 @@ package to create a twine instance.
 
 • **\_\_namedParameters**
 
-• **\_\_namedParameters.bytes**: `Uint8Array`
-
 • **\_\_namedParameters.cid**: [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>
+
+• **\_\_namedParameters.bytes**: `Uint8Array`
 
 • **\_\_namedParameters.value**: `T`
 
@@ -57,35 +57,31 @@ package to create a twine instance.
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:42](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L42)
+[packages/twine-core/src/twine.ts:47](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L47)
 
 ## Properties
 
-### asBlock
+### isTwineInstance
 
-> `readonly` **asBlock**: [`Twine`](Twine.md)\<`T`\>
+> **isTwineInstance**: `boolean` = `true`
 
-#### Inherited from
-
-`Block.Block.asBlock`
+is a twine instance (true)
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/block.d.ts:13
+[packages/twine-core/src/twine.ts:24](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L24)
 
 ***
 
-### bytes
+### isChain
 
-> `readonly` **bytes**: `ByteView`\<`T`\>
+> **isChain**: `boolean`
 
-#### Inherited from
-
-`Block.Block.bytes`
+is this a chain
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/block.d.ts:11
+[packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L26)
 
 ***
 
@@ -97,7 +93,7 @@ chain CID (either this CID or the pulse's chain CID)
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:23](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L23)
+[packages/twine-core/src/twine.ts:28](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L28)
 
 ***
 
@@ -115,27 +111,17 @@ node\_modules/multiformats/dist/src/block.d.ts:10
 
 ***
 
-### isChain
+### bytes
 
-> **isChain**: `boolean`
+> `readonly` **bytes**: `ByteView`\<`T`\>
 
-is this a chain
+#### Inherited from
 
-#### Defined in
-
-[packages/twine-core/src/twine.ts:21](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L21)
-
-***
-
-### isTwineInstance
-
-> **isTwineInstance**: `boolean` = `true`
-
-is a twine instance (true)
+`Block.Block.bytes`
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:19](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L19)
+node\_modules/multiformats/dist/src/block.d.ts:11
 
 ***
 
@@ -150,6 +136,20 @@ is a twine instance (true)
 #### Defined in
 
 node\_modules/multiformats/dist/src/block.d.ts:12
+
+***
+
+### asBlock
+
+> `readonly` **asBlock**: [`Twine`](Twine.md)\<`T`\>
+
+#### Inherited from
+
+`Block.Block.asBlock`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/block.d.ts:13
 
 ## Accessors
 
@@ -167,63 +167,27 @@ Is this a pulse
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:77](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L77)
+[packages/twine-core/src/twine.ts:82](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L82)
 
 ## Methods
 
-### get()
+### isTwine()
 
-> **get**(`path`?): `BlockCursorView`\<`unknown`\>
+> `static` **isTwine**(`thing`): thing is Chain \| Pulse
+
+Check if a value is a twine
 
 #### Parameters
 
-• **path?**: `string`
+• **thing**: `any`
 
 #### Returns
 
-`BlockCursorView`\<`unknown`\>
-
-#### Inherited from
-
-`Block.Block.get`
+thing is Chain \| Pulse
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/block.d.ts:21
-
-***
-
-### getContentDigest()
-
-> **getContentDigest**(): `Promise`\<`MultihashDigest`\<`number`\>\>
-
-Get the twine content field hash digest
-
-#### Returns
-
-`Promise`\<`MultihashDigest`\<`number`\>\>
-
-#### Defined in
-
-[packages/twine-core/src/twine.ts:96](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L96)
-
-***
-
-### links()
-
-> **links**(): `Iterable`\<[`string`, [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>], `any`, `any`\>
-
-#### Returns
-
-`Iterable`\<[`string`, [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>], `any`, `any`\>
-
-#### Inherited from
-
-`Block.Block.links`
-
-#### Defined in
-
-node\_modules/multiformats/dist/src/block.d.ts:19
+[packages/twine-core/src/twine.ts:31](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L31)
 
 ***
 
@@ -239,25 +203,23 @@ Get the twine data as a DAG-JSON object
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:84](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L84)
+[packages/twine-core/src/twine.ts:89](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L89)
 
 ***
 
-### tree()
+### getContentDigest()
 
-> **tree**(): `Iterable`\<`string`, `any`, `any`\>
+> **getContentDigest**(): `Promise`\<`MultihashDigest`\<`number`\>\>
+
+Get the twine content field hash digest
 
 #### Returns
 
-`Iterable`\<`string`, `any`, `any`\>
-
-#### Inherited from
-
-`Block.Block.tree`
+`Promise`\<`MultihashDigest`\<`number`\>\>
 
 #### Defined in
 
-node\_modules/multiformats/dist/src/block.d.ts:20
+[packages/twine-core/src/twine.ts:101](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L101)
 
 ***
 
@@ -282,24 +244,62 @@ Chain instance to use for verification
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:108](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L108)
+[packages/twine-core/src/twine.ts:113](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/twine.ts#L113)
 
 ***
 
-### isTwine()
+### links()
 
-> `static` **isTwine**(`thing`): thing is Chain \| Pulse
-
-Check if a value is a twine
-
-#### Parameters
-
-• **thing**: `any`
+> **links**(): `Iterable`\<[`string`, [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>], `any`, `any`\>
 
 #### Returns
 
-thing is Chain \| Pulse
+`Iterable`\<[`string`, [`CID`](CID.md)\<`unknown`, `number`, `number`, `Version`\>], `any`, `any`\>
+
+#### Inherited from
+
+`Block.Block.links`
 
 #### Defined in
 
-[packages/twine-core/src/twine.ts:26](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/twine.ts#L26)
+node\_modules/multiformats/dist/src/block.d.ts:19
+
+***
+
+### tree()
+
+> **tree**(): `Iterable`\<`string`, `any`, `any`\>
+
+#### Returns
+
+`Iterable`\<`string`, `any`, `any`\>
+
+#### Inherited from
+
+`Block.Block.tree`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/block.d.ts:20
+
+***
+
+### get()
+
+> **get**(`path`?): `BlockCursorView`\<`unknown`\>
+
+#### Parameters
+
+• **path?**: `string`
+
+#### Returns
+
+`BlockCursorView`\<`unknown`\>
+
+#### Inherited from
+
+`Block.Block.get`
+
+#### Defined in
+
+node\_modules/multiformats/dist/src/block.d.ts:21

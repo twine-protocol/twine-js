@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / CACHE\_SINGLETON
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / CACHE\_SINGLETON
 
 # Variable: CACHE\_SINGLETON
 
@@ -12,4 +12,4 @@ A singleton cache store
 
 ## Defined in
 
-[packages/twine-core/src/store/memory-store.ts:316](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/store/memory-store.ts#L316)
+[packages/twine-core/src/store/memory-store.ts:315](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/store/memory-store.ts#L315)

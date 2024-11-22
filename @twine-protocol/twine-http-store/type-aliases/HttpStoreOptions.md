@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-http-store v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-http-store v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-http-store](../README.md) / HttpStoreOptions
+[twine-js](../../../index.md) / [@twine-protocol/twine-http-store](../index.md) / HttpStoreOptions
 
 # Type Alias: HttpStoreOptions
 
@@ -20,4 +20,4 @@ Allow duplicate requests to be made
 
 ## Defined in
 
-[index.ts:155](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L155)
+[index.ts:167](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L167)

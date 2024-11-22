@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / ResolveCallers
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / ResolveCallers
 
 # Type Alias: ResolveCallers
 
@@ -19,26 +19,6 @@ These methods do not need to check the signature of the twine or anything,
 that is all handled by the [resolveHelper](../functions/resolveHelper.md) function.
 
 ## Type declaration
-
-### cache?
-
-> `optional` **cache**: [`TwineCache`](../classes/TwineCache.md) \| `false` \| `null`
-
-A cache to use
-
-If set to `false` or `null`, no caching will be done
-
-Normally a resolver will keep a reference to its cache and simply pass it through
-in here.
-
-#### Example
-
-```js
-resolveHelper({
-  //...
-  cache: this.cache
-})
-```
 
 ### fetchChain()
 
@@ -72,6 +52,26 @@ Fetch a pulse
 
 [`Awaitable`](Awaitable.md)\<[`Pulse`](Pulse.md) \| `null`\>
 
+### cache?
+
+> `optional` **cache**: [`TwineCache`](../classes/TwineCache.md) \| `false` \| `null`
+
+A cache to use
+
+If set to `false` or `null`, no caching will be done
+
+Normally a resolver will keep a reference to its cache and simply pass it through
+in here.
+
+#### Example
+
+```js
+resolveHelper({
+  //...
+  cache: this.cache
+})
+```
+
 ### requestCache?
 
 > `optional` **requestCache**: `Map`\<`string`, `Promise`\<[`Chain`](Chain.md) \| [`Pulse`](Pulse.md)\>\>
@@ -97,4 +97,4 @@ resolveHelper({
 
 ## Defined in
 
-[packages/twine-core/src/resolver/helpers.ts:95](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/resolver/helpers.ts#L95)
+[packages/twine-core/src/resolver/helpers.ts:95](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/resolver/helpers.ts#L95)

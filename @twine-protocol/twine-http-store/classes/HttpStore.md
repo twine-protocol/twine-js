@@ -1,20 +1,12 @@
-[**@twine-protocol/twine-http-store v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-http-store v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-http-store](../README.md) / HttpStore
+[twine-js](../../../index.md) / [@twine-protocol/twine-http-store](../index.md) / HttpStore
 
 # Class: HttpStore
 
 An HTTP client that implements Store
-
-## Example
-
-```typescript
-const store = new HttpStore('https://example.com')
-const { chain, pulse } = await store.resolveLatest("bafyreilskdjflksjdflksj...")
-console.log(chain, pulse)
-```
 
 ## Implements
 
@@ -44,9 +36,29 @@ Options for the fetcher
 
 #### Defined in
 
-[index.ts:183](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L183)
+[index.ts:188](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L188)
 
 ## Methods
+
+### fetchChain()
+
+> **fetchChain**(`chainCid`): `Promise`\<`null` \| `Chain`\>
+
+Fetch a chain by CID without validation
+
+#### Parameters
+
+• **chainCid**: `IntoCid`
+
+#### Returns
+
+`Promise`\<`null` \| `Chain`\>
+
+#### Defined in
+
+[index.ts:219](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L219)
+
+***
 
 ### chains()
 
@@ -72,121 +84,7 @@ const chains = await collect(resolver.chains())
 
 #### Defined in
 
-[index.ts:223](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L223)
-
-***
-
-### delete()
-
-> **delete**(`cid`): `Promise`\<`void`\>
-
-Delete a twine from storage
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-The CID of the twine to delete
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Implementation of
-
-`Store.delete`
-
-#### Defined in
-
-[index.ts:304](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L304)
-
-***
-
-### fetch()
-
-> **fetch**(`cid`): `Promise`\<`null` \| `Twine`\<`TwineValue`\>\>
-
-Fetch a twine from storage, returning null if it is not found
-
-it is NOT expected that the twine signature is checked,
-that is for the Resolver to do.
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-The CID of the twine to fetch
-
-#### Returns
-
-`Promise`\<`null` \| `Twine`\<`TwineValue`\>\>
-
-#### Implementation of
-
-`Store.fetch`
-
-#### Defined in
-
-[index.ts:289](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L289)
-
-***
-
-### fetchChain()
-
-> **fetchChain**(`chainCid`): `Promise`\<`null` \| `Chain`\>
-
-Fetch a chain by CID without validation
-
-#### Parameters
-
-• **chainCid**: `IntoCid`
-
-#### Returns
-
-`Promise`\<`null` \| `Chain`\>
-
-#### Defined in
-
-[index.ts:214](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L214)
-
-***
-
-### has()
-
-> **has**(`cid`): `Promise`\<`boolean`\>
-
-Check if a cid can be resolved
-
-#### Parameters
-
-• **cid**: `IntoCid`
-
-The CID to check
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-True if the CID can be resolved, false otherwise
-
-#### Example
-
-```js
-const exists = await resolver.has('bafybeib3...')
-if (exists) {
-  console.log('chain exists')
-} else {
-  console.log('chain does not exist')
-}
-```
-
-#### Implementation of
-
-`Store.has`
-
-#### Defined in
-
-[index.ts:298](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L298)
+[index.ts:228](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L228)
 
 ***
 
@@ -231,7 +129,146 @@ for await (const pulse of resolver.pulses('bafybeib3...')) {
 
 #### Defined in
 
-[index.ts:231](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L231)
+[index.ts:236](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L236)
+
+***
+
+### fetch()
+
+> **fetch**(`cid`): `Promise`\<`null` \| `Twine`\<`TwineValue`\>\>
+
+Fetch a twine from storage, returning null if it is not found
+
+it is NOT expected that the twine signature is checked,
+that is for the Resolver to do.
+
+#### Parameters
+
+• **cid**: `IntoCid`
+
+The CID of the twine to fetch
+
+#### Returns
+
+`Promise`\<`null` \| `Twine`\<`TwineValue`\>\>
+
+#### Implementation of
+
+`Store.fetch`
+
+#### Defined in
+
+[index.ts:294](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L294)
+
+***
+
+### has()
+
+> **has**(`cid`): `Promise`\<`boolean`\>
+
+Check if a cid can be resolved
+
+#### Parameters
+
+• **cid**: `IntoCid`
+
+The CID to check
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+True if the CID can be resolved, false otherwise
+
+#### Example
+
+```js
+const exists = await resolver.has('bafybeib3...')
+if (exists) {
+  console.log('chain exists')
+} else {
+  console.log('chain does not exist')
+}
+```
+
+#### Implementation of
+
+`Store.has`
+
+#### Defined in
+
+[index.ts:303](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L303)
+
+***
+
+### delete()
+
+> **delete**(`cid`): `Promise`\<`void`\>
+
+Delete a twine from storage
+
+#### Parameters
+
+• **cid**: `IntoCid`
+
+The CID of the twine to delete
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Implementation of
+
+`Store.delete`
+
+#### Defined in
+
+[index.ts:309](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L309)
+
+***
+
+### resolveIndex()
+
+> **resolveIndex**(`chain`, `index`, `options`?): `Promise`\<`PulseResolution`\>
+
+Resolve a pulse by index
+
+#### Parameters
+
+• **chain**: `IntoCid`
+
+The chain CID or chain itself to resolve the pulse from
+
+• **index**: `number`
+
+The index of the pulse to resolve
+
+• **options?**: `ResolveOptions`
+
+Options for the resolution
+
+#### Returns
+
+`Promise`\<`PulseResolution`\>
+
+A pulse resolution
+
+#### Example
+
+```js
+const resolution = await resolver.resolveIndex('bafybeib3...', 42)
+if (resolution.pulse) {
+  console.log('pulse', resolution.pulse)
+}
+```
+
+#### Implementation of
+
+`Store.resolveIndex`
+
+#### Defined in
+
+[index.ts:313](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L313)
 
 ***
 
@@ -298,7 +335,7 @@ if (pulse) {
 
 ##### Defined in
 
-[index.ts:322](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L322)
+[index.ts:327](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L327)
 
 #### resolve(query, options)
 
@@ -322,52 +359,7 @@ Resolve a pulse (with its chain) from a query
 
 ##### Defined in
 
-[index.ts:323](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L323)
-
-***
-
-### resolveIndex()
-
-> **resolveIndex**(`chain`, `index`, `options`?): `Promise`\<`PulseResolution`\>
-
-Resolve a pulse by index
-
-#### Parameters
-
-• **chain**: `IntoCid`
-
-The chain CID or chain itself to resolve the pulse from
-
-• **index**: `number`
-
-The index of the pulse to resolve
-
-• **options?**: `ResolveOptions`
-
-Options for the resolution
-
-#### Returns
-
-`Promise`\<`PulseResolution`\>
-
-A pulse resolution
-
-#### Example
-
-```js
-const resolution = await resolver.resolveIndex('bafybeib3...', 42)
-if (resolution.pulse) {
-  console.log('pulse', resolution.pulse)
-}
-```
-
-#### Implementation of
-
-`Store.resolveIndex`
-
-#### Defined in
-
-[index.ts:308](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L308)
+[index.ts:328](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L328)
 
 ***
 
@@ -413,33 +405,7 @@ const resolution = await resolver.resolveLatest(chain)
 
 #### Defined in
 
-[index.ts:337](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L337)
-
-***
-
-### save()
-
-> **save**(`twine`): `Promise`\<`void`\>
-
-Save a twine to storage
-
-#### Parameters
-
-• **twine**: `Twine`\<`TwineValue`\>
-
-The twine to save
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Implementation of
-
-`Store.save`
-
-#### Defined in
-
-[index.ts:389](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L389)
+[index.ts:342](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L342)
 
 ***
 
@@ -465,4 +431,30 @@ The twines to save
 
 #### Defined in
 
-[index.ts:348](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-http-store/src/index.ts#L348)
+[index.ts:353](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L353)
+
+***
+
+### save()
+
+> **save**(`twine`): `Promise`\<`void`\>
+
+Save a twine to storage
+
+#### Parameters
+
+• **twine**: `Twine`\<`TwineValue`\>
+
+The twine to save
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Implementation of
+
+`Store.save`
+
+#### Defined in
+
+[index.ts:394](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-http-store/src/index.ts#L394)

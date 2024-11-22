@@ -1,8 +1,8 @@
-[**@twine-protocol/twine-core v0.1.0**](../README.md) • **Docs**
+[**@twine-protocol/twine-core v0.1.0**](../index.md) • **Docs**
 
 ***
 
-[twine-js](../../../README.md) / [@twine-protocol/twine-core](../README.md) / IntoCid
+[twine-js](../../../index.md) / [@twine-protocol/twine-core](../index.md) / IntoCid
 
 # Type Alias: IntoCid
 
@@ -12,4 +12,4 @@ Any type that can be coerced into a CID
 
 ## Defined in
 
-[packages/twine-core/src/types.ts:98](https://github.com/twine-protocol/twine-js/blob/bc5370ff2573a6e5e5c7a912acc672967ce4c5db/packages/twine-core/src/types.ts#L98)
+[packages/twine-core/src/types.ts:112](https://github.com/twine-protocol/twine-js/blob/fb5041c7a2da4a796f653066248604ca1c5dccc6/packages/twine-core/src/types.ts#L112)
